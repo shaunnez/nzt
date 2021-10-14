@@ -1,0 +1,76 @@
+.footer {
+  background: black;
+  color: white;
+  position: relative;
+  height: 312px;
+}
+
+.content {
+  padding: 36px 16px;
+  max-width: 1156px;
+  margin: 0 auto;
+  position: relative;
+  /* adjust on home */
+}
+
+.headline {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.mindsets {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mindsetRow {
+  position: relative;
+}
+
+.mindsetRow + .mindsetRow {
+  margin-top: 28px;
+}
+.mindsetHeader {
+  min-width: 148px;
+  color: #00a8de;
+  font-size: 22px;
+  line-height: 26px;
+  position: absolute;
+  left: 0;
+  top: 0px;
+}
+
+.mindsetBadges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 148px;
+  margin-top: -12px;
+  width: 80%;
+}
+
+.mindsetBadge {
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 4px 12px;
+  color: black;
+  text-decoration: none;
+  margin-right: 6px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: all 0.25s ease-in-out;
+}
+
+.mindsetBadge:hover,
+.mindsetBadge:focus,
+.mindsetBadge:active,
+.mindsetBadge.active {
+  background: #00a8de;
+  color: black;
+  text-decoration: none;
+}

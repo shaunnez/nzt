@@ -1,0 +1,18 @@
+.appendix {
+  margin-top: 64px;
+}
+
+.header {
+  max-width: 1156px;
+  margin: 0 auto;
+  text-align: left;
+}
+.header a {
+  color: #1d1d1b;
+}
+
+.header h1 {
+  text-align: left;
+  margin: 0;
+  color: #1d1d1b;
+}

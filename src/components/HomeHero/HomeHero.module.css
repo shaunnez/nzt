@@ -1,0 +1,54 @@
+.homeHero {
+  position: relative;
+  height: 816px;
+  color: white;
+  overflow: hidden;
+}
+
+.homeHero > div > div + div > div {
+  width: 100%;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.purenz {
+  z-index: 1;
+}
+
+.mindsets {
+  margin-top: 20px;
+}
+
+.mindsets h1 {
+  color: white;
+  font-size: 180px;
+  margin: 0;
+  text-align: left;
+}
+
+.content {
+  max-width: 617px;
+  font-weight: 400;
+  font-size: 22px;
+  margin-top: 155px;
+}
+.content p {
+  margin: 0;
+}
+
+.content b {
+  font-weight: 800;
+}
+
+.content a {
+  color: white;
+  text-decoration: underline;
+}

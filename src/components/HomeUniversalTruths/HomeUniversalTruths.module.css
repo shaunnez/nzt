@@ -1,0 +1,83 @@
+.universalTruths {
+  max-width: 1156px;
+  /* max-width: 942px; */
+  margin: 0 auto;
+  padding: 24px 0px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  /* padding-top: 32px; */
+  position: relative;
+}
+
+.universalTruths:before,
+.universalTruths:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border: 1px solid #000;
+}
+
+.universalTruths:after {
+  top: initial;
+  bottom: 0;
+}
+
+.headline {
+  text-align: center;
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 800;
+  position: relative;
+  max-width: 1156px;
+}
+
+.content {
+  max-width: 836px;
+  margin: 0 auto;
+  position: relative;
+  font-weight: 400;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+}
+
+.content.open {
+  max-height: 100vh;
+  opacity: 1;
+}
+.contentHeadline {
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 800;
+  margin-top: 70px;
+}
+
+.content:before {
+  content: "";
+  border-left: 2.625px solid #00a8de;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+}
+
+.content p {
+  font-size: 19px;
+  line-height: 22px;
+}
+
+.content .paragraphHeader + p {
+  margin: 0;
+}
+
+.content b {
+  font-weight: 800;
+  margin: 0;
+}
+
+.universlTruthsArrow {
+  margin-top: 60px;
+  text-align: center;
+}
