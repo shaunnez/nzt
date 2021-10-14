@@ -1,0 +1,1 @@
+(this.webpackJsonpnzt=this.webpackJsonpnzt||[]).push([[7],{555:function(t,i,s){"use strict";s.r(i),i.default=s.p+"static/media/favicon.6d176e7f.ico"}}]);
