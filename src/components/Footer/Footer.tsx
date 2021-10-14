@@ -15,7 +15,7 @@ const Footer = ({ mindsets }: any) => {
               {mindsets
                 .filter((item: any) => item.type === "domestic")
                 .map((item: any) => {
-                  const link = `/mindsets/${item.title
+                  const link = `${process.env.PUBLIC_URL}/mindsets/${item.title
                     .replace(/ /g, "-")
                     .toLowerCase()}`;
                   return (
@@ -32,7 +32,7 @@ const Footer = ({ mindsets }: any) => {
               {mindsets
                 .filter((item: any) => item.type === "international")
                 .map((item: any) => {
-                  const link = `/mindsets/${item.title
+                  const link = `${process.env.PUBLIC_URL}/mindsets/${item.title
                     .replace(/ /g, "-")
                     .toLowerCase()}`;
                   return (
