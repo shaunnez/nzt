@@ -1,0 +1,1 @@
+(this.webpackJsonpnzt=this.webpackJsonpnzt||[]).push([[8],{557:function(s,t,e){"use strict";e.r(t),t.default=e.p+"static/media/mindsets-header.3a49f7b9.svg"}}]);

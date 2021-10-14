@@ -1,0 +1,28 @@
+{
+  "files": {
+    "static/js/0.5dff40cf.chunk.js": "/nzt/static/js/0.5dff40cf.chunk.js",
+    "static/js/1.17c555ac.chunk.js": "/nzt/static/js/1.17c555ac.chunk.js",
+    "static/js/2.c2989a10.chunk.js": "/nzt/static/js/2.c2989a10.chunk.js",
+    "static/js/3.74afd112.chunk.js": "/nzt/static/js/3.74afd112.chunk.js",
+    "main.css": "/nzt/static/css/main.a3adab65.chunk.css",
+    "main.js": "/nzt/static/js/main.19aa3b63.chunk.js",
+    "runtime-main.js": "/nzt/static/js/runtime-main.507d9fbf.js",
+    "static/js/6.d7561c25.chunk.js": "/nzt/static/js/6.d7561c25.chunk.js",
+    "static/js/7.0f8b37ef.chunk.js": "/nzt/static/js/7.0f8b37ef.chunk.js",
+    "static/js/8.ca7dbfb4.chunk.js": "/nzt/static/js/8.ca7dbfb4.chunk.js",
+    "static/js/9.79e09a2e.chunk.js": "/nzt/static/js/9.79e09a2e.chunk.js",
+    "static/js/10.d7c3d8ba.chunk.js": "/nzt/static/js/10.d7c3d8ba.chunk.js",
+    "index.html": "/nzt/index.html",
+    "static/js/0.5dff40cf.chunk.js.LICENSE.txt": "/nzt/static/js/0.5dff40cf.chunk.js.LICENSE.txt",
+    "static/js/6.d7561c25.chunk.js.LICENSE.txt": "/nzt/static/js/6.d7561c25.chunk.js.LICENSE.txt",
+    "static/media/favicon.ico": "/nzt/static/media/favicon.6d176e7f.ico",
+    "static/media/home.jpg": "/nzt/static/media/home.a95c0bcb.jpg",
+    "static/media/mindsets-header.svg": "/nzt/static/media/mindsets-header.3a49f7b9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.507d9fbf.js",
+    "static/js/6.d7561c25.chunk.js",
+    "static/css/main.a3adab65.chunk.css",
+    "static/js/main.19aa3b63.chunk.js"
+  ]
+}
