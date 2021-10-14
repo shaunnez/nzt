@@ -1,5 +1,12 @@
 import React, { Suspense } from "react";
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  BrowserRouter,
+  HashRouter,
+  Redirect,
+} from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import ScrollToTop from "utilities/scrollTop";
 import HomeView from "views/Home";
 import MindsetsView from "views/Mindsets";
@@ -9,17 +16,23 @@ import "./styles/globals.css";
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Suspense fallback={null}>
         <ScrollToTop />
         <Switch>
-          <Route path="/" component={HomeView} />
-          <Route path="/mindsets/:id" component={MindsetsView} />
-          <Route path="/appendix" component={Appendiex} />
+          <Route path={`${process.env.PUBLIC_URL}/`} component={HomeView} />
+          <Route
+            path={`${process.env.PUBLIC_URL}/mindsets:id`}
+            component={MindsetsView}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/appendix`}
+            component={Appendiex}
+          />
           {/* <Route render={() => <Redirect to="/" />} /> */}
         </Switch>
       </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
