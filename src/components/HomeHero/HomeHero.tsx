@@ -34,7 +34,7 @@ const HomeHero = () => {
             </p>
             <br />
             <p>
-              <Link to={`${process.env.PUBLIC_URL}/appendix`}>Learn more</Link>
+              <Link to={`/appendix`}>Learn more</Link>
             </p>
           </div>
         </div>

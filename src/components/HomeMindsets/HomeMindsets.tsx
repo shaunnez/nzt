@@ -51,7 +51,7 @@ const HomeMindsets = ({ mindsets }: any) => {
             {mindsets
               .filter((mindset: any) => mindset.type === "domestic")
               .map((mindset: any) => {
-                const link = `${process.env.PUBLIC_URL}/mindsets/${mindset.title
+                const link = `/mindsets/${mindset.title
                   .replace(/ /g, "-")
                   .toLowerCase()}`;
                 return (
@@ -79,7 +79,7 @@ const HomeMindsets = ({ mindsets }: any) => {
             {mindsets
               .filter((mindset: any) => mindset.type === "international")
               .map((mindset: any) => {
-                const link = `${process.env.PUBLIC_URL}/mindsets/${mindset.title
+                const link = `/mindsets/${mindset.title
                   .replace(/ /g, "-")
                   .toLowerCase()}`;
                 return (

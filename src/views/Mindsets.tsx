@@ -16,7 +16,7 @@ const Mindsets = () => {
   return (
     <div className={styles.appendix}>
       <header className={styles.header}>
-        <Link to={`${process.env.PUBLIC_URL}/`} className={"overview-link"}>
+        <Link to={`/`} className={"overview-link"}>
           {"<-"} Overview
         </Link>
         <h1 className="title page-title">Mindsets - {friendly}</h1>

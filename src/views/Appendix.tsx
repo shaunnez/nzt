@@ -7,7 +7,7 @@ const Appendix = () => {
   return (
     <div className={styles.appendix}>
       <header className={styles.header}>
-        <Link to={`${process.env.PUBLIC_URL}/`} className={"overview-link"}>
+        <Link to={`/`} className={"overview-link"}>
           <span className="overview-icon">{"<-"}</span> Overview
         </Link>
         <h1 className="title page-title">Appendix</h1>

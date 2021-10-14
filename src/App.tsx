@@ -8,37 +8,22 @@ import Appendiex from "views/Appendix";
 import "./styles/globals.css";
 
 function App() {
+  console.log(process.env.PUBLIC_URL);
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Suspense fallback={null}>
         <ScrollToTop />
         <Switch>
-          <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/`}
-            component={HomeView}
-          />
-          <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/mindsets/:id`}
-            component={MindsetsView}
-          />
-          <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/appendix`}
-            component={Appendiex}
-          />
-          <Route
-            render={() => <Redirect to={`${process.env.PUBLIC_URL}/`} />}
-          />
+          <Route exact path={`/mindsets/:id`} component={MindsetsView} />
+          <Route exact path={`/appendix`} component={Appendiex} />
+          <Route component={HomeView} />
+          {/* <Route
+            render={() => <Redirect to={`/`} />}
+          /> */}
         </Switch>
       </Suspense>
     </BrowserRouter>
   );
 }
-
-const lazyLoad = (path: string) => {
-  return React.lazy(() => import(`${path}`));
-};
 
 export default App;
