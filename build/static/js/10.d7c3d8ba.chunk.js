@@ -1,1 +1,0 @@
-(this.webpackJsonpnzt=this.webpackJsonpnzt||[]).push([[10],{556:function(t,s,c){"use strict";c.r(s),s.default=c.p+"static/media/home.a95c0bcb.jpg"}}]);
