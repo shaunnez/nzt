@@ -8,7 +8,6 @@ import Appendiex from "views/Appendix";
 import "./styles/globals.css";
 
 function App() {
-  console.log(process.env.PUBLIC_URL);
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Suspense fallback={null}>
