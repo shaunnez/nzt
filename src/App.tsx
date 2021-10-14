@@ -5,6 +5,7 @@ import HomeView from "views/Home";
 import MindsetsView from "views/Mindsets";
 import Appendiex from "views/Appendix";
 
+import "./styles/base.css";
 import "./styles/globals.css";
 
 function App() {
