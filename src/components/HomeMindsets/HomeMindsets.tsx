@@ -13,13 +13,12 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
   const theActivities = activities.map((x) => x.title);
   theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
   const filteredMindsets = (theType: string, theActivity: string) => {
-    let activity = theActivity === "Filter by activity" ? "" : theActivity;
     let filtered = mindsets.filter((x) => x.theType === theType);
-    if (theActivity !== "Filter by activity") {
+    if (theActivity) {
       filtered = filtered.filter(
         (x) =>
           x.activities.length === 0 ||
-          x.activities.find((x) => x.title === activity)
+          x.activities.find((x) => x.title === theActivity)
       );
     }
     return filtered;

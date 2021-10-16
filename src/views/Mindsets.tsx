@@ -255,7 +255,7 @@ export const AccordionItemWhere = ({
       <AccordionContent
         accordionItemOpen={accordionItemOpen}
         theType={"where"}
-        html={mindset.where?.body?.html}
+        html={mindset.where?.body}
       />
       <AccordionLink
         accordionItemOpen={accordionItemOpen}

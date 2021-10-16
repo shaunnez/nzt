@@ -44,6 +44,10 @@ query GetData {
       boxoutTitle
       byTheNumbers
     }
+    where {
+      intro
+      body
+    }
     smallImage {
       url
     }

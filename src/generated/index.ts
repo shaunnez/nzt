@@ -6403,7 +6403,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDataQuery = { __typename?: 'Query', mindsets: Array<{ __typename?: 'Mindset', id: string, head?: string | null | undefined, subhead?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, who?: { __typename?: 'Who', intro?: string | null | undefined, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, why?: { __typename?: 'Why', intro?: string | null | undefined, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, how?: { __typename?: 'How', intro?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, what?: { __typename?: 'What', intro?: string | null | undefined, quote: Array<string>, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, byTheNumbers?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined }>, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }> };
+export type GetDataQuery = { __typename?: 'Query', mindsets: Array<{ __typename?: 'Mindset', id: string, head?: string | null | undefined, subhead?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, who?: { __typename?: 'Who', intro?: string | null | undefined, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, why?: { __typename?: 'Why', intro?: string | null | undefined, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, how?: { __typename?: 'How', intro?: string | null | undefined, quote?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, what?: { __typename?: 'What', intro?: string | null | undefined, quote: Array<string>, boxout?: string | null | undefined, boxoutTitle?: string | null | undefined, byTheNumbers?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined } | null | undefined, where?: { __typename?: 'Where', intro?: string | null | undefined, body?: string | null | undefined } | null | undefined, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined }>, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }> };
 
 
 export const GetDataDocument = `
@@ -6452,6 +6452,10 @@ export const GetDataDocument = `
       boxout
       boxoutTitle
       byTheNumbers
+    }
+    where {
+      intro
+      body
     }
     smallImage {
       url
