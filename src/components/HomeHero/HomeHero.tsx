@@ -8,7 +8,7 @@ const HomeHero = () => {
   return (
     <div className={styles.homeHero}>
       <LazyHero
-        imageSrc="https://i.ibb.co/bsLzVGt/home.jpg"
+        imageSrc="https://media.graphcms.com/eCbZ6flCSiKTvH3c3OW3"
         minHeight={"817px"}
         opacity={0.1}
         isCentered={false}

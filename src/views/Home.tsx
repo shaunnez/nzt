@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <Layout>
       {(data) => {
-        console.log(data);
         return (
           <div className={styles.home}>
             <HomeHero />
