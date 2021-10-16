@@ -29,15 +29,17 @@
 
 .mindsets h1 {
   color: white;
-  font-size: 180px;
+  font-size: var(--font-hero);
   margin: 0;
   text-align: left;
+  /* font-size: clamp(40px, 20vw, 180px); */
+  /* font-size: calc (14px + (180px – 20) * ((100vw – 768px) / (1920 – 300))); */
 }
 
 .content {
   max-width: 617px;
   font-weight: 400;
-  font-size: 22px;
+  font-size: var(--font-base);
   margin-top: 155px;
 }
 .content p {
@@ -51,4 +53,16 @@
 .content a {
   color: white;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .mindsets h1 {
+  }
+  .content {
+    margin-top: 180px;
+  }
+  .heroContent {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

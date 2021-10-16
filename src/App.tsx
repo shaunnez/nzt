@@ -1,5 +1,6 @@
-import React, { Suspense } from "react";
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 import ScrollToTop from "utilities/scrollTop";
 import HomeView from "views/Home";
 import MindsetsView from "views/Mindsets";
@@ -8,21 +9,20 @@ import Appendiex from "views/Appendix";
 import "./styles/base.css";
 import "./styles/globals.css";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Suspense fallback={null}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <ScrollToTop />
         <Switch>
           <Route exact path={`/mindsets/:id`} component={MindsetsView} />
           <Route exact path={`/appendix`} component={Appendiex} />
           <Route component={HomeView} />
-          {/* <Route
-            render={() => <Redirect to={`/`} />}
-          /> */}
         </Switch>
-      </Suspense>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

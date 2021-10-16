@@ -1,3 +1,40 @@
+:root {
+  --font-hero: 180px;
+  --font-page-heading: 50px;
+  --font-page-subheading: 30px;
+  --font-accordion-heading: 50px;
+  --font-accordion-heading-small: 36px;
+  --font-mindset-heading: 38px;
+  --font-quote: 59px;
+  --font-larger: 28px;
+  --font-large: 26px;
+  --font-base: 22px;
+  --font-small: 19px;
+  --font-badge: 18px;
+  --font-smallest: 17px;
+  --font-tiny: 12px;
+  --font-footer-badge: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --font-hero: 80px;
+    --font-page-heading: 30px;
+    --font-page-subheading: 20px;
+    --font-accordion-heading: 30px;
+    --font-accordion-heading-small: 20px;
+    --font-mindset-heading: 24px;
+    --font-quote: 49px;
+    --font-larger: 24px;
+    --font-large: 22px;
+    --font-base: 18px;
+    --font-small: 16px;
+    --font-badge: 14px;
+    --font-smallest: 16px;
+    --font-tiny: 12px;
+    --font-footer-badge: 14px;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -14,9 +51,7 @@ main {
   /* margin: 0 auto; */
 }
 
-.overview-link {
-  font-size: 36px;
-  line-height: 42px;
+#root {
   color: black;
 }
 

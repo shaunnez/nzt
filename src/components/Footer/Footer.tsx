@@ -11,37 +11,12 @@ const Footer = ({ mindsets }: any) => {
         <div className={styles.mindsets}>
           <div className={styles.mindsetRow}>
             <div className={styles.mindsetHeader}>Domestic</div>
-            <div className={styles.mindsetBadges}>
-              {mindsets
-                .filter((item: any) => item.type === "domestic")
-                .map((item: any) => {
-                  const link = `/mindsets/${item.title
-                    .replace(/ /g, "-")
-                    .toLowerCase()}`;
-                  return (
-                    <Link to={link} key={link} className={styles.mindsetBadge}>
-                      {item.title}
-                    </Link>
-                  );
-                })}
-            </div>
+            <MindsetBadges type="domestic" mindsets={mindsets} />
           </div>
           <div className={styles.mindsetRow}>
             <div className={styles.mindsetHeader}>International</div>
-            <div className={styles.mindsetBadges}>
-              {mindsets
-                .filter((item: any) => item.type === "international")
-                .map((item: any) => {
-                  const link = `/mindsets/${item.title
-                    .replace(/ /g, "-")
-                    .toLowerCase()}`;
-                  return (
-                    <Link to={link} key={link} className={styles.mindsetBadge}>
-                      {item.title}
-                    </Link>
-                  );
-                })}
-            </div>
+
+            <MindsetBadges type="international" mindsets={mindsets} />
           </div>
         </div>
       </div>
@@ -49,4 +24,22 @@ const Footer = ({ mindsets }: any) => {
   );
 };
 
+const MindsetBadges = ({ mindsets, type }) => {
+  return (
+    <div className={styles.mindsetBadges}>
+      {mindsets
+        .filter((item: any) => item.theType === type)
+        .map((item: any) => {
+          const link = `/mindsets/${item.head
+            .replace(/ /g, "-")
+            .toLowerCase()}`;
+          return (
+            <Link to={link} key={link} className={styles.mindsetBadge}>
+              {item.head}
+            </Link>
+          );
+        })}
+    </div>
+  );
+};
 export default Footer;
