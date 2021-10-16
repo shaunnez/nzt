@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nzt/static/css/main.05f8449a.chunk.css",
-    "main.js": "/nzt/static/js/main.328cd04e.chunk.js",
+    "main.css": "/nzt/static/css/main.21dfed66.chunk.css",
+    "main.js": "/nzt/static/js/main.d2883c1e.chunk.js",
     "runtime-main.js": "/nzt/static/js/runtime-main.823ddd31.js",
     "static/js/2.d8651859.chunk.js": "/nzt/static/js/2.d8651859.chunk.js",
     "static/js/3.d0484ecb.chunk.js": "/nzt/static/js/3.d0484ecb.chunk.js",
@@ -11,7 +11,7 @@
   "entrypoints": [
     "static/js/runtime-main.823ddd31.js",
     "static/js/2.d8651859.chunk.js",
-    "static/css/main.05f8449a.chunk.css",
-    "static/js/main.328cd04e.chunk.js"
+    "static/css/main.21dfed66.chunk.css",
+    "static/js/main.d2883c1e.chunk.js"
   ]
 }

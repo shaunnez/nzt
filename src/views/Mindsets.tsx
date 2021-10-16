@@ -70,14 +70,18 @@ const Mindsets = () => {
                   />
                 </div>
 
-                <div className={styles.activitiesHeader}>
-                  Activities this mindset is likely to be interested in
-                </div>
-                <div className={styles.activities}>
-                  {mindset.activities.map((x) => (
-                    <div className={styles.activity}>{x.title}</div>
-                  ))}
-                </div>
+                {mindset.activities?.length > 0 && (
+                  <>
+                    <div className={styles.activitiesHeader}>
+                      Activities this mindset is likely to be interested in
+                    </div>
+                    <div className={styles.activities}>
+                      {mindset.activities.map((x) => (
+                        <div className={styles.activity}>{x.title}</div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </main>
             <Footer mindsets={data.mindsets} />
