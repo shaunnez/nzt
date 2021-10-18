@@ -55,7 +55,13 @@
   text-decoration: underline;
 }
 
-@media screen and (max-width: 768px) {
+.content a:hover,
+.content a:focus,
+.content a:active {
+  color: black;
+}
+
+@media screen and (max-width: 1023px) {
   .mindsets h1 {
   }
   .content {

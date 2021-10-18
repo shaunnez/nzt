@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
+import { ReactComponent as InternationalIcon } from "assets/international.svg";
 import styles from "./Footer.module.css";
 
 const Footer = ({ mindsets }: any) => {
@@ -10,11 +13,17 @@ const Footer = ({ mindsets }: any) => {
         </div>
         <div className={styles.mindsets}>
           <div className={styles.mindsetRow}>
-            <div className={styles.mindsetHeader}>Domestic</div>
+            <div className={styles.mindsetHeader}>
+              <DomesticIcon />
+              Domestic
+            </div>
             <MindsetBadges type="domestic" mindsets={mindsets} />
           </div>
           <div className={styles.mindsetRow}>
-            <div className={styles.mindsetHeader}>International</div>
+            <div className={styles.mindsetHeader}>
+              <InternationalIcon />
+              International
+            </div>
 
             <MindsetBadges type="international" mindsets={mindsets} />
           </div>
@@ -34,7 +43,18 @@ const MindsetBadges = ({ mindsets, type }) => {
             .replace(/ /g, "-")
             .toLowerCase()}`;
           return (
-            <Link to={link} key={link} className={styles.mindsetBadge}>
+            <Link
+              to={link}
+              key={link}
+              className={`${styles.mindsetBadge} ${
+                item.enabled ? styles.enabled : styles.disabled
+              } `}
+              onClick={(e) => {
+                if (!item.enabled) {
+                  e.preventDefault();
+                }
+              }}
+            >
               {item.head}
             </Link>
           );

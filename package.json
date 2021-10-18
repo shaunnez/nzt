@@ -11,7 +11,7 @@
     "build:react": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "graphql:codegen": "graphql-codegen --config codegen.yml"
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {
     "extends": [

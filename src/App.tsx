@@ -15,7 +15,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <ScrollToTop />
+        {window.location.href.indexOf("#") === -1 ? <ScrollToTop /> : null}
         <Switch>
           <Route exact path={`/mindsets/:id`} component={MindsetsView} />
           <Route exact path={`/appendix`} component={Appendiex} />

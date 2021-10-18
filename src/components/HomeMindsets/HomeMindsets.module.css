@@ -40,12 +40,36 @@
   border: 1px solid #000;
   border-radius: 9px;
   font-size: var(--font-larger);
+  display: flex;
+  align-items: center;
 }
 
-.customSelect a:hover,
-.customSelect a:focus {
+.customSelect > a path {
+  transition: 0.25s ease-in-out;
+}
+
+.customSelect > a:hover,
+.customSelect > a:focus {
+  /* color: white; */
+  /* background: black; */
+  /* border: blue; */
+  border-color: #00a8de;
+  color: #00a8de;
+}
+
+.customSelect > a:hover path,
+.customSelect > a:focus path {
+  fill: #00a8de;
+}
+
+.customSelect ul li a:hover,
+.customSelect ul li a:focus {
   color: white;
   background: black;
+}
+
+.customSelect a svg {
+  margin-left: 4px;
 }
 
 .customSelect ul {
@@ -110,7 +134,16 @@
   font-weight: 800;
   font-size: var(--font-mindset-heading);
   margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+.mindsetsHeading svg {
+  margin-right: 8px;
+  width: 48px;
+}
+
 .mindsetsWrapper {
   margin-top: 48px;
 }
@@ -128,6 +161,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  justify-content: stretch;
   /* margin: 10px; */
 }
 
@@ -139,6 +173,7 @@
   width: 100%;
   height: 100%;
   transition: 0.25s ease-in-out;
+  border-radius: 4px;
 }
 
 .mindsetLink.disabled {
@@ -155,20 +190,23 @@
 
 .mindsetContent {
   position: relative;
-  margin-top: 16px;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* flex-grow: 1; */
 }
+
 .mindsetIcon {
   width: 54px;
   padding-right: 14px;
-  position: relative;
   height: 100%;
-  border-right: 1px solid black;
+  border-right: 2px solid black;
   position: absolute;
 }
 
-.mindsetIcon > span {
-  background: blue;
-  height: 55px;
+.mindsetIcon > svg {
+  height: 54px;
   width: 100%;
   display: block;
 }
@@ -176,25 +214,31 @@
 .mindsetImage {
   max-height: 204px;
   width: 100%;
-  background: #ccc;
+  overflow: hidden;
+}
+
+.mindsetImage img {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .mindsetTitle {
-  font-size: var(--font-mindset-larger);
+  font-size: var(--font-larger);
   /* line-height: 28px; */
-  margin-left: 60px;
+  margin-left: 70px;
   font-weight: 800;
   max-width: 50%;
 }
 
 .mindsetDescription {
   font-size: var(--font-smallest);
-  margin-left: 60px;
+  margin-left: 70px;
   font-weight: 400;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .customSelect {
     width: 100%;
   }
@@ -217,6 +261,13 @@
     margin: 0px;
   }
 
+  .mindset {
+    width: calc(50% - 32px);
+    margin: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .mindset {
     width: 100%;
     margin: 16px 0px;

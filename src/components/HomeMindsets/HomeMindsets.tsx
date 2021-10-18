@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Activity, Mindset } from "generated";
+
+import { ReactComponent as SelectArrow } from "assets/select_arrow.svg";
+import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
+import { ReactComponent as InternationalIcon } from "assets/international.svg";
+
 import styles from "./HomeMindsets.module.css";
 
 interface HomeMindsetsInterface {
@@ -9,23 +14,34 @@ interface HomeMindsetsInterface {
 }
 const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
   const [openSelect, setOpenSelect] = useState(false);
-  const [activity, setActivity] = useState("");
+  const [activity, setActivity] = useState(
+    window.decodeURIComponent(window.location.search.replace("?activity=", ""))
+  );
+
   const theActivities = activities.map((x) => x.title);
-  theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
+  // theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
   const filteredMindsets = (theType: string, theActivity: string) => {
     let filtered = mindsets.filter((x) => x.theType === theType);
     if (theActivity) {
-      filtered = filtered.filter(
-        (x) =>
-          x.activities.length === 0 ||
-          x.activities.find((x) => x.title === theActivity)
+      filtered = filtered.filter((x) =>
+        x.activities.find((x) => x.title === theActivity)
       );
     }
     return filtered;
   };
 
+  useEffect(() => {
+    if (activity) {
+      setTimeout(() => {
+        document
+          .getElementById("homeMindsets")
+          .scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    }
+  }, []);
+
   return (
-    <div className={styles.homeMindsets}>
+    <div id="homeMindsets" className={styles.homeMindsets}>
       <div className={styles.header}>
         <span>Mindsets Overview</span>
         <div
@@ -41,6 +57,8 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
             }}
           >
             {activity || "Filter by Activity"}
+
+            <SelectArrow />
           </a>
           <ul className={openSelect ? styles.open : styles.closed}>
             <li key={activity}>
@@ -74,22 +92,34 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
       </div>
 
       <div className={styles.mindsets}>
-        <div className={styles.mindsetsWrapper}>
-          <div className={styles.mindsetsHeading}>Domestic</div>
-          <div className={styles.mindsetsColumns}>
-            {filteredMindsets("domestic", activity).map((mindset: any) => (
-              <MindsetItem mindset={mindset} />
-            ))}
+        {filteredMindsets("domestic", activity).length > 0 && (
+          <div className={styles.mindsetsWrapper}>
+            <div className={styles.mindsetsHeading}>
+              <DomesticIcon />
+              Domestic
+            </div>
+            <div className={styles.mindsetsColumns}>
+              {filteredMindsets("domestic", activity).map((mindset: any) => (
+                <MindsetItem mindset={mindset} />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={styles.mindsetsWrapper}>
-          <div className={styles.mindsetsHeading}>International</div>
-          <div className={styles.mindsetsColumns}>
-            {filteredMindsets("international", activity).map((mindset: any) => (
-              <MindsetItem mindset={mindset} />
-            ))}
+        )}
+        {filteredMindsets("international", activity).length > 0 && (
+          <div className={styles.mindsetsWrapper}>
+            <div className={styles.mindsetsHeading}>
+              <InternationalIcon />
+              International
+            </div>
+            <div className={styles.mindsetsColumns}>
+              {filteredMindsets("international", activity).map(
+                (mindset: any) => (
+                  <MindsetItem mindset={mindset} />
+                )
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -102,10 +132,10 @@ const MindsetItem = ({ mindset }: any) => {
       <Link
         to={link}
         className={`${styles.mindsetLink} ${
-          mindset.disabled ? styles.disabled : styles.enabled
+          mindset.enabled ? styles.enabled : styles.disabled
         }`}
         onClick={(e) => {
-          if (mindset.disabled) {
+          if (!mindset.enabled) {
             e.preventDefault();
             return false;
           }
@@ -116,10 +146,14 @@ const MindsetItem = ({ mindset }: any) => {
       </div>
       <div className={styles.mindsetContent}>
         <div className={styles.mindsetIcon}>
-          <span></span>
+          {mindset.theType === "domestic" ? (
+            <DomesticIcon />
+          ) : (
+            <InternationalIcon />
+          )}
         </div>
         <div className={styles.mindsetTitle}>{mindset.head}</div>
-        <div className={styles.mindsetDescription}>{mindset.description}</div>
+        <div className={styles.mindsetDescription}>{mindset.intro}</div>
       </div>
     </div>
   );

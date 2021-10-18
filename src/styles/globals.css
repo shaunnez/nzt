@@ -1,11 +1,12 @@
 :root {
   --font-hero: 180px;
+  --font-boxout-large-text: 80px;
   --font-page-heading: 50px;
   --font-page-subheading: 30px;
   --font-accordion-heading: 50px;
   --font-accordion-heading-small: 36px;
   --font-mindset-heading: 38px;
-  --font-quote: 59px;
+  --font-quote: 30px;
   --font-larger: 28px;
   --font-large: 26px;
   --font-base: 22px;
@@ -13,18 +14,20 @@
   --font-badge: 18px;
   --font-smallest: 17px;
   --font-tiny: 12px;
+  --font-boxout-content: 15px;
   --font-footer-badge: 14px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   :root {
     --font-hero: 80px;
+    --font-boxout-large-text: 50px;
     --font-page-heading: 30px;
     --font-page-subheading: 20px;
     --font-accordion-heading: 30px;
     --font-accordion-heading-small: 20px;
     --font-mindset-heading: 24px;
-    --font-quote: 49px;
+    --font-quote: 24px;
     --font-larger: 24px;
     --font-large: 22px;
     --font-base: 18px;
@@ -33,6 +36,7 @@
     --font-smallest: 16px;
     --font-tiny: 12px;
     --font-footer-badge: 14px;
+    --font-boxout-content: 14px;
   }
 }
 * {
@@ -54,7 +58,33 @@ main {
 #root {
   color: black;
 }
-
-.overview-icon {
-  color: #00a8de;
+.gg-arrow-left {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+}
+.gg-arrow-left::after,
+.gg-arrow-left::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  left: 3px;
+}
+.gg-arrow-left::after {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  transform: rotate(45deg);
+  bottom: 7px;
+}
+.gg-arrow-left::before {
+  width: 16px;
+  height: 2px;
+  bottom: 10px;
+  background: currentColor;
 }

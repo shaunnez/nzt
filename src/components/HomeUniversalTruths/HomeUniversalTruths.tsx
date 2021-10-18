@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { ReactComponent as ChevronIcon } from "assets/chevron.svg";
+
 import styles from "./HomeUniversalTruths.module.css";
 
 const HomeUniversalTruths = () => {
@@ -74,7 +76,11 @@ const HomeUniversalTruths = () => {
           deeper bonds through shared experiences and memories.
         </p>
       </div>
-      <div className={styles.universlTruthsArrow}>
+      <div
+        className={`${styles.universalTruthsArrow} ${
+          accordionOpen ? styles.open : styles.closed
+        } `}
+      >
         <a
           href="#"
           onClick={(e) => {
@@ -82,7 +88,7 @@ const HomeUniversalTruths = () => {
             setAccordionOpen(!accordionOpen);
           }}
         >
-          ARROW ICON
+          <ChevronIcon />
         </a>
       </div>
     </div>

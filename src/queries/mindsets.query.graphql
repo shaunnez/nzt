@@ -1,52 +1,29 @@
 query GetData {
   mindsets {
     id
+    enabled
     head
-    subhead
     intro
     theType
     activities {
       id
       title
     }
-    who {
+    whoWhatWhereWhyHows {
+      theType
       intro
       body {
         html
       }
-      boxout
-      boxoutTitle
-      quote
-    }
-    why {
-      intro
-      body {
-        html
+      quotes
+      boxout {
+        title
+        largeText
+        content
+        backgroundImage {
+          url
+        }
       }
-      boxout
-      boxoutTitle
-      quote
-    }
-    how {
-      intro
-      body {
-        html
-      }
-      quote
-    }
-    what {
-      intro
-      body {
-        html
-      }
-      quote
-      boxout
-      boxoutTitle
-      byTheNumbers
-    }
-    where {
-      intro
-      body
     }
     smallImage {
       url

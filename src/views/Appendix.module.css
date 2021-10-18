@@ -1,5 +1,23 @@
-.appendix {
-  margin-top: 64px;
+.overviewLink {
+  font-size: var(--font-accordion-heading-small);
+  font-weight: 800;
+  display: block;
+  margin-top: 16px;
+  height: 62px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.overviewLink span {
+  color: #00a8de;
+  margin-right: 4px;
+}
+
+.overviewlink:hover,
+.overviewLink:active,
+.overviewLink:focus {
+  color: #00a8de;
 }
 
 .header {
@@ -8,12 +26,18 @@
   text-align: left;
   padding: 0px 16px;
 }
-.header a {
-  color: #1d1d1b;
-}
 
 .header h1 {
   text-align: left;
   margin: 0;
   color: #1d1d1b;
+}
+
+.content {
+  max-width: 1156px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0px 16px;
+  margin-top: 42px;
+  margin-bottom: 42px;
 }

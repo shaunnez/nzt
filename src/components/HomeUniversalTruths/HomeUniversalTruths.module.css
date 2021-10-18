@@ -80,12 +80,28 @@
   margin: 0;
 }
 
-.universlTruthsArrow {
+.universalTruthsArrow {
+  transition: 0.25s ease-in-out;
   margin-top: 60px;
   text-align: center;
+  transform: rotate(180deg);
 }
+
+.universalTruthsArrow.open {
+  transform: rotate(0deg);
+}
+
+.universalTruths a path {
+  transition: 0.25s ease-in-out;
+}
+.universalTruths a:hover path,
+.universalTruths a:focus path,
+.universalTruths a:active path {
+  stroke: #00a8de;
+}
+
 /* 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .headline {
     font-size: 20px;
     line-height: 22px;
