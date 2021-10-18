@@ -72,9 +72,9 @@ const Mindsets = () => {
                     <div className={styles.activities}>
                       {mindset.activities.map((x) => (
                         <div className={styles.activity}>
-                          <a href={`/?activity=${x.title}#homeMindsets`}>
+                          <Link to={`/?activity=${x.title}#homeMindsets`}>
                             {x.title}
-                          </a>
+                          </Link>
                         </div>
                       ))}
                     </div>
