@@ -3,12 +3,13 @@ import pureNzImg from "assets/100-pure-new-zealand.png";
 import LazyHero from "react-lazy-hero";
 
 import styles from "./HomeHero.module.css";
+import data from "utilities/data";
 
-const HomeHero = () => {
+const HomeHero = ({ home }: any) => {
   return (
     <div className={styles.homeHero}>
       <LazyHero
-        imageSrc="https://media.graphcms.com/eCbZ6flCSiKTvH3c3OW3"
+        imageSrc={home.heroImage.url}
         minHeight={"817px"}
         opacity={0.1}
         isCentered={false}
@@ -22,16 +23,9 @@ const HomeHero = () => {
           </div>
           <div className={styles.content}>
             <p>
-              <b>A guide to travellers</b>
+              <b>{home.heroSmallCopy}</b>
             </p>
-            <p>
-              Kia ora and welcome to your complete guide to the mindsets of our
-              target audiences in both international and domestic markets. It’s
-              important that we know and understand our consumers well, so we
-              can better anticipate and meet their needs and wants. You can use
-              this guide to learn more about the travellers who are most likely
-              to enjoy a holiday in New Zealand.
-            </p>
+            <p>{home.heroCopy}</p>
             <br />
             <p>
               <Link to={`/appendix`}>Learn more</Link>

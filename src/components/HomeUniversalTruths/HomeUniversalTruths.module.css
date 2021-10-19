@@ -46,10 +46,11 @@
 }
 
 .content.open {
-  max-height: 100vh;
+  max-height: 200vh;
   opacity: 1;
 }
-.contentHeadline {
+
+h4 {
   font-size: var(--font-larger);
   line-height: 30px;
   font-weight: 800;
@@ -75,7 +76,8 @@
   margin: 0;
 }
 
-.content b {
+.content b,
+.content strong {
   font-weight: 800;
   margin: 0;
 }
@@ -99,20 +101,3 @@
 .universalTruths a:active path {
   stroke: #00a8de;
 }
-
-/* 
-@media screen and (max-width: 1023px) {
-  .headline {
-    font-size: 20px;
-    line-height: 22px;
-  }
-
-  .contentHeadline {
-    font-size: 28px;
-    line-height: 30px;
-  }
-  .content p {
-    font-size: 19px;
-    line-height: 22px;
-  }
-} */

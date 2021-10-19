@@ -14,6 +14,8 @@ const Layout = ({ children }) => {
     return mindset.head.replace(/ /g, "-").toLowerCase() === id;
   });
   return children({
+    home: data.homes[0],
+    appendix: data.appendices[0],
     mindsets: data.mindsets,
     mindset: mindset,
     activities: data.activities,

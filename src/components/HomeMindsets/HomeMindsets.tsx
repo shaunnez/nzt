@@ -56,7 +56,11 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
               setOpenSelect(!openSelect);
             }}
           >
-            {activity || "Filter by Activity"}
+            {activity
+              ? activity.length > 30 && window.innerWidth > 1024
+                ? activity.slice(0, 30) + "..."
+                : activity
+              : "Filter by Activity"}
 
             <SelectArrow />
           </a>

@@ -1,4 +1,21 @@
 query GetData {
+  appendices {
+    body {
+      html
+    }
+    smallText
+  }
+  homes {
+    heroImage {
+      url
+    }
+    heroSmallCopy
+    heroCopy
+    universalTruthsTitle
+    universalTruthsCopy {
+      html
+    }
+  }
   mindsets {
     id
     enabled

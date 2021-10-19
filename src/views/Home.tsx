@@ -10,10 +10,11 @@ const Home = () => {
   return (
     <Layout>
       {(data) => {
+        console.log(data);
         return (
           <div className={styles.home}>
-            <HomeHero />
-            <HomeUniversalTruths />
+            <HomeHero home={data.home} />
+            <HomeUniversalTruths home={data.home} />
             <HomeMindsets
               activities={data.activities}
               mindsets={data.mindsets}

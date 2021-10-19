@@ -452,6 +452,392 @@ export type Aggregate = {
   count: Scalars['Int'];
 };
 
+export type Appendix = Node & {
+  __typename?: 'Appendix';
+  body?: Maybe<RichText>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Appendix>;
+  /** List of Appendix versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  smallText?: Maybe<Scalars['String']>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type AppendixCreatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type AppendixDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type AppendixHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: Maybe<Stage>;
+};
+
+
+export type AppendixPublishedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type AppendixUpdatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+export type AppendixConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: AppendixWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type AppendixConnection = {
+  __typename?: 'AppendixConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<AppendixEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type AppendixCreateInput = {
+  body?: Maybe<Scalars['RichTextAST']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  smallText?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type AppendixCreateManyInlineInput = {
+  /** Connect multiple existing Appendix documents */
+  connect?: Maybe<Array<AppendixWhereUniqueInput>>;
+  /** Create and connect multiple existing Appendix documents */
+  create?: Maybe<Array<AppendixCreateInput>>;
+};
+
+export type AppendixCreateOneInlineInput = {
+  /** Connect one existing Appendix document */
+  connect?: Maybe<AppendixWhereUniqueInput>;
+  /** Create and connect one Appendix document */
+  create?: Maybe<AppendixCreateInput>;
+};
+
+/** An edge in a connection. */
+export type AppendixEdge = {
+  __typename?: 'AppendixEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Appendix;
+};
+
+/** Identifies documents */
+export type AppendixManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<AppendixWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<AppendixWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<AppendixWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  smallText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  smallText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  smallText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  smallText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  smallText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  smallText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  smallText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  smallText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  smallText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  smallText_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+export enum AppendixOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  SmallTextAsc = 'smallText_ASC',
+  SmallTextDesc = 'smallText_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type AppendixUpdateInput = {
+  body?: Maybe<Scalars['RichTextAST']>;
+  smallText?: Maybe<Scalars['String']>;
+};
+
+export type AppendixUpdateManyInlineInput = {
+  /** Connect multiple existing Appendix documents */
+  connect?: Maybe<Array<AppendixConnectInput>>;
+  /** Create and connect multiple Appendix documents */
+  create?: Maybe<Array<AppendixCreateInput>>;
+  /** Delete multiple Appendix documents */
+  delete?: Maybe<Array<AppendixWhereUniqueInput>>;
+  /** Disconnect multiple Appendix documents */
+  disconnect?: Maybe<Array<AppendixWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Appendix documents */
+  set?: Maybe<Array<AppendixWhereUniqueInput>>;
+  /** Update multiple Appendix documents */
+  update?: Maybe<Array<AppendixUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Appendix documents */
+  upsert?: Maybe<Array<AppendixUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type AppendixUpdateManyInput = {
+  body?: Maybe<Scalars['RichTextAST']>;
+  smallText?: Maybe<Scalars['String']>;
+};
+
+export type AppendixUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: AppendixUpdateManyInput;
+  /** Document search */
+  where: AppendixWhereInput;
+};
+
+export type AppendixUpdateOneInlineInput = {
+  /** Connect existing Appendix document */
+  connect?: Maybe<AppendixWhereUniqueInput>;
+  /** Create and connect one Appendix document */
+  create?: Maybe<AppendixCreateInput>;
+  /** Delete currently connected Appendix document */
+  delete?: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Appendix document */
+  disconnect?: Maybe<Scalars['Boolean']>;
+  /** Update single Appendix document */
+  update?: Maybe<AppendixUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Appendix document */
+  upsert?: Maybe<AppendixUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AppendixUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: AppendixUpdateInput;
+  /** Unique document search */
+  where: AppendixWhereUniqueInput;
+};
+
+export type AppendixUpsertInput = {
+  /** Create document if it didn't exist */
+  create: AppendixCreateInput;
+  /** Update document if it exists */
+  update: AppendixUpdateInput;
+};
+
+export type AppendixUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: AppendixUpsertInput;
+  /** Unique document search */
+  where: AppendixWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type AppendixWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<AppendixWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<AppendixWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<AppendixWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  smallText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  smallText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  smallText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  smallText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  smallText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  smallText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  smallText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  smallText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  smallText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  smallText_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+/** References Appendix record uniquely */
+export type AppendixWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>;
+};
+
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
@@ -468,6 +854,7 @@ export type Asset = Node & {
   handle: Scalars['String'];
   /** The height of the file */
   height?: Maybe<Scalars['Float']>;
+  heroImageHome: Array<Home>;
   heroImageMindset: Array<Mindset>;
   /** List of Asset versions */
   history: Array<Version>;
@@ -529,6 +916,19 @@ export type AssetDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+/** Asset system model */
+export type AssetHeroImageHomeArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Maybe<Array<Locale>>;
+  orderBy?: Maybe<HomeOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<HomeWhereInput>;
 };
 
 
@@ -625,6 +1025,7 @@ export type AssetCreateInput = {
   fileName: Scalars['String'];
   handle: Scalars['String'];
   height?: Maybe<Scalars['Float']>;
+  heroImageHome?: Maybe<HomeCreateManyInlineInput>;
   heroImageMindset?: Maybe<MindsetCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<AssetCreateLocalizationsInput>;
@@ -709,6 +1110,9 @@ export type AssetManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   createdBy?: Maybe<UserWhereInput>;
+  heroImageHome_every?: Maybe<HomeWhereInput>;
+  heroImageHome_none?: Maybe<HomeWhereInput>;
+  heroImageHome_some?: Maybe<HomeWhereInput>;
   heroImageMindset_every?: Maybe<MindsetWhereInput>;
   heroImageMindset_none?: Maybe<MindsetWhereInput>;
   heroImageMindset_some?: Maybe<MindsetWhereInput>;
@@ -804,6 +1208,7 @@ export type AssetUpdateInput = {
   fileName?: Maybe<Scalars['String']>;
   handle?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['Float']>;
+  heroImageHome?: Maybe<HomeUpdateManyInlineInput>;
   heroImageMindset?: Maybe<MindsetUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: Maybe<AssetUpdateLocalizationsInput>;
@@ -1013,6 +1418,9 @@ export type AssetWhereInput = {
   height_not?: Maybe<Scalars['Float']>;
   /** All values that are not contained in given list. */
   height_not_in?: Maybe<Array<Scalars['Float']>>;
+  heroImageHome_every?: Maybe<HomeWhereInput>;
+  heroImageHome_none?: Maybe<HomeWhereInput>;
+  heroImageHome_some?: Maybe<HomeWhereInput>;
   heroImageMindset_every?: Maybe<MindsetWhereInput>;
   heroImageMindset_none?: Maybe<MindsetWhereInput>;
   heroImageMindset_some?: Maybe<MindsetWhereInput>;
@@ -2629,6 +3037,490 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
+export type Home = Node & {
+  __typename?: 'Home';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Home>;
+  heroCopy?: Maybe<Scalars['String']>;
+  heroImage?: Maybe<Asset>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  /** List of Home versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  /** System stage field */
+  stage: Stage;
+  universalTruthsCopy?: Maybe<RichText>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type HomeCreatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type HomeDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type HomeHeroImageArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type HomeHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: Maybe<Stage>;
+};
+
+
+export type HomePublishedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type HomeUpdatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+export type HomeConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: HomeWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type HomeConnection = {
+  __typename?: 'HomeConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<HomeEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type HomeCreateInput = {
+  createdAt?: Maybe<Scalars['DateTime']>;
+  heroCopy?: Maybe<Scalars['String']>;
+  heroImage?: Maybe<AssetCreateOneInlineInput>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  universalTruthsCopy?: Maybe<Scalars['RichTextAST']>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type HomeCreateManyInlineInput = {
+  /** Connect multiple existing Home documents */
+  connect?: Maybe<Array<HomeWhereUniqueInput>>;
+  /** Create and connect multiple existing Home documents */
+  create?: Maybe<Array<HomeCreateInput>>;
+};
+
+export type HomeCreateOneInlineInput = {
+  /** Connect one existing Home document */
+  connect?: Maybe<HomeWhereUniqueInput>;
+  /** Create and connect one Home document */
+  create?: Maybe<HomeCreateInput>;
+};
+
+/** An edge in a connection. */
+export type HomeEdge = {
+  __typename?: 'HomeEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Home;
+};
+
+/** Identifies documents */
+export type HomeManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<HomeWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<HomeWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<HomeWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  heroCopy?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heroCopy_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heroCopy_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heroCopy_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  heroCopy_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heroCopy_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heroCopy_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heroCopy_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  heroCopy_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heroCopy_starts_with?: Maybe<Scalars['String']>;
+  heroImage?: Maybe<AssetWhereInput>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heroSmallCopy_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heroSmallCopy_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heroSmallCopy_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  heroSmallCopy_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heroSmallCopy_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heroSmallCopy_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heroSmallCopy_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  heroSmallCopy_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heroSmallCopy_starts_with?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  universalTruthsTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  universalTruthsTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  universalTruthsTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  universalTruthsTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  universalTruthsTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  universalTruthsTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  universalTruthsTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  universalTruthsTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  universalTruthsTitle_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+export enum HomeOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  HeroCopyAsc = 'heroCopy_ASC',
+  HeroCopyDesc = 'heroCopy_DESC',
+  HeroSmallCopyAsc = 'heroSmallCopy_ASC',
+  HeroSmallCopyDesc = 'heroSmallCopy_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UniversalTruthsTitleAsc = 'universalTruthsTitle_ASC',
+  UniversalTruthsTitleDesc = 'universalTruthsTitle_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type HomeUpdateInput = {
+  heroCopy?: Maybe<Scalars['String']>;
+  heroImage?: Maybe<AssetUpdateOneInlineInput>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  universalTruthsCopy?: Maybe<Scalars['RichTextAST']>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+};
+
+export type HomeUpdateManyInlineInput = {
+  /** Connect multiple existing Home documents */
+  connect?: Maybe<Array<HomeConnectInput>>;
+  /** Create and connect multiple Home documents */
+  create?: Maybe<Array<HomeCreateInput>>;
+  /** Delete multiple Home documents */
+  delete?: Maybe<Array<HomeWhereUniqueInput>>;
+  /** Disconnect multiple Home documents */
+  disconnect?: Maybe<Array<HomeWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Home documents */
+  set?: Maybe<Array<HomeWhereUniqueInput>>;
+  /** Update multiple Home documents */
+  update?: Maybe<Array<HomeUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Home documents */
+  upsert?: Maybe<Array<HomeUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type HomeUpdateManyInput = {
+  heroCopy?: Maybe<Scalars['String']>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  universalTruthsCopy?: Maybe<Scalars['RichTextAST']>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+};
+
+export type HomeUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: HomeUpdateManyInput;
+  /** Document search */
+  where: HomeWhereInput;
+};
+
+export type HomeUpdateOneInlineInput = {
+  /** Connect existing Home document */
+  connect?: Maybe<HomeWhereUniqueInput>;
+  /** Create and connect one Home document */
+  create?: Maybe<HomeCreateInput>;
+  /** Delete currently connected Home document */
+  delete?: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Home document */
+  disconnect?: Maybe<Scalars['Boolean']>;
+  /** Update single Home document */
+  update?: Maybe<HomeUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Home document */
+  upsert?: Maybe<HomeUpsertWithNestedWhereUniqueInput>;
+};
+
+export type HomeUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: HomeUpdateInput;
+  /** Unique document search */
+  where: HomeWhereUniqueInput;
+};
+
+export type HomeUpsertInput = {
+  /** Create document if it didn't exist */
+  create: HomeCreateInput;
+  /** Update document if it exists */
+  update: HomeUpdateInput;
+};
+
+export type HomeUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: HomeUpsertInput;
+  /** Unique document search */
+  where: HomeWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type HomeWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<HomeWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<HomeWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<HomeWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  heroCopy?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heroCopy_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heroCopy_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heroCopy_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  heroCopy_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heroCopy_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heroCopy_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heroCopy_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  heroCopy_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heroCopy_starts_with?: Maybe<Scalars['String']>;
+  heroImage?: Maybe<AssetWhereInput>;
+  heroSmallCopy?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heroSmallCopy_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heroSmallCopy_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heroSmallCopy_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  heroSmallCopy_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heroSmallCopy_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heroSmallCopy_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heroSmallCopy_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  heroSmallCopy_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heroSmallCopy_starts_with?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  universalTruthsTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  universalTruthsTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  universalTruthsTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  universalTruthsTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  universalTruthsTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  universalTruthsTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  universalTruthsTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  universalTruthsTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  universalTruthsTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  universalTruthsTitle_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+/** References Home record uniquely */
+export type HomeWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>;
+};
+
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
   Clip = 'clip',
@@ -3206,6 +4098,8 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Create one activity */
   createActivity?: Maybe<Activity>;
+  /** Create one appendix */
+  createAppendix?: Maybe<Appendix>;
   /**
    * Create one asset
    * @deprecated Asset mutations will be overhauled soon
@@ -3217,12 +4111,16 @@ export type Mutation = {
   createByTheNumber?: Maybe<ByTheNumber>;
   /** Create one continuum */
   createContinuum?: Maybe<Continuum>;
+  /** Create one home */
+  createHome?: Maybe<Home>;
   /** Create one mindset */
   createMindset?: Maybe<Mindset>;
   /** Create one whoWhatWhereWhyHow */
   createWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Delete one activity from _all_ existing stages. Returns deleted document. */
   deleteActivity?: Maybe<Activity>;
+  /** Delete one appendix from _all_ existing stages. Returns deleted document. */
+  deleteAppendix?: Maybe<Appendix>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
   /** Delete one boxout from _all_ existing stages. Returns deleted document. */
@@ -3231,6 +4129,8 @@ export type Mutation = {
   deleteByTheNumber?: Maybe<ByTheNumber>;
   /** Delete one continuum from _all_ existing stages. Returns deleted document. */
   deleteContinuum?: Maybe<Continuum>;
+  /** Delete one home from _all_ existing stages. Returns deleted document. */
+  deleteHome?: Maybe<Home>;
   /**
    * Delete many Activity documents
    * @deprecated Please use the new paginated many mutation (deleteManyActivitiesConnection)
@@ -3238,6 +4138,13 @@ export type Mutation = {
   deleteManyActivities: BatchPayload;
   /** Delete many Activity documents, return deleted documents */
   deleteManyActivitiesConnection: ActivityConnection;
+  /**
+   * Delete many Appendix documents
+   * @deprecated Please use the new paginated many mutation (deleteManyAppendicesConnection)
+   */
+  deleteManyAppendices: BatchPayload;
+  /** Delete many Appendix documents, return deleted documents */
+  deleteManyAppendicesConnection: AppendixConnection;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -3267,6 +4174,13 @@ export type Mutation = {
   /** Delete many Continuum documents, return deleted documents */
   deleteManyContinuumsConnection: ContinuumConnection;
   /**
+   * Delete many Home documents
+   * @deprecated Please use the new paginated many mutation (deleteManyHomesConnection)
+   */
+  deleteManyHomes: BatchPayload;
+  /** Delete many Home documents, return deleted documents */
+  deleteManyHomesConnection: HomeConnection;
+  /**
    * Delete many Mindset documents
    * @deprecated Please use the new paginated many mutation (deleteManyMindsetsConnection)
    */
@@ -3286,6 +4200,8 @@ export type Mutation = {
   deleteWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Publish one activity */
   publishActivity?: Maybe<Activity>;
+  /** Publish one appendix */
+  publishAppendix?: Maybe<Appendix>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
   /** Publish one boxout */
@@ -3294,6 +4210,8 @@ export type Mutation = {
   publishByTheNumber?: Maybe<ByTheNumber>;
   /** Publish one continuum */
   publishContinuum?: Maybe<Continuum>;
+  /** Publish one home */
+  publishHome?: Maybe<Home>;
   /**
    * Publish many Activity documents
    * @deprecated Please use the new paginated many mutation (publishManyActivitiesConnection)
@@ -3301,6 +4219,13 @@ export type Mutation = {
   publishManyActivities: BatchPayload;
   /** Publish many Activity documents */
   publishManyActivitiesConnection: ActivityConnection;
+  /**
+   * Publish many Appendix documents
+   * @deprecated Please use the new paginated many mutation (publishManyAppendicesConnection)
+   */
+  publishManyAppendices: BatchPayload;
+  /** Publish many Appendix documents */
+  publishManyAppendicesConnection: AppendixConnection;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -3330,6 +4255,13 @@ export type Mutation = {
   /** Publish many Continuum documents */
   publishManyContinuumsConnection: ContinuumConnection;
   /**
+   * Publish many Home documents
+   * @deprecated Please use the new paginated many mutation (publishManyHomesConnection)
+   */
+  publishManyHomes: BatchPayload;
+  /** Publish many Home documents */
+  publishManyHomesConnection: HomeConnection;
+  /**
    * Publish many Mindset documents
    * @deprecated Please use the new paginated many mutation (publishManyMindsetsConnection)
    */
@@ -3349,6 +4281,8 @@ export type Mutation = {
   publishWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Unpublish one activity from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishActivity?: Maybe<Activity>;
+  /** Unpublish one appendix from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishAppendix?: Maybe<Appendix>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one boxout from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3357,6 +4291,8 @@ export type Mutation = {
   unpublishByTheNumber?: Maybe<ByTheNumber>;
   /** Unpublish one continuum from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishContinuum?: Maybe<Continuum>;
+  /** Unpublish one home from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishHome?: Maybe<Home>;
   /**
    * Unpublish many Activity documents
    * @deprecated Please use the new paginated many mutation (unpublishManyActivitiesConnection)
@@ -3364,6 +4300,13 @@ export type Mutation = {
   unpublishManyActivities: BatchPayload;
   /** Find many Activity documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyActivitiesConnection: ActivityConnection;
+  /**
+   * Unpublish many Appendix documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyAppendicesConnection)
+   */
+  unpublishManyAppendices: BatchPayload;
+  /** Find many Appendix documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyAppendicesConnection: AppendixConnection;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -3393,6 +4336,13 @@ export type Mutation = {
   /** Find many Continuum documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyContinuumsConnection: ContinuumConnection;
   /**
+   * Unpublish many Home documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyHomesConnection)
+   */
+  unpublishManyHomes: BatchPayload;
+  /** Find many Home documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyHomesConnection: HomeConnection;
+  /**
    * Unpublish many Mindset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyMindsetsConnection)
    */
@@ -3412,6 +4362,8 @@ export type Mutation = {
   unpublishWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Update one activity */
   updateActivity?: Maybe<Activity>;
+  /** Update one appendix */
+  updateAppendix?: Maybe<Appendix>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
   /** Update one boxout */
@@ -3420,6 +4372,8 @@ export type Mutation = {
   updateByTheNumber?: Maybe<ByTheNumber>;
   /** Update one continuum */
   updateContinuum?: Maybe<Continuum>;
+  /** Update one home */
+  updateHome?: Maybe<Home>;
   /**
    * Update many activities
    * @deprecated Please use the new paginated many mutation (updateManyActivitiesConnection)
@@ -3427,6 +4381,13 @@ export type Mutation = {
   updateManyActivities: BatchPayload;
   /** Update many Activity documents */
   updateManyActivitiesConnection: ActivityConnection;
+  /**
+   * Update many appendices
+   * @deprecated Please use the new paginated many mutation (updateManyAppendicesConnection)
+   */
+  updateManyAppendices: BatchPayload;
+  /** Update many Appendix documents */
+  updateManyAppendicesConnection: AppendixConnection;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -3456,6 +4417,13 @@ export type Mutation = {
   /** Update many Continuum documents */
   updateManyContinuumsConnection: ContinuumConnection;
   /**
+   * Update many homes
+   * @deprecated Please use the new paginated many mutation (updateManyHomesConnection)
+   */
+  updateManyHomes: BatchPayload;
+  /** Update many Home documents */
+  updateManyHomesConnection: HomeConnection;
+  /**
    * Update many mindsets
    * @deprecated Please use the new paginated many mutation (updateManyMindsetsConnection)
    */
@@ -3475,6 +4443,8 @@ export type Mutation = {
   updateWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Upsert one activity */
   upsertActivity?: Maybe<Activity>;
+  /** Upsert one appendix */
+  upsertAppendix?: Maybe<Appendix>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
   /** Upsert one boxout */
@@ -3483,6 +4453,8 @@ export type Mutation = {
   upsertByTheNumber?: Maybe<ByTheNumber>;
   /** Upsert one continuum */
   upsertContinuum?: Maybe<Continuum>;
+  /** Upsert one home */
+  upsertHome?: Maybe<Home>;
   /** Upsert one mindset */
   upsertMindset?: Maybe<Mindset>;
   /** Upsert one whoWhatWhereWhyHow */
@@ -3492,6 +4464,11 @@ export type Mutation = {
 
 export type MutationCreateActivityArgs = {
   data: ActivityCreateInput;
+};
+
+
+export type MutationCreateAppendixArgs = {
+  data: AppendixCreateInput;
 };
 
 
@@ -3515,6 +4492,11 @@ export type MutationCreateContinuumArgs = {
 };
 
 
+export type MutationCreateHomeArgs = {
+  data: HomeCreateInput;
+};
+
+
 export type MutationCreateMindsetArgs = {
   data: MindsetCreateInput;
 };
@@ -3527,6 +4509,11 @@ export type MutationCreateWhoWhatWhereWhyHowArgs = {
 
 export type MutationDeleteActivityArgs = {
   where: ActivityWhereUniqueInput;
+};
+
+
+export type MutationDeleteAppendixArgs = {
+  where: AppendixWhereUniqueInput;
 };
 
 
@@ -3550,6 +4537,11 @@ export type MutationDeleteContinuumArgs = {
 };
 
 
+export type MutationDeleteHomeArgs = {
+  where: HomeWhereUniqueInput;
+};
+
+
 export type MutationDeleteManyActivitiesArgs = {
   where?: Maybe<ActivityManyWhereInput>;
 };
@@ -3562,6 +4554,21 @@ export type MutationDeleteManyActivitiesConnectionArgs = {
   last?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<ActivityManyWhereInput>;
+};
+
+
+export type MutationDeleteManyAppendicesArgs = {
+  where?: Maybe<AppendixManyWhereInput>;
+};
+
+
+export type MutationDeleteManyAppendicesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<AppendixManyWhereInput>;
 };
 
 
@@ -3625,6 +4632,21 @@ export type MutationDeleteManyContinuumsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyHomesArgs = {
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
+export type MutationDeleteManyHomesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
 export type MutationDeleteManyMindsetsArgs = {
   where?: Maybe<MindsetManyWhereInput>;
 };
@@ -3671,6 +4693,12 @@ export type MutationPublishActivityArgs = {
 };
 
 
+export type MutationPublishAppendixArgs = {
+  to?: Array<Stage>;
+  where: AppendixWhereUniqueInput;
+};
+
+
 export type MutationPublishAssetArgs = {
   locales?: Maybe<Array<Locale>>;
   publishBase?: Maybe<Scalars['Boolean']>;
@@ -3698,6 +4726,12 @@ export type MutationPublishContinuumArgs = {
 };
 
 
+export type MutationPublishHomeArgs = {
+  to?: Array<Stage>;
+  where: HomeWhereUniqueInput;
+};
+
+
 export type MutationPublishManyActivitiesArgs = {
   to?: Array<Stage>;
   where?: Maybe<ActivityManyWhereInput>;
@@ -3713,6 +4747,24 @@ export type MutationPublishManyActivitiesConnectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: Maybe<ActivityManyWhereInput>;
+};
+
+
+export type MutationPublishManyAppendicesArgs = {
+  to?: Array<Stage>;
+  where?: Maybe<AppendixManyWhereInput>;
+};
+
+
+export type MutationPublishManyAppendicesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Maybe<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: Maybe<AppendixManyWhereInput>;
 };
 
 
@@ -3794,6 +4846,24 @@ export type MutationPublishManyContinuumsConnectionArgs = {
 };
 
 
+export type MutationPublishManyHomesArgs = {
+  to?: Array<Stage>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
+export type MutationPublishManyHomesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Maybe<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
 export type MutationPublishManyMindsetsArgs = {
   to?: Array<Stage>;
   where?: Maybe<MindsetManyWhereInput>;
@@ -3848,6 +4918,12 @@ export type MutationUnpublishActivityArgs = {
 };
 
 
+export type MutationUnpublishAppendixArgs = {
+  from?: Array<Stage>;
+  where: AppendixWhereUniqueInput;
+};
+
+
 export type MutationUnpublishAssetArgs = {
   from?: Array<Stage>;
   locales?: Maybe<Array<Locale>>;
@@ -3874,6 +4950,12 @@ export type MutationUnpublishContinuumArgs = {
 };
 
 
+export type MutationUnpublishHomeArgs = {
+  from?: Array<Stage>;
+  where: HomeWhereUniqueInput;
+};
+
+
 export type MutationUnpublishManyActivitiesArgs = {
   from?: Array<Stage>;
   where?: Maybe<ActivityManyWhereInput>;
@@ -3889,6 +4971,24 @@ export type MutationUnpublishManyActivitiesConnectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   stage?: Maybe<Stage>;
   where?: Maybe<ActivityManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyAppendicesArgs = {
+  from?: Array<Stage>;
+  where?: Maybe<AppendixManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyAppendicesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Stage>;
+  where?: Maybe<AppendixManyWhereInput>;
 };
 
 
@@ -3968,6 +5068,24 @@ export type MutationUnpublishManyContinuumsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyHomesArgs = {
+  from?: Array<Stage>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyHomesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Stage>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyMindsetsArgs = {
   from?: Array<Stage>;
   where?: Maybe<MindsetManyWhereInput>;
@@ -4022,6 +5140,12 @@ export type MutationUpdateActivityArgs = {
 };
 
 
+export type MutationUpdateAppendixArgs = {
+  data: AppendixUpdateInput;
+  where: AppendixWhereUniqueInput;
+};
+
+
 export type MutationUpdateAssetArgs = {
   data: AssetUpdateInput;
   where: AssetWhereUniqueInput;
@@ -4046,6 +5170,12 @@ export type MutationUpdateContinuumArgs = {
 };
 
 
+export type MutationUpdateHomeArgs = {
+  data: HomeUpdateInput;
+  where: HomeWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyActivitiesArgs = {
   data: ActivityUpdateManyInput;
   where?: Maybe<ActivityManyWhereInput>;
@@ -4060,6 +5190,23 @@ export type MutationUpdateManyActivitiesConnectionArgs = {
   last?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<ActivityManyWhereInput>;
+};
+
+
+export type MutationUpdateManyAppendicesArgs = {
+  data: AppendixUpdateManyInput;
+  where?: Maybe<AppendixManyWhereInput>;
+};
+
+
+export type MutationUpdateManyAppendicesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  data: AppendixUpdateManyInput;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<AppendixManyWhereInput>;
 };
 
 
@@ -4131,6 +5278,23 @@ export type MutationUpdateManyContinuumsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyHomesArgs = {
+  data: HomeUpdateManyInput;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
+export type MutationUpdateManyHomesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  data: HomeUpdateManyInput;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<HomeManyWhereInput>;
+};
+
+
 export type MutationUpdateManyMindsetsArgs = {
   data: MindsetUpdateManyInput;
   where?: Maybe<MindsetManyWhereInput>;
@@ -4183,6 +5347,12 @@ export type MutationUpsertActivityArgs = {
 };
 
 
+export type MutationUpsertAppendixArgs = {
+  upsert: AppendixUpsertInput;
+  where: AppendixWhereUniqueInput;
+};
+
+
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
@@ -4204,6 +5374,12 @@ export type MutationUpsertByTheNumberArgs = {
 export type MutationUpsertContinuumArgs = {
   upsert: ContinuumUpsertInput;
   where: ContinuumWhereUniqueInput;
+};
+
+
+export type MutationUpsertHomeArgs = {
+  upsert: HomeUpsertInput;
+  where: HomeWhereUniqueInput;
 };
 
 
@@ -4258,6 +5434,14 @@ export type Query = {
   activity?: Maybe<Activity>;
   /** Retrieve document version */
   activityVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple appendices */
+  appendices: Array<Appendix>;
+  /** Retrieve multiple appendices using the Relay connection interface */
+  appendicesConnection: AppendixConnection;
+  /** Retrieve a single appendix */
+  appendix?: Maybe<Appendix>;
+  /** Retrieve document version */
+  appendixVersion?: Maybe<DocumentVersion>;
   /** Retrieve a single asset */
   asset?: Maybe<Asset>;
   /** Retrieve document version */
@@ -4290,6 +5474,14 @@ export type Query = {
   continuums: Array<Continuum>;
   /** Retrieve multiple continuums using the Relay connection interface */
   continuumsConnection: ContinuumConnection;
+  /** Retrieve a single home */
+  home?: Maybe<Home>;
+  /** Retrieve document version */
+  homeVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple homes */
+  homes: Array<Home>;
+  /** Retrieve multiple homes using the Relay connection interface */
+  homesConnection: HomeConnection;
   /** Retrieve a single mindset */
   mindset?: Maybe<Mindset>;
   /** Retrieve document version */
@@ -4351,6 +5543,44 @@ export type QueryActivityArgs = {
 
 
 export type QueryActivityVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryAppendicesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<AppendixOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<AppendixWhereInput>;
+};
+
+
+export type QueryAppendicesConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<AppendixOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<AppendixWhereInput>;
+};
+
+
+export type QueryAppendixArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: AppendixWhereUniqueInput;
+};
+
+
+export type QueryAppendixVersionArgs = {
   where: VersionWhereInput;
 };
 
@@ -4504,6 +5734,44 @@ export type QueryContinuumsConnectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   stage?: Stage;
   where?: Maybe<ContinuumWhereInput>;
+};
+
+
+export type QueryHomeArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: HomeWhereUniqueInput;
+};
+
+
+export type QueryHomeVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryHomesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<HomeOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<HomeWhereInput>;
+};
+
+
+export type QueryHomesConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<HomeOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<HomeWhereInput>;
 };
 
 
@@ -5641,11 +6909,28 @@ export enum _SystemDateTimeFieldVariation {
 export type GetDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDataQuery = { __typename?: 'Query', mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, quotes: Array<string>, body?: { __typename?: 'RichText', html: string } | null | undefined, boxout?: { __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined } | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined }>, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }> };
+export type GetDataQuery = { __typename?: 'Query', appendices: Array<{ __typename?: 'Appendix', smallText?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, homes: Array<{ __typename?: 'Home', heroSmallCopy?: string | null | undefined, heroCopy?: string | null | undefined, universalTruthsTitle?: string | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, universalTruthsCopy?: { __typename?: 'RichText', html: string } | null | undefined }>, mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, quotes: Array<string>, body?: { __typename?: 'RichText', html: string } | null | undefined, boxout?: { __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined } | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined }>, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }> };
 
 
 export const GetDataDocument = `
     query GetData {
+  appendices {
+    body {
+      html
+    }
+    smallText
+  }
+  homes {
+    heroImage {
+      url
+    }
+    heroSmallCopy
+    heroCopy
+    universalTruthsTitle
+    universalTruthsCopy {
+      html
+    }
+  }
   mindsets {
     id
     enabled
