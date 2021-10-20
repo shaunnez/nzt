@@ -8,31 +8,35 @@ import data from "utilities/data";
 const HomeHero = ({ home }: any) => {
   return (
     <div className={styles.homeHero}>
-      <LazyHero
-        imageSrc={home.heroImage.url}
-        minHeight={"817px"}
-        opacity={0.1}
-        isCentered={false}
-      >
-        <div className={styles.heroContent}>
-          <div className={styles.purenz}>
-            <img src={pureNzImg} alt="Pure NZ" />
+      <div style={{ height: "817px", overflow: "hidden" }}>
+        <LazyHero
+          imageSrc={home.heroImage.url}
+          minHeight={"917px"}
+          opacity={0.1}
+          isCentered={false}
+          parallaxOffset={20}
+          transitionDuration={250}
+        >
+          <div className={styles.heroContent}>
+            <div className={styles.purenz}>
+              <img src={pureNzImg} alt="Pure NZ" />
+            </div>
+            <div className={styles.mindsets}>
+              <h1>MINDSETS</h1>
+            </div>
+            <div className={styles.content}>
+              <p>
+                <b>{home.heroSmallCopy}</b>
+              </p>
+              <p>{home.heroCopy}</p>
+              <br />
+              <p>
+                <Link to={`/appendix`}>Learn more</Link>
+              </p>
+            </div>
           </div>
-          <div className={styles.mindsets}>
-            <h1 className="title page-title">MINDSETS</h1>
-          </div>
-          <div className={styles.content}>
-            <p>
-              <b>{home.heroSmallCopy}</b>
-            </p>
-            <p>{home.heroCopy}</p>
-            <br />
-            <p>
-              <Link to={`/appendix`}>Learn more</Link>
-            </p>
-          </div>
-        </div>
-      </LazyHero>
+        </LazyHero>
+      </div>
     </div>
   );
 };

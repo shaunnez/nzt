@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Activity, Mindset } from "generated";
+import Select from "react-select";
 
 import { ReactComponent as SelectArrow } from "assets/select_arrow.svg";
 import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
@@ -19,7 +20,7 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
   );
 
   const theActivities = activities.map((x) => x.title);
-  // theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
+  theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
   const filteredMindsets = (theType: string, theActivity: string) => {
     let filtered = mindsets.filter((x) => x.theType === theType);
     if (theActivity) {
@@ -44,55 +45,22 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
     <div id="homeMindsets" className={styles.homeMindsets}>
       <div className={styles.header}>
         <span>Mindsets Overview</span>
-        <div
-          className={`${styles.customSelect} ${
-            openSelect ? styles.open : styles.closed
-          }`}
-        >
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setOpenSelect(!openSelect);
-            }}
-          >
-            {activity
-              ? activity.length > 30 && window.innerWidth > 1024
-                ? activity.slice(0, 30) + "..."
-                : activity
-              : "Filter by Activity"}
 
-            <SelectArrow />
-          </a>
-          <ul className={openSelect ? styles.open : styles.closed}>
-            <li key={activity}>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActivity("");
-                  setOpenSelect(false);
-                }}
-              >
-                All activities
-              </a>
-            </li>
-            {theActivities.map((activity) => (
-              <li key={activity}>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActivity(activity);
-                    setOpenSelect(false);
-                  }}
-                >
-                  {activity}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Select
+          placeholder="All activities"
+          options={theActivities.map((x) => ({
+            value: x,
+            label: x.length > 30 ? `${x}...` : x,
+          }))}
+          isClearable
+          className={"customSelect"}
+          classNamePrefix="customSelect"
+          onChange={(newValue) => {
+            setActivity(newValue?.value);
+          }}
+          defaultValue={activity ? { value: activity, label: activity } : null}
+          defaultMenuIsOpen
+        />
       </div>
 
       <div className={styles.mindsets}>

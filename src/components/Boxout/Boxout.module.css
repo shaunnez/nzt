@@ -1,31 +1,64 @@
 .boxout {
-  width: 50%;
-  max-height: 440px;
   position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: calc(439px + 180px);
 }
 
-.boxout img {
+.boxout + .boxout {
+  margin-top: 32px;
+}
+
+.boxout.withContent .boxoutImageWrapper {
+  width: 48%;
+  flex-shrink: 0;
+}
+
+.boxout.withContent .boxoutCircleWrapper {
+  right: -140px;
+}
+.boxoutImageWrapper {
+  height: 439px;
+  width: 100%;
+  position: relative;
+  background: grey;
+}
+
+.boxoutCircleWrapper {
+  font-size: 40px;
+  position: absolute;
+  border-radius: 50%;
+  width: 355px;
+  padding-bottom: 335px;
+  background: black;
+  text-align: center;
+  color: white;
+  bottom: -180px;
+  right: 0px;
+}
+
+.boxoutCircleContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  margin: 0;
+}
+
+.boxoutImage {
+  background-size: cover;
   width: 100%;
   height: 100%;
+  background-position: center;
 }
 
-.boxoutImageWrapper {
-  position: absolute;
-  z-index: 1;
-  background: black;
-  border-radius: 100%;
-  text-align: center;
-  width: 316px;
-  height: 316px;
-  right: -15%;
-  bottom: -150px;
-  color: white;
-  font-size: 40px;
-  padding: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.boxoutBody {
+  justify-self: flex-end;
+  position: relative;
+  margin-left: 200px;
 }
 
 .boxoutTitle {
@@ -40,23 +73,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Pakati", Impact, "Gill Sans", "Arial Black", Verdana, Tahoma,
+    sans-serif;
+  text-transform: uppercase;
+  font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
 }
+
 .boxoutContent {
   font-size: var(--font-boxout-content);
   line-height: var(--font-small);
   font-weight: 400;
 }
 
+/* .box */
+
+.boxoutBody:before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  height: 100%;
+  background: #00a8de;
+  width: 2px;
+}
+
 @media screen and (max-width: 1023px) {
   .boxout {
     width: 100%;
+    flex-direction: column;
+    /* height: calc(439px + 200px); */
   }
+
   .boxoutImageWrapper {
     left: 0;
     right: 0;
     top: 5px;
     margin: 0 auto;
-    height: 250px;
-    width: 250px;
+    width: 100% !important;
+  }
+
+  .boxoutCircleWrapper {
+    right: 0px !important;
+    bottom: -175px !important;
+  }
+
+  .boxoutBody {
+    width: 100%;
+    padding-top: 20px;
+    margin-left: 0;
+    margin-top: 200px;
+  }
+
+  .boxoutBody:before {
+    left: 0px;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
   }
 }

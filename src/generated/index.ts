@@ -1543,6 +1543,7 @@ export type BatchPayload = {
 export type Boxout = Node & {
   __typename?: 'Boxout';
   backgroundImage?: Maybe<Asset>;
+  body?: Maybe<RichText>;
   content?: Maybe<Scalars['String']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
@@ -1621,8 +1622,8 @@ export type BoxoutConnection = {
 
 export type BoxoutCreateInput = {
   backgroundImage?: Maybe<AssetCreateOneInlineInput>;
-  ckuwbnijr2b2801z19dkqac1l?: Maybe<WhoWhatWhereWhyHowCreateManyInlineInput>;
-  ckuwboara2d8p01z11i4k1hz3?: Maybe<WhoWhatWhereWhyHowCreateManyInlineInput>;
+  body?: Maybe<Scalars['RichTextAST']>;
+  ckuyn4i7r05nd01z3htjsb087?: Maybe<WhoWhatWhereWhyHowCreateManyInlineInput>;
   content?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   largeText?: Maybe<Scalars['String']>;
@@ -1809,8 +1810,8 @@ export enum BoxoutOrderByInput {
 
 export type BoxoutUpdateInput = {
   backgroundImage?: Maybe<AssetUpdateOneInlineInput>;
-  ckuwbnijr2b2801z19dkqac1l?: Maybe<WhoWhatWhereWhyHowUpdateManyInlineInput>;
-  ckuwboara2d8p01z11i4k1hz3?: Maybe<WhoWhatWhereWhyHowUpdateManyInlineInput>;
+  body?: Maybe<Scalars['RichTextAST']>;
+  ckuyn4i7r05nd01z3htjsb087?: Maybe<WhoWhatWhereWhyHowUpdateManyInlineInput>;
   content?: Maybe<Scalars['String']>;
   largeText?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -1834,6 +1835,7 @@ export type BoxoutUpdateManyInlineInput = {
 };
 
 export type BoxoutUpdateManyInput = {
+  body?: Maybe<Scalars['RichTextAST']>;
   content?: Maybe<Scalars['String']>;
   largeText?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -2026,24 +2028,31 @@ export type BoxoutWhereUniqueInput = {
 
 export type ByTheNumber = Node & {
   __typename?: 'ByTheNumber';
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
-  description?: Maybe<Scalars['String']>;
   /** Get the document in other stages */
   documentInStages: Array<ByTheNumber>;
   /** List of ByTheNumber versions */
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  largeNumber?: Maybe<Scalars['Int']>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   /** System stage field */
   stage: Stage;
+  /**
+   * Text on first line is large and bold
+   * Text on second line sits underneath
+   */
+  titleAndBody: Array<Scalars['String']>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
@@ -2097,9 +2106,13 @@ export type ByTheNumberConnection = {
 };
 
 export type ByTheNumberCreateInput = {
+  ckuynza1506jl01xp1udbdomx?: Maybe<WhoWhatWhereWhyHowCreateManyInlineInput>;
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  description?: Maybe<Scalars['String']>;
-  largeNumber?: Maybe<Scalars['Int']>;
+  titleAndBody?: Maybe<Array<Scalars['String']>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -2136,6 +2149,78 @@ export type ByTheNumberManyWhereInput = {
   OR?: Maybe<Array<ByTheNumberWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: Maybe<Scalars['String']>;
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  continuumLeftPercentage_gt?: Maybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  continuumLeftPercentage_gte?: Maybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  continuumLeftPercentage_in?: Maybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  continuumLeftPercentage_lt?: Maybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  continuumLeftPercentage_lte?: Maybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  continuumLeftPercentage_not?: Maybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  continuumLeftPercentage_not_in?: Maybe<Array<Scalars['Int']>>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumLeftText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumLeftText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumLeftText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumLeftText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumLeftText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumLeftText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumLeftText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumLeftText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumLeftText_starts_with?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumRightText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumRightText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumRightText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumRightText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumRightText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumRightText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumRightText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumRightText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumRightText_starts_with?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumTitle_starts_with?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2152,25 +2237,6 @@ export type ByTheNumberManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   createdBy?: Maybe<UserWhereInput>;
-  description?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  description_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  description_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  description_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  description_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  description_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  description_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  description_starts_with?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: Maybe<Scalars['ID']>;
@@ -2190,21 +2256,6 @@ export type ByTheNumberManyWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
-  largeNumber?: Maybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  largeNumber_gt?: Maybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  largeNumber_gte?: Maybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  largeNumber_in?: Maybe<Array<Scalars['Int']>>;
-  /** All values less than the given value. */
-  largeNumber_lt?: Maybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  largeNumber_lte?: Maybe<Scalars['Int']>;
-  /** All values that are not equal to given value. */
-  largeNumber_not?: Maybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  largeNumber_not_in?: Maybe<Array<Scalars['Int']>>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2221,6 +2272,16 @@ export type ByTheNumberManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   publishedBy?: Maybe<UserWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  titleAndBody?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  titleAndBody_contains_all?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  titleAndBody_contains_none?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  titleAndBody_contains_some?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  titleAndBody_not?: Maybe<Array<Scalars['String']>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2240,23 +2301,33 @@ export type ByTheNumberManyWhereInput = {
 };
 
 export enum ByTheNumberOrderByInput {
+  ContinuumLeftPercentageAsc = 'continuumLeftPercentage_ASC',
+  ContinuumLeftPercentageDesc = 'continuumLeftPercentage_DESC',
+  ContinuumLeftTextAsc = 'continuumLeftText_ASC',
+  ContinuumLeftTextDesc = 'continuumLeftText_DESC',
+  ContinuumRightTextAsc = 'continuumRightText_ASC',
+  ContinuumRightTextDesc = 'continuumRightText_DESC',
+  ContinuumTitleAsc = 'continuumTitle_ASC',
+  ContinuumTitleDesc = 'continuumTitle_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
-  DescriptionAsc = 'description_ASC',
-  DescriptionDesc = 'description_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
-  LargeNumberAsc = 'largeNumber_ASC',
-  LargeNumberDesc = 'largeNumber_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  TitleAndBodyAsc = 'titleAndBody_ASC',
+  TitleAndBodyDesc = 'titleAndBody_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
 export type ByTheNumberUpdateInput = {
-  description?: Maybe<Scalars['String']>;
-  largeNumber?: Maybe<Scalars['Int']>;
+  ckuynza1506jl01xp1udbdomx?: Maybe<WhoWhatWhereWhyHowUpdateManyInlineInput>;
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  titleAndBody?: Maybe<Array<Scalars['String']>>;
 };
 
 export type ByTheNumberUpdateManyInlineInput = {
@@ -2277,8 +2348,11 @@ export type ByTheNumberUpdateManyInlineInput = {
 };
 
 export type ByTheNumberUpdateManyInput = {
-  description?: Maybe<Scalars['String']>;
-  largeNumber?: Maybe<Scalars['Int']>;
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  titleAndBody?: Maybe<Array<Scalars['String']>>;
 };
 
 export type ByTheNumberUpdateManyWithNestedWhereInput = {
@@ -2334,6 +2408,78 @@ export type ByTheNumberWhereInput = {
   OR?: Maybe<Array<ByTheNumberWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: Maybe<Scalars['String']>;
+  continuumLeftPercentage?: Maybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  continuumLeftPercentage_gt?: Maybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  continuumLeftPercentage_gte?: Maybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  continuumLeftPercentage_in?: Maybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  continuumLeftPercentage_lt?: Maybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  continuumLeftPercentage_lte?: Maybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  continuumLeftPercentage_not?: Maybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  continuumLeftPercentage_not_in?: Maybe<Array<Scalars['Int']>>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumLeftText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumLeftText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumLeftText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumLeftText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumLeftText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumLeftText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumLeftText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumLeftText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumLeftText_starts_with?: Maybe<Scalars['String']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumRightText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumRightText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumRightText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumRightText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumRightText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumRightText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumRightText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumRightText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumRightText_starts_with?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumTitle_starts_with?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2350,25 +2496,6 @@ export type ByTheNumberWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   createdBy?: Maybe<UserWhereInput>;
-  description?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  description_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  description_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  description_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  description_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  description_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  description_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  description_starts_with?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: Maybe<Scalars['ID']>;
@@ -2388,21 +2515,6 @@ export type ByTheNumberWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
-  largeNumber?: Maybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  largeNumber_gt?: Maybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  largeNumber_gte?: Maybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  largeNumber_in?: Maybe<Array<Scalars['Int']>>;
-  /** All values less than the given value. */
-  largeNumber_lt?: Maybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  largeNumber_lte?: Maybe<Scalars['Int']>;
-  /** All values that are not equal to given value. */
-  largeNumber_not?: Maybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  largeNumber_not_in?: Maybe<Array<Scalars['Int']>>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2419,6 +2531,16 @@ export type ByTheNumberWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   publishedBy?: Maybe<UserWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  titleAndBody?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  titleAndBody_contains_all?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  titleAndBody_contains_none?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  titleAndBody_contains_some?: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  titleAndBody_not?: Maybe<Array<Scalars['String']>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2465,512 +2587,6 @@ export type ConnectPositionInput = {
   end?: Maybe<Scalars['Boolean']>;
   /** Connect document at first position */
   start?: Maybe<Scalars['Boolean']>;
-};
-
-export type Continuum = Node & {
-  __typename?: 'Continuum';
-  /** The time the document was created */
-  createdAt: Scalars['DateTime'];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Continuum>;
-  /** List of Continuum versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  leftText?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  rightText?: Maybe<Scalars['String']>;
-  /** System stage field */
-  stage: Stage;
-  title?: Maybe<Scalars['String']>;
-  /** The time the document was updated */
-  updatedAt: Scalars['DateTime'];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
-
-
-export type ContinuumCreatedByArgs = {
-  locales?: Maybe<Array<Locale>>;
-};
-
-
-export type ContinuumDocumentInStagesArgs = {
-  includeCurrent?: Scalars['Boolean'];
-  inheritLocale?: Scalars['Boolean'];
-  stages?: Array<Stage>;
-};
-
-
-export type ContinuumHistoryArgs = {
-  limit?: Scalars['Int'];
-  skip?: Scalars['Int'];
-  stageOverride?: Maybe<Stage>;
-};
-
-
-export type ContinuumPublishedByArgs = {
-  locales?: Maybe<Array<Locale>>;
-};
-
-
-export type ContinuumUpdatedByArgs = {
-  locales?: Maybe<Array<Locale>>;
-};
-
-export type ContinuumConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: Maybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ContinuumWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ContinuumConnection = {
-  __typename?: 'ContinuumConnection';
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ContinuumEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ContinuumCreateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  leftText?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  rightText?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type ContinuumCreateManyInlineInput = {
-  /** Connect multiple existing Continuum documents */
-  connect?: Maybe<Array<ContinuumWhereUniqueInput>>;
-  /** Create and connect multiple existing Continuum documents */
-  create?: Maybe<Array<ContinuumCreateInput>>;
-};
-
-export type ContinuumCreateOneInlineInput = {
-  /** Connect one existing Continuum document */
-  connect?: Maybe<ContinuumWhereUniqueInput>;
-  /** Create and connect one Continuum document */
-  create?: Maybe<ContinuumCreateInput>;
-};
-
-/** An edge in a connection. */
-export type ContinuumEdge = {
-  __typename?: 'ContinuumEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: Continuum;
-};
-
-/** Identifies documents */
-export type ContinuumManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: Maybe<Array<ContinuumWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: Maybe<Array<ContinuumWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: Maybe<Array<ContinuumWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  createdBy?: Maybe<UserWhereInput>;
-  id?: Maybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: Maybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: Maybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values that are not equal to given value. */
-  id_not?: Maybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: Maybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: Maybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: Maybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: Maybe<Scalars['ID']>;
-  leftText?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  leftText_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  leftText_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  leftText_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  leftText_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  leftText_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  leftText_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  leftText_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  leftText_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  leftText_starts_with?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  percentageLeft_gt?: Maybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  percentageLeft_gte?: Maybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  percentageLeft_in?: Maybe<Array<Scalars['Int']>>;
-  /** All values less than the given value. */
-  percentageLeft_lt?: Maybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  percentageLeft_lte?: Maybe<Scalars['Int']>;
-  /** All values that are not equal to given value. */
-  percentageLeft_not?: Maybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  percentageLeft_not_in?: Maybe<Array<Scalars['Int']>>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  publishedBy?: Maybe<UserWhereInput>;
-  rightText?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  rightText_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  rightText_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  rightText_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  rightText_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  rightText_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  rightText_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  rightText_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  rightText_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  rightText_starts_with?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  title_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  title_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  title_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  title_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  title_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  title_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  title_starts_with?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  updatedBy?: Maybe<UserWhereInput>;
-};
-
-export enum ContinuumOrderByInput {
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  LeftTextAsc = 'leftText_ASC',
-  LeftTextDesc = 'leftText_DESC',
-  PercentageLeftAsc = 'percentageLeft_ASC',
-  PercentageLeftDesc = 'percentageLeft_DESC',
-  PublishedAtAsc = 'publishedAt_ASC',
-  PublishedAtDesc = 'publishedAt_DESC',
-  RightTextAsc = 'rightText_ASC',
-  RightTextDesc = 'rightText_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
-}
-
-export type ContinuumUpdateInput = {
-  leftText?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  rightText?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ContinuumUpdateManyInlineInput = {
-  /** Connect multiple existing Continuum documents */
-  connect?: Maybe<Array<ContinuumConnectInput>>;
-  /** Create and connect multiple Continuum documents */
-  create?: Maybe<Array<ContinuumCreateInput>>;
-  /** Delete multiple Continuum documents */
-  delete?: Maybe<Array<ContinuumWhereUniqueInput>>;
-  /** Disconnect multiple Continuum documents */
-  disconnect?: Maybe<Array<ContinuumWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing Continuum documents */
-  set?: Maybe<Array<ContinuumWhereUniqueInput>>;
-  /** Update multiple Continuum documents */
-  update?: Maybe<Array<ContinuumUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple Continuum documents */
-  upsert?: Maybe<Array<ContinuumUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ContinuumUpdateManyInput = {
-  leftText?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  rightText?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ContinuumUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: ContinuumUpdateManyInput;
-  /** Document search */
-  where: ContinuumWhereInput;
-};
-
-export type ContinuumUpdateOneInlineInput = {
-  /** Connect existing Continuum document */
-  connect?: Maybe<ContinuumWhereUniqueInput>;
-  /** Create and connect one Continuum document */
-  create?: Maybe<ContinuumCreateInput>;
-  /** Delete currently connected Continuum document */
-  delete?: Maybe<Scalars['Boolean']>;
-  /** Disconnect currently connected Continuum document */
-  disconnect?: Maybe<Scalars['Boolean']>;
-  /** Update single Continuum document */
-  update?: Maybe<ContinuumUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single Continuum document */
-  upsert?: Maybe<ContinuumUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ContinuumUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ContinuumUpdateInput;
-  /** Unique document search */
-  where: ContinuumWhereUniqueInput;
-};
-
-export type ContinuumUpsertInput = {
-  /** Create document if it didn't exist */
-  create: ContinuumCreateInput;
-  /** Update document if it exists */
-  update: ContinuumUpdateInput;
-};
-
-export type ContinuumUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: ContinuumUpsertInput;
-  /** Unique document search */
-  where: ContinuumWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type ContinuumWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: Maybe<Array<ContinuumWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: Maybe<Array<ContinuumWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: Maybe<Array<ContinuumWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  createdBy?: Maybe<UserWhereInput>;
-  id?: Maybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: Maybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: Maybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values that are not equal to given value. */
-  id_not?: Maybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: Maybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: Maybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: Maybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: Maybe<Scalars['ID']>;
-  leftText?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  leftText_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  leftText_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  leftText_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  leftText_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  leftText_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  leftText_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  leftText_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  leftText_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  leftText_starts_with?: Maybe<Scalars['String']>;
-  percentageLeft?: Maybe<Scalars['Int']>;
-  /** All values greater than the given value. */
-  percentageLeft_gt?: Maybe<Scalars['Int']>;
-  /** All values greater than or equal the given value. */
-  percentageLeft_gte?: Maybe<Scalars['Int']>;
-  /** All values that are contained in given list. */
-  percentageLeft_in?: Maybe<Array<Scalars['Int']>>;
-  /** All values less than the given value. */
-  percentageLeft_lt?: Maybe<Scalars['Int']>;
-  /** All values less than or equal the given value. */
-  percentageLeft_lte?: Maybe<Scalars['Int']>;
-  /** All values that are not equal to given value. */
-  percentageLeft_not?: Maybe<Scalars['Int']>;
-  /** All values that are not contained in given list. */
-  percentageLeft_not_in?: Maybe<Array<Scalars['Int']>>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  publishedBy?: Maybe<UserWhereInput>;
-  rightText?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  rightText_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  rightText_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  rightText_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  rightText_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  rightText_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  rightText_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  rightText_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  rightText_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  rightText_starts_with?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  /** All values containing the given string. */
-  title_contains?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  title_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  title_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  title_not?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  title_not_contains?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: Maybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  title_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  title_starts_with?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  updatedBy?: Maybe<UserWhereInput>;
-};
-
-/** References Continuum record uniquely */
-export type ContinuumWhereUniqueInput = {
-  id?: Maybe<Scalars['ID']>;
 };
 
 export enum DocumentFileTypes {
@@ -4109,12 +3725,12 @@ export type Mutation = {
   createBoxout?: Maybe<Boxout>;
   /** Create one byTheNumber */
   createByTheNumber?: Maybe<ByTheNumber>;
-  /** Create one continuum */
-  createContinuum?: Maybe<Continuum>;
   /** Create one home */
   createHome?: Maybe<Home>;
   /** Create one mindset */
   createMindset?: Maybe<Mindset>;
+  /** Create one quote */
+  createQuote?: Maybe<Quote>;
   /** Create one whoWhatWhereWhyHow */
   createWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Delete one activity from _all_ existing stages. Returns deleted document. */
@@ -4127,8 +3743,6 @@ export type Mutation = {
   deleteBoxout?: Maybe<Boxout>;
   /** Delete one byTheNumber from _all_ existing stages. Returns deleted document. */
   deleteByTheNumber?: Maybe<ByTheNumber>;
-  /** Delete one continuum from _all_ existing stages. Returns deleted document. */
-  deleteContinuum?: Maybe<Continuum>;
   /** Delete one home from _all_ existing stages. Returns deleted document. */
   deleteHome?: Maybe<Home>;
   /**
@@ -4167,13 +3781,6 @@ export type Mutation = {
   /** Delete many ByTheNumber documents, return deleted documents */
   deleteManyByTheNumbersConnection: ByTheNumberConnection;
   /**
-   * Delete many Continuum documents
-   * @deprecated Please use the new paginated many mutation (deleteManyContinuumsConnection)
-   */
-  deleteManyContinuums: BatchPayload;
-  /** Delete many Continuum documents, return deleted documents */
-  deleteManyContinuumsConnection: ContinuumConnection;
-  /**
    * Delete many Home documents
    * @deprecated Please use the new paginated many mutation (deleteManyHomesConnection)
    */
@@ -4188,6 +3795,13 @@ export type Mutation = {
   /** Delete many Mindset documents, return deleted documents */
   deleteManyMindsetsConnection: MindsetConnection;
   /**
+   * Delete many Quote documents
+   * @deprecated Please use the new paginated many mutation (deleteManyQuotesConnection)
+   */
+  deleteManyQuotes: BatchPayload;
+  /** Delete many Quote documents, return deleted documents */
+  deleteManyQuotesConnection: QuoteConnection;
+  /**
    * Delete many WhoWhatWhereWhyHow documents
    * @deprecated Please use the new paginated many mutation (deleteManyWhoWhatWhereWhyHowsConnection)
    */
@@ -4196,6 +3810,8 @@ export type Mutation = {
   deleteManyWhoWhatWhereWhyHowsConnection: WhoWhatWhereWhyHowConnection;
   /** Delete one mindset from _all_ existing stages. Returns deleted document. */
   deleteMindset?: Maybe<Mindset>;
+  /** Delete one quote from _all_ existing stages. Returns deleted document. */
+  deleteQuote?: Maybe<Quote>;
   /** Delete one whoWhatWhereWhyHow from _all_ existing stages. Returns deleted document. */
   deleteWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Publish one activity */
@@ -4208,8 +3824,6 @@ export type Mutation = {
   publishBoxout?: Maybe<Boxout>;
   /** Publish one byTheNumber */
   publishByTheNumber?: Maybe<ByTheNumber>;
-  /** Publish one continuum */
-  publishContinuum?: Maybe<Continuum>;
   /** Publish one home */
   publishHome?: Maybe<Home>;
   /**
@@ -4248,13 +3862,6 @@ export type Mutation = {
   /** Publish many ByTheNumber documents */
   publishManyByTheNumbersConnection: ByTheNumberConnection;
   /**
-   * Publish many Continuum documents
-   * @deprecated Please use the new paginated many mutation (publishManyContinuumsConnection)
-   */
-  publishManyContinuums: BatchPayload;
-  /** Publish many Continuum documents */
-  publishManyContinuumsConnection: ContinuumConnection;
-  /**
    * Publish many Home documents
    * @deprecated Please use the new paginated many mutation (publishManyHomesConnection)
    */
@@ -4269,6 +3876,13 @@ export type Mutation = {
   /** Publish many Mindset documents */
   publishManyMindsetsConnection: MindsetConnection;
   /**
+   * Publish many Quote documents
+   * @deprecated Please use the new paginated many mutation (publishManyQuotesConnection)
+   */
+  publishManyQuotes: BatchPayload;
+  /** Publish many Quote documents */
+  publishManyQuotesConnection: QuoteConnection;
+  /**
    * Publish many WhoWhatWhereWhyHow documents
    * @deprecated Please use the new paginated many mutation (publishManyWhoWhatWhereWhyHowsConnection)
    */
@@ -4277,6 +3891,8 @@ export type Mutation = {
   publishManyWhoWhatWhereWhyHowsConnection: WhoWhatWhereWhyHowConnection;
   /** Publish one mindset */
   publishMindset?: Maybe<Mindset>;
+  /** Publish one quote */
+  publishQuote?: Maybe<Quote>;
   /** Publish one whoWhatWhereWhyHow */
   publishWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Unpublish one activity from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -4289,8 +3905,6 @@ export type Mutation = {
   unpublishBoxout?: Maybe<Boxout>;
   /** Unpublish one byTheNumber from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishByTheNumber?: Maybe<ByTheNumber>;
-  /** Unpublish one continuum from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishContinuum?: Maybe<Continuum>;
   /** Unpublish one home from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHome?: Maybe<Home>;
   /**
@@ -4329,13 +3943,6 @@ export type Mutation = {
   /** Find many ByTheNumber documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyByTheNumbersConnection: ByTheNumberConnection;
   /**
-   * Unpublish many Continuum documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyContinuumsConnection)
-   */
-  unpublishManyContinuums: BatchPayload;
-  /** Find many Continuum documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyContinuumsConnection: ContinuumConnection;
-  /**
    * Unpublish many Home documents
    * @deprecated Please use the new paginated many mutation (unpublishManyHomesConnection)
    */
@@ -4350,6 +3957,13 @@ export type Mutation = {
   /** Find many Mindset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyMindsetsConnection: MindsetConnection;
   /**
+   * Unpublish many Quote documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyQuotesConnection)
+   */
+  unpublishManyQuotes: BatchPayload;
+  /** Find many Quote documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyQuotesConnection: QuoteConnection;
+  /**
    * Unpublish many WhoWhatWhereWhyHow documents
    * @deprecated Please use the new paginated many mutation (unpublishManyWhoWhatWhereWhyHowsConnection)
    */
@@ -4358,6 +3972,8 @@ export type Mutation = {
   unpublishManyWhoWhatWhereWhyHowsConnection: WhoWhatWhereWhyHowConnection;
   /** Unpublish one mindset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishMindset?: Maybe<Mindset>;
+  /** Unpublish one quote from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishQuote?: Maybe<Quote>;
   /** Unpublish one whoWhatWhereWhyHow from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Update one activity */
@@ -4370,8 +3986,6 @@ export type Mutation = {
   updateBoxout?: Maybe<Boxout>;
   /** Update one byTheNumber */
   updateByTheNumber?: Maybe<ByTheNumber>;
-  /** Update one continuum */
-  updateContinuum?: Maybe<Continuum>;
   /** Update one home */
   updateHome?: Maybe<Home>;
   /**
@@ -4410,13 +4024,6 @@ export type Mutation = {
   /** Update many ByTheNumber documents */
   updateManyByTheNumbersConnection: ByTheNumberConnection;
   /**
-   * Update many continuums
-   * @deprecated Please use the new paginated many mutation (updateManyContinuumsConnection)
-   */
-  updateManyContinuums: BatchPayload;
-  /** Update many Continuum documents */
-  updateManyContinuumsConnection: ContinuumConnection;
-  /**
    * Update many homes
    * @deprecated Please use the new paginated many mutation (updateManyHomesConnection)
    */
@@ -4431,6 +4038,13 @@ export type Mutation = {
   /** Update many Mindset documents */
   updateManyMindsetsConnection: MindsetConnection;
   /**
+   * Update many quotes
+   * @deprecated Please use the new paginated many mutation (updateManyQuotesConnection)
+   */
+  updateManyQuotes: BatchPayload;
+  /** Update many Quote documents */
+  updateManyQuotesConnection: QuoteConnection;
+  /**
    * Update many whoWhatWhereWhyHows
    * @deprecated Please use the new paginated many mutation (updateManyWhoWhatWhereWhyHowsConnection)
    */
@@ -4439,6 +4053,8 @@ export type Mutation = {
   updateManyWhoWhatWhereWhyHowsConnection: WhoWhatWhereWhyHowConnection;
   /** Update one mindset */
   updateMindset?: Maybe<Mindset>;
+  /** Update one quote */
+  updateQuote?: Maybe<Quote>;
   /** Update one whoWhatWhereWhyHow */
   updateWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
   /** Upsert one activity */
@@ -4451,12 +4067,12 @@ export type Mutation = {
   upsertBoxout?: Maybe<Boxout>;
   /** Upsert one byTheNumber */
   upsertByTheNumber?: Maybe<ByTheNumber>;
-  /** Upsert one continuum */
-  upsertContinuum?: Maybe<Continuum>;
   /** Upsert one home */
   upsertHome?: Maybe<Home>;
   /** Upsert one mindset */
   upsertMindset?: Maybe<Mindset>;
+  /** Upsert one quote */
+  upsertQuote?: Maybe<Quote>;
   /** Upsert one whoWhatWhereWhyHow */
   upsertWhoWhatWhereWhyHow?: Maybe<WhoWhatWhereWhyHow>;
 };
@@ -4487,11 +4103,6 @@ export type MutationCreateByTheNumberArgs = {
 };
 
 
-export type MutationCreateContinuumArgs = {
-  data: ContinuumCreateInput;
-};
-
-
 export type MutationCreateHomeArgs = {
   data: HomeCreateInput;
 };
@@ -4499,6 +4110,11 @@ export type MutationCreateHomeArgs = {
 
 export type MutationCreateMindsetArgs = {
   data: MindsetCreateInput;
+};
+
+
+export type MutationCreateQuoteArgs = {
+  data: QuoteCreateInput;
 };
 
 
@@ -4529,11 +4145,6 @@ export type MutationDeleteBoxoutArgs = {
 
 export type MutationDeleteByTheNumberArgs = {
   where: ByTheNumberWhereUniqueInput;
-};
-
-
-export type MutationDeleteContinuumArgs = {
-  where: ContinuumWhereUniqueInput;
 };
 
 
@@ -4617,21 +4228,6 @@ export type MutationDeleteManyByTheNumbersConnectionArgs = {
 };
 
 
-export type MutationDeleteManyContinuumsArgs = {
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
-export type MutationDeleteManyContinuumsConnectionArgs = {
-  after?: Maybe<Scalars['ID']>;
-  before?: Maybe<Scalars['ID']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
 export type MutationDeleteManyHomesArgs = {
   where?: Maybe<HomeManyWhereInput>;
 };
@@ -4662,6 +4258,21 @@ export type MutationDeleteManyMindsetsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyQuotesArgs = {
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
+export type MutationDeleteManyQuotesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
 export type MutationDeleteManyWhoWhatWhereWhyHowsArgs = {
   where?: Maybe<WhoWhatWhereWhyHowManyWhereInput>;
 };
@@ -4679,6 +4290,11 @@ export type MutationDeleteManyWhoWhatWhereWhyHowsConnectionArgs = {
 
 export type MutationDeleteMindsetArgs = {
   where: MindsetWhereUniqueInput;
+};
+
+
+export type MutationDeleteQuoteArgs = {
+  where: QuoteWhereUniqueInput;
 };
 
 
@@ -4717,12 +4333,6 @@ export type MutationPublishBoxoutArgs = {
 export type MutationPublishByTheNumberArgs = {
   to?: Array<Stage>;
   where: ByTheNumberWhereUniqueInput;
-};
-
-
-export type MutationPublishContinuumArgs = {
-  to?: Array<Stage>;
-  where: ContinuumWhereUniqueInput;
 };
 
 
@@ -4828,24 +4438,6 @@ export type MutationPublishManyByTheNumbersConnectionArgs = {
 };
 
 
-export type MutationPublishManyContinuumsArgs = {
-  to?: Array<Stage>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
-export type MutationPublishManyContinuumsConnectionArgs = {
-  after?: Maybe<Scalars['ID']>;
-  before?: Maybe<Scalars['ID']>;
-  first?: Maybe<Scalars['Int']>;
-  from?: Maybe<Stage>;
-  last?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  to?: Array<Stage>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
 export type MutationPublishManyHomesArgs = {
   to?: Array<Stage>;
   where?: Maybe<HomeManyWhereInput>;
@@ -4882,6 +4474,24 @@ export type MutationPublishManyMindsetsConnectionArgs = {
 };
 
 
+export type MutationPublishManyQuotesArgs = {
+  to?: Array<Stage>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
+export type MutationPublishManyQuotesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Maybe<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
 export type MutationPublishManyWhoWhatWhereWhyHowsArgs = {
   to?: Array<Stage>;
   where?: Maybe<WhoWhatWhereWhyHowManyWhereInput>;
@@ -4903,6 +4513,12 @@ export type MutationPublishManyWhoWhatWhereWhyHowsConnectionArgs = {
 export type MutationPublishMindsetArgs = {
   to?: Array<Stage>;
   where: MindsetWhereUniqueInput;
+};
+
+
+export type MutationPublishQuoteArgs = {
+  to?: Array<Stage>;
+  where: QuoteWhereUniqueInput;
 };
 
 
@@ -4941,12 +4557,6 @@ export type MutationUnpublishBoxoutArgs = {
 export type MutationUnpublishByTheNumberArgs = {
   from?: Array<Stage>;
   where: ByTheNumberWhereUniqueInput;
-};
-
-
-export type MutationUnpublishContinuumArgs = {
-  from?: Array<Stage>;
-  where: ContinuumWhereUniqueInput;
 };
 
 
@@ -5050,24 +4660,6 @@ export type MutationUnpublishManyByTheNumbersConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyContinuumsArgs = {
-  from?: Array<Stage>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
-export type MutationUnpublishManyContinuumsConnectionArgs = {
-  after?: Maybe<Scalars['ID']>;
-  before?: Maybe<Scalars['ID']>;
-  first?: Maybe<Scalars['Int']>;
-  from?: Array<Stage>;
-  last?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  stage?: Maybe<Stage>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
 export type MutationUnpublishManyHomesArgs = {
   from?: Array<Stage>;
   where?: Maybe<HomeManyWhereInput>;
@@ -5104,6 +4696,24 @@ export type MutationUnpublishManyMindsetsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyQuotesArgs = {
+  from?: Array<Stage>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyQuotesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Maybe<Stage>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyWhoWhatWhereWhyHowsArgs = {
   from?: Array<Stage>;
   where?: Maybe<WhoWhatWhereWhyHowManyWhereInput>;
@@ -5125,6 +4735,12 @@ export type MutationUnpublishManyWhoWhatWhereWhyHowsConnectionArgs = {
 export type MutationUnpublishMindsetArgs = {
   from?: Array<Stage>;
   where: MindsetWhereUniqueInput;
+};
+
+
+export type MutationUnpublishQuoteArgs = {
+  from?: Array<Stage>;
+  where: QuoteWhereUniqueInput;
 };
 
 
@@ -5161,12 +4777,6 @@ export type MutationUpdateBoxoutArgs = {
 export type MutationUpdateByTheNumberArgs = {
   data: ByTheNumberUpdateInput;
   where: ByTheNumberWhereUniqueInput;
-};
-
-
-export type MutationUpdateContinuumArgs = {
-  data: ContinuumUpdateInput;
-  where: ContinuumWhereUniqueInput;
 };
 
 
@@ -5261,23 +4871,6 @@ export type MutationUpdateManyByTheNumbersConnectionArgs = {
 };
 
 
-export type MutationUpdateManyContinuumsArgs = {
-  data: ContinuumUpdateManyInput;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
-export type MutationUpdateManyContinuumsConnectionArgs = {
-  after?: Maybe<Scalars['ID']>;
-  before?: Maybe<Scalars['ID']>;
-  data: ContinuumUpdateManyInput;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<ContinuumManyWhereInput>;
-};
-
-
 export type MutationUpdateManyHomesArgs = {
   data: HomeUpdateManyInput;
   where?: Maybe<HomeManyWhereInput>;
@@ -5312,6 +4905,23 @@ export type MutationUpdateManyMindsetsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyQuotesArgs = {
+  data: QuoteUpdateManyInput;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
+export type MutationUpdateManyQuotesConnectionArgs = {
+  after?: Maybe<Scalars['ID']>;
+  before?: Maybe<Scalars['ID']>;
+  data: QuoteUpdateManyInput;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<QuoteManyWhereInput>;
+};
+
+
 export type MutationUpdateManyWhoWhatWhereWhyHowsArgs = {
   data: WhoWhatWhereWhyHowUpdateManyInput;
   where?: Maybe<WhoWhatWhereWhyHowManyWhereInput>;
@@ -5332,6 +4942,12 @@ export type MutationUpdateManyWhoWhatWhereWhyHowsConnectionArgs = {
 export type MutationUpdateMindsetArgs = {
   data: MindsetUpdateInput;
   where: MindsetWhereUniqueInput;
+};
+
+
+export type MutationUpdateQuoteArgs = {
+  data: QuoteUpdateInput;
+  where: QuoteWhereUniqueInput;
 };
 
 
@@ -5371,12 +4987,6 @@ export type MutationUpsertByTheNumberArgs = {
 };
 
 
-export type MutationUpsertContinuumArgs = {
-  upsert: ContinuumUpsertInput;
-  where: ContinuumWhereUniqueInput;
-};
-
-
 export type MutationUpsertHomeArgs = {
   upsert: HomeUpsertInput;
   where: HomeWhereUniqueInput;
@@ -5386,6 +4996,12 @@ export type MutationUpsertHomeArgs = {
 export type MutationUpsertMindsetArgs = {
   upsert: MindsetUpsertInput;
   where: MindsetWhereUniqueInput;
+};
+
+
+export type MutationUpsertQuoteArgs = {
+  upsert: QuoteUpsertInput;
+  where: QuoteWhereUniqueInput;
 };
 
 
@@ -5466,14 +5082,6 @@ export type Query = {
   byTheNumbers: Array<ByTheNumber>;
   /** Retrieve multiple byTheNumbers using the Relay connection interface */
   byTheNumbersConnection: ByTheNumberConnection;
-  /** Retrieve a single continuum */
-  continuum?: Maybe<Continuum>;
-  /** Retrieve document version */
-  continuumVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple continuums */
-  continuums: Array<Continuum>;
-  /** Retrieve multiple continuums using the Relay connection interface */
-  continuumsConnection: ContinuumConnection;
   /** Retrieve a single home */
   home?: Maybe<Home>;
   /** Retrieve document version */
@@ -5492,6 +5100,14 @@ export type Query = {
   mindsetsConnection: MindsetConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
+  /** Retrieve a single quote */
+  quote?: Maybe<Quote>;
+  /** Retrieve document version */
+  quoteVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple quotes */
+  quotes: Array<Quote>;
+  /** Retrieve multiple quotes using the Relay connection interface */
+  quotesConnection: QuoteConnection;
   /** Retrieve a single user */
   user?: Maybe<User>;
   /** Retrieve multiple users */
@@ -5699,44 +5315,6 @@ export type QueryByTheNumbersConnectionArgs = {
 };
 
 
-export type QueryContinuumArgs = {
-  locales?: Array<Locale>;
-  stage?: Stage;
-  where: ContinuumWhereUniqueInput;
-};
-
-
-export type QueryContinuumVersionArgs = {
-  where: VersionWhereInput;
-};
-
-
-export type QueryContinuumsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: Maybe<ContinuumOrderByInput>;
-  skip?: Maybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: Maybe<ContinuumWhereInput>;
-};
-
-
-export type QueryContinuumsConnectionArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: Maybe<ContinuumOrderByInput>;
-  skip?: Maybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: Maybe<ContinuumWhereInput>;
-};
-
-
 export type QueryHomeArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
@@ -5820,6 +5398,44 @@ export type QueryNodeArgs = {
 };
 
 
+export type QueryQuoteArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: QuoteWhereUniqueInput;
+};
+
+
+export type QueryQuoteVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryQuotesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<QuoteOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<QuoteWhereInput>;
+};
+
+
+export type QueryQuotesConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: Maybe<QuoteOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: Maybe<QuoteWhereInput>;
+};
+
+
 export type QueryUserArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
@@ -5888,6 +5504,558 @@ export type QueryWhoWhatWhereWhyHowsConnectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   stage?: Stage;
   where?: Maybe<WhoWhatWhereWhyHowWhereInput>;
+};
+
+export type Quote = Node & {
+  __typename?: 'Quote';
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Quote>;
+  /** List of Quote versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  /** System stage field */
+  stage: Stage;
+  text?: Maybe<Scalars['String']>;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type QuoteCreatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type QuoteDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type QuoteHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: Maybe<Stage>;
+};
+
+
+export type QuotePublishedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type QuoteUpdatedByArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+export type QuoteConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: QuoteWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type QuoteConnection = {
+  __typename?: 'QuoteConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<QuoteEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type QuoteCreateInput = {
+  ckuyn3jv305u401xp3mwec1f2?: Maybe<WhoWhatWhereWhyHowCreateManyInlineInput>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  text?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type QuoteCreateManyInlineInput = {
+  /** Connect multiple existing Quote documents */
+  connect?: Maybe<Array<QuoteWhereUniqueInput>>;
+  /** Create and connect multiple existing Quote documents */
+  create?: Maybe<Array<QuoteCreateInput>>;
+};
+
+export type QuoteCreateOneInlineInput = {
+  /** Connect one existing Quote document */
+  connect?: Maybe<QuoteWhereUniqueInput>;
+  /** Create and connect one Quote document */
+  create?: Maybe<QuoteCreateInput>;
+};
+
+/** An edge in a connection. */
+export type QuoteEdge = {
+  __typename?: 'QuoteEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Quote;
+};
+
+/** Identifies documents */
+export type QuoteManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<QuoteWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<QuoteWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<QuoteWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumLeftText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumLeftText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumLeftText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumLeftText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumLeftText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumLeftText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumLeftText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumLeftText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumLeftText_starts_with?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  continuumPercentageLeft_gt?: Maybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  continuumPercentageLeft_gte?: Maybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  continuumPercentageLeft_in?: Maybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  continuumPercentageLeft_lt?: Maybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  continuumPercentageLeft_lte?: Maybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  continuumPercentageLeft_not?: Maybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  continuumPercentageLeft_not_in?: Maybe<Array<Scalars['Int']>>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumRightText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumRightText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumRightText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumRightText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumRightText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumRightText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumRightText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumRightText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumRightText_starts_with?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumTitle_starts_with?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  text?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  text_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  text_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  text_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  text_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  text_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  text_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  text_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  text_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  text_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+export enum QuoteOrderByInput {
+  ContinuumLeftTextAsc = 'continuumLeftText_ASC',
+  ContinuumLeftTextDesc = 'continuumLeftText_DESC',
+  ContinuumPercentageLeftAsc = 'continuumPercentageLeft_ASC',
+  ContinuumPercentageLeftDesc = 'continuumPercentageLeft_DESC',
+  ContinuumRightTextAsc = 'continuumRightText_ASC',
+  ContinuumRightTextDesc = 'continuumRightText_DESC',
+  ContinuumTitleAsc = 'continuumTitle_ASC',
+  ContinuumTitleDesc = 'continuumTitle_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TextAsc = 'text_ASC',
+  TextDesc = 'text_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type QuoteUpdateInput = {
+  ckuyn3jv305u401xp3mwec1f2?: Maybe<WhoWhatWhereWhyHowUpdateManyInlineInput>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+export type QuoteUpdateManyInlineInput = {
+  /** Connect multiple existing Quote documents */
+  connect?: Maybe<Array<QuoteConnectInput>>;
+  /** Create and connect multiple Quote documents */
+  create?: Maybe<Array<QuoteCreateInput>>;
+  /** Delete multiple Quote documents */
+  delete?: Maybe<Array<QuoteWhereUniqueInput>>;
+  /** Disconnect multiple Quote documents */
+  disconnect?: Maybe<Array<QuoteWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Quote documents */
+  set?: Maybe<Array<QuoteWhereUniqueInput>>;
+  /** Update multiple Quote documents */
+  update?: Maybe<Array<QuoteUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Quote documents */
+  upsert?: Maybe<Array<QuoteUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type QuoteUpdateManyInput = {
+  continuumLeftText?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+export type QuoteUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: QuoteUpdateManyInput;
+  /** Document search */
+  where: QuoteWhereInput;
+};
+
+export type QuoteUpdateOneInlineInput = {
+  /** Connect existing Quote document */
+  connect?: Maybe<QuoteWhereUniqueInput>;
+  /** Create and connect one Quote document */
+  create?: Maybe<QuoteCreateInput>;
+  /** Delete currently connected Quote document */
+  delete?: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Quote document */
+  disconnect?: Maybe<Scalars['Boolean']>;
+  /** Update single Quote document */
+  update?: Maybe<QuoteUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Quote document */
+  upsert?: Maybe<QuoteUpsertWithNestedWhereUniqueInput>;
+};
+
+export type QuoteUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: QuoteUpdateInput;
+  /** Unique document search */
+  where: QuoteWhereUniqueInput;
+};
+
+export type QuoteUpsertInput = {
+  /** Create document if it didn't exist */
+  create: QuoteCreateInput;
+  /** Update document if it exists */
+  update: QuoteUpdateInput;
+};
+
+export type QuoteUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: QuoteUpsertInput;
+  /** Unique document search */
+  where: QuoteWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type QuoteWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<QuoteWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<QuoteWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<QuoteWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  continuumLeftText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumLeftText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumLeftText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumLeftText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumLeftText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumLeftText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumLeftText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumLeftText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumLeftText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumLeftText_starts_with?: Maybe<Scalars['String']>;
+  continuumPercentageLeft?: Maybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  continuumPercentageLeft_gt?: Maybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  continuumPercentageLeft_gte?: Maybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  continuumPercentageLeft_in?: Maybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  continuumPercentageLeft_lt?: Maybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  continuumPercentageLeft_lte?: Maybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  continuumPercentageLeft_not?: Maybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  continuumPercentageLeft_not_in?: Maybe<Array<Scalars['Int']>>;
+  continuumRightText?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumRightText_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumRightText_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumRightText_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumRightText_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumRightText_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumRightText_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumRightText_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumRightText_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumRightText_starts_with?: Maybe<Scalars['String']>;
+  continuumTitle?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  continuumTitle_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  continuumTitle_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  continuumTitle_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  continuumTitle_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  continuumTitle_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  continuumTitle_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  continuumTitle_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  continuumTitle_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  continuumTitle_starts_with?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  createdBy?: Maybe<UserWhereInput>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  publishedBy?: Maybe<UserWhereInput>;
+  text?: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  text_contains?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  text_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  text_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  text_not?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  text_not_contains?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  text_not_ends_with?: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  text_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  text_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  text_starts_with?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  updatedBy?: Maybe<UserWhereInput>;
+};
+
+/** References Quote record uniquely */
+export type QuoteWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>;
 };
 
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
@@ -6328,11 +6496,9 @@ export type VersionWhereInput = {
 
 export type WhoWhatWhereWhyHow = Node & {
   __typename?: 'WhoWhatWhereWhyHow';
-  additionalBody?: Maybe<RichText>;
-  additionalBoxouts: Array<Boxout>;
-  additionalQuotes: Array<Scalars['String']>;
   body?: Maybe<RichText>;
-  boxout?: Maybe<Boxout>;
+  boxouts: Array<Boxout>;
+  byTheNumber?: Maybe<ByTheNumber>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -6348,7 +6514,7 @@ export type WhoWhatWhereWhyHow = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
-  quotes: Array<Scalars['String']>;
+  quotes: Array<Quote>;
   /** System stage field */
   stage: Stage;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
@@ -6359,7 +6525,7 @@ export type WhoWhatWhereWhyHow = Node & {
 };
 
 
-export type WhoWhatWhereWhyHowAdditionalBoxoutsArgs = {
+export type WhoWhatWhereWhyHowBoxoutsArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -6371,7 +6537,7 @@ export type WhoWhatWhereWhyHowAdditionalBoxoutsArgs = {
 };
 
 
-export type WhoWhatWhereWhyHowBoxoutArgs = {
+export type WhoWhatWhereWhyHowByTheNumberArgs = {
   locales?: Maybe<Array<Locale>>;
 };
 
@@ -6400,6 +6566,18 @@ export type WhoWhatWhereWhyHowPublishedByArgs = {
 };
 
 
+export type WhoWhatWhereWhyHowQuotesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Maybe<Array<Locale>>;
+  orderBy?: Maybe<QuoteOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<QuoteWhereInput>;
+};
+
+
 export type WhoWhatWhereWhyHowUpdatedByArgs = {
   locales?: Maybe<Array<Locale>>;
 };
@@ -6422,15 +6600,13 @@ export type WhoWhatWhereWhyHowConnection = {
 };
 
 export type WhoWhatWhereWhyHowCreateInput = {
-  additionalBody?: Maybe<Scalars['RichTextAST']>;
-  additionalBoxouts?: Maybe<BoxoutCreateManyInlineInput>;
-  additionalQuotes?: Maybe<Array<Scalars['String']>>;
   body?: Maybe<Scalars['RichTextAST']>;
-  boxout?: Maybe<BoxoutCreateOneInlineInput>;
+  boxouts?: Maybe<BoxoutCreateManyInlineInput>;
+  byTheNumber?: Maybe<ByTheNumberCreateOneInlineInput>;
   ckuvss8c024l101xid05ye343?: Maybe<MindsetCreateManyInlineInput>;
   createdAt?: Maybe<Scalars['DateTime']>;
   intro?: Maybe<Scalars['String']>;
-  quotes?: Maybe<Array<Scalars['String']>>;
+  quotes?: Maybe<QuoteCreateManyInlineInput>;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -6468,20 +6644,10 @@ export type WhoWhatWhereWhyHowManyWhereInput = {
   OR?: Maybe<Array<WhoWhatWhereWhyHowWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: Maybe<Scalars['String']>;
-  additionalBoxouts_every?: Maybe<BoxoutWhereInput>;
-  additionalBoxouts_none?: Maybe<BoxoutWhereInput>;
-  additionalBoxouts_some?: Maybe<BoxoutWhereInput>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  additionalQuotes?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  additionalQuotes_contains_all?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  additionalQuotes_contains_none?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  additionalQuotes_contains_some?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  additionalQuotes_not?: Maybe<Array<Scalars['String']>>;
-  boxout?: Maybe<BoxoutWhereInput>;
+  boxouts_every?: Maybe<BoxoutWhereInput>;
+  boxouts_none?: Maybe<BoxoutWhereInput>;
+  boxouts_some?: Maybe<BoxoutWhereInput>;
+  byTheNumber?: Maybe<ByTheNumberWhereInput>;
   createdAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: Maybe<Scalars['DateTime']>;
@@ -6552,16 +6718,9 @@ export type WhoWhatWhereWhyHowManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   publishedBy?: Maybe<UserWhereInput>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  quotes?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  quotes_contains_all?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  quotes_contains_none?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  quotes_contains_some?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  quotes_not?: Maybe<Array<Scalars['String']>>;
+  quotes_every?: Maybe<QuoteWhereInput>;
+  quotes_none?: Maybe<QuoteWhereInput>;
+  quotes_some?: Maybe<QuoteWhereInput>;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
   /** All values that are contained in given list. */
   theType_in?: Maybe<Array<WhoWhatWhereWhyHowType>>;
@@ -6588,8 +6747,6 @@ export type WhoWhatWhereWhyHowManyWhereInput = {
 };
 
 export enum WhoWhatWhereWhyHowOrderByInput {
-  AdditionalQuotesAsc = 'additionalQuotes_ASC',
-  AdditionalQuotesDesc = 'additionalQuotes_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
@@ -6598,8 +6755,6 @@ export enum WhoWhatWhereWhyHowOrderByInput {
   IntroDesc = 'intro_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
-  QuotesAsc = 'quotes_ASC',
-  QuotesDesc = 'quotes_DESC',
   TheTypeAsc = 'theType_ASC',
   TheTypeDesc = 'theType_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -6615,14 +6770,12 @@ export enum WhoWhatWhereWhyHowType {
 }
 
 export type WhoWhatWhereWhyHowUpdateInput = {
-  additionalBody?: Maybe<Scalars['RichTextAST']>;
-  additionalBoxouts?: Maybe<BoxoutUpdateManyInlineInput>;
-  additionalQuotes?: Maybe<Array<Scalars['String']>>;
   body?: Maybe<Scalars['RichTextAST']>;
-  boxout?: Maybe<BoxoutUpdateOneInlineInput>;
+  boxouts?: Maybe<BoxoutUpdateManyInlineInput>;
+  byTheNumber?: Maybe<ByTheNumberUpdateOneInlineInput>;
   ckuvss8c024l101xid05ye343?: Maybe<MindsetUpdateManyInlineInput>;
   intro?: Maybe<Scalars['String']>;
-  quotes?: Maybe<Array<Scalars['String']>>;
+  quotes?: Maybe<QuoteUpdateManyInlineInput>;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
 };
 
@@ -6644,11 +6797,8 @@ export type WhoWhatWhereWhyHowUpdateManyInlineInput = {
 };
 
 export type WhoWhatWhereWhyHowUpdateManyInput = {
-  additionalBody?: Maybe<Scalars['RichTextAST']>;
-  additionalQuotes?: Maybe<Array<Scalars['String']>>;
   body?: Maybe<Scalars['RichTextAST']>;
   intro?: Maybe<Scalars['String']>;
-  quotes?: Maybe<Array<Scalars['String']>>;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
 };
 
@@ -6705,20 +6855,10 @@ export type WhoWhatWhereWhyHowWhereInput = {
   OR?: Maybe<Array<WhoWhatWhereWhyHowWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: Maybe<Scalars['String']>;
-  additionalBoxouts_every?: Maybe<BoxoutWhereInput>;
-  additionalBoxouts_none?: Maybe<BoxoutWhereInput>;
-  additionalBoxouts_some?: Maybe<BoxoutWhereInput>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  additionalQuotes?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  additionalQuotes_contains_all?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  additionalQuotes_contains_none?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  additionalQuotes_contains_some?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  additionalQuotes_not?: Maybe<Array<Scalars['String']>>;
-  boxout?: Maybe<BoxoutWhereInput>;
+  boxouts_every?: Maybe<BoxoutWhereInput>;
+  boxouts_none?: Maybe<BoxoutWhereInput>;
+  boxouts_some?: Maybe<BoxoutWhereInput>;
+  byTheNumber?: Maybe<ByTheNumberWhereInput>;
   createdAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: Maybe<Scalars['DateTime']>;
@@ -6789,16 +6929,9 @@ export type WhoWhatWhereWhyHowWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
   publishedBy?: Maybe<UserWhereInput>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  quotes?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  quotes_contains_all?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  quotes_contains_none?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  quotes_contains_some?: Maybe<Array<Scalars['String']>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  quotes_not?: Maybe<Array<Scalars['String']>>;
+  quotes_every?: Maybe<QuoteWhereInput>;
+  quotes_none?: Maybe<QuoteWhereInput>;
+  quotes_some?: Maybe<QuoteWhereInput>;
   theType?: Maybe<WhoWhatWhereWhyHowType>;
   /** All values that are contained in given list. */
   theType_in?: Maybe<Array<WhoWhatWhereWhyHowType>>;
@@ -6909,11 +7042,15 @@ export enum _SystemDateTimeFieldVariation {
 export type GetDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDataQuery = { __typename?: 'Query', appendices: Array<{ __typename?: 'Appendix', smallText?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, homes: Array<{ __typename?: 'Home', heroSmallCopy?: string | null | undefined, heroCopy?: string | null | undefined, universalTruthsTitle?: string | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, universalTruthsCopy?: { __typename?: 'RichText', html: string } | null | undefined }>, mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, quotes: Array<string>, body?: { __typename?: 'RichText', html: string } | null | undefined, boxout?: { __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined } | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined }>, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }> };
+export type GetDataQuery = { __typename?: 'Query', activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, appendices: Array<{ __typename?: 'Appendix', smallText?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, homes: Array<{ __typename?: 'Home', heroSmallCopy?: string | null | undefined, heroCopy?: string | null | undefined, universalTruthsTitle?: string | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, universalTruthsCopy?: { __typename?: 'RichText', html: string } | null | undefined }>, mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined, boxouts: Array<{ __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, quotes: Array<{ __typename?: 'Quote', text?: string | null | undefined, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumPercentageLeft?: number | null | undefined }>, byTheNumber?: { __typename?: 'ByTheNumber', titleAndBody: Array<string>, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumLeftPercentage?: number | null | undefined } | null | undefined }> }> };
 
 
 export const GetDataDocument = `
     query GetData {
+  activities {
+    id
+    title
+  }
   appendices {
     body {
       html
@@ -6941,32 +7078,44 @@ export const GetDataDocument = `
       id
       title
     }
-    whoWhatWhereWhyHows {
-      theType
-      intro
-      body {
-        html
-      }
-      quotes
-      boxout {
-        title
-        largeText
-        content
-        backgroundImage {
-          url
-        }
-      }
-    }
     smallImage {
       url
     }
     heroImage {
       url
     }
-  }
-  activities {
-    id
-    title
+    whoWhatWhereWhyHows {
+      theType
+      intro
+      body {
+        html
+      }
+      boxouts {
+        title
+        largeText
+        content
+        backgroundImage {
+          url
+        }
+        body {
+          html
+        }
+      }
+      quotes {
+        text
+        continuumTitle
+        continuumLeftText
+        continuumRightText
+        continuumPercentageLeft
+      }
+      byTheNumber {
+        titleAndBody
+        continuumTitle
+        continuumLeftText
+        continuumRightText
+        continuumLeftPercentage
+      }
+    }
   }
 }
     `;

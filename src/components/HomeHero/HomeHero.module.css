@@ -29,9 +29,15 @@
 
 .mindsets h1 {
   color: white;
-  font-size: var(--font-hero);
+  font-size: var(--font-hero) !important;
   margin: 0;
   text-align: left;
+  font-family: "Pakati", Impact, "Gill Sans", "Arial Black", Verdana, Tahoma,
+    sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
+  line-height: 0.9;
   /* font-size: clamp(40px, 20vw, 180px); */
   /* font-size: calc (14px + (180px – 20) * ((100vw – 768px) / (1920 – 300))); */
 }

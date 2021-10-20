@@ -1,0 +1,32 @@
+@font-face {
+  font-display: swap;
+  font-family: "National";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/National-Book.woff2") format("woff2"),
+    url("../assets/fonts/National-Book.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "National";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/National-Medium.woff2") format("woff2"),
+    url("../assets/fonts/National-Medium.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "National";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../assets/fonts/National-Bold.woff2") format("woff2"),
+    url("../assets/fonts/National-Bold.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Pakati";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../assets/fonts/PurePakati-Regular.woff2") format("woff2"),
+    url("../assets/fonts/PurePakati-Regular.woff") format("woff");
+}

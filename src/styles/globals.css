@@ -16,6 +16,8 @@
   --font-tiny: 12px;
   --font-boxout-content: 15px;
   --font-footer-badge: 14px;
+  --font-byTheNumber-title-text: 90px;
+  --font-byTheNumber-body-text: 18px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -31,33 +33,57 @@
     --font-larger: 24px;
     --font-large: 22px;
     --font-base: 18px;
-    --font-small: 16px;
+    --font-small: 17px;
     --font-badge: 14px;
     --font-smallest: 16px;
     --font-tiny: 12px;
     --font-footer-badge: 14px;
     --font-boxout-content: 14px;
+    --font-byTheNumber-title-text: 60px;
+    --font-byTheNumber-body-text: 16px;
   }
 }
-* {
-  box-sizing: border-box;
+#root {
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-family: "National", "Trebuchet MS", Helvetica, Arial, Verdana, Tahoma,
+    sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: black;
+  max-width: 3840px;
+  margin: 0 auto;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
+#root h1 {
+  font-size: var(--font-page-heading);
+  font-size: 3rem;
+  font-family: "Pakati", Impact, "Gill Sans", "Arial Black", Verdana, Tahoma,
+    sans-serif;
+  text-transform: uppercase;
+  font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
 }
 
-main {
-  min-height: calc(100vh - 312px);
+#root p,
+#root li {
+  font-size: var(--font-base);
+  line-height: 1.2;
+}
+
+#root ul {
+  background: white;
+}
+#root li {
+  /* margin: 10px 0px 0px 0px; */
+}
+#root main {
+  /* min-height: calc(100vh - 312px); */
   /* max-width: 1366px; */
   /* margin: 0 auto; */
 }
 
-#root {
-  color: black;
-}
 .gg-arrow-left {
   box-sizing: border-box;
   position: relative;
@@ -98,5 +124,164 @@ main {
   }
   100% {
     opacity: 1;
+  }
+}
+
+#root .customSelect {
+  width: 400px;
+}
+
+#root .customSelect__control {
+  color: black;
+  transition: all 0.25s ease-in-out;
+  padding: 16px 24px;
+  text-decoration: none;
+  min-width: 240px;
+  border: 1px solid #000;
+  border-radius: 9px;
+  font-size: var(--font-larger);
+  display: flex;
+  align-items: center;
+  border-color: black;
+}
+
+#root .customSelect__control--is-focused,
+#root .customSelect__control--is-open {
+  border-color: #00a8de;
+  box-shadow: none;
+}
+
+#root .customSelect__value-container {
+  padding-left: 0;
+}
+
+#customSelect__single-value {
+  max-width: 50%;
+  overflow: hidden;
+}
+#root .customSelect__control--menu-is-open {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+#root .customSelect__placeholder {
+  font-size: var(--font-larger);
+  color: black;
+  margin: 0;
+}
+#root .customSelect__menu-list {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 1px solid black;
+  z-index: 2;
+}
+
+#root .customSelect__indicator-separator {
+  background-color: black;
+}
+
+#root .customSelect__indicators svg path {
+  fill: black;
+}
+
+#root .customSelect__menu {
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: 2;
+}
+
+#root .customSelect__input-container {
+  color: black;
+}
+#root .customSelect__option {
+  display: block;
+  padding: 8px 24px;
+  transition: all 0.25s ease-in-out;
+  font-size: var(--font-larger);
+  color: black;
+  border-bottom: 1px solid black;
+  background: white;
+  font-size: var(--font-smallest);
+  text-decoration: none;
+  z-index: 2;
+}
+
+#root .customSelect__option--is-focused {
+  /* border-color: #00a8de; */
+  background: #00a8de;
+  cursor: pointer;
+}
+
+.customSelect > a:hover path,
+.customSelect > a:focus path {
+  fill: #00a8de;
+}
+
+.customSelect ul li a:hover,
+.customSelect ul li a:focus {
+  color: white;
+  background: black;
+}
+
+.customSelect a svg {
+  margin-left: 16px;
+  height: 13px;
+}
+
+.customSelect ul {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  list-style: none;
+  border: 1px solid black;
+  border-top: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.customSelect.open ul {
+  max-height: 400px;
+  opacity: 1;
+  overflow: auto;
+}
+
+.customSelect ul li {
+  padding: 0;
+  margin: 0;
+}
+
+.customSelect ul li a {
+  display: block;
+  padding: 8px 24px;
+  transition: all 0.25s ease-in-out;
+  font-size: var(--font-larger);
+  color: black;
+  border-bottom: 1px solid black;
+  background: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.customSelect ul li a:hover,
+.customSelect ul li a:focus,
+.customSelect ul li a:active {
+  background: #000;
+  color: white;
+  cursor: pointer;
+}
+
+.customSelect ul li:last-child a {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 1023px) {
+  #root .customSelect {
+    width: 100%;
   }
 }

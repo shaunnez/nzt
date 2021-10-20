@@ -10,6 +10,7 @@
   color: black;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .overviewLink span {
@@ -17,14 +18,15 @@
   margin-right: 4px;
 }
 
-.overviewlink:hover,
+.overviewLink:hover,
 .overviewLink:active,
 .overviewLink:focus {
   color: #00a8de;
+  text-decoration: underline;
 }
 
 .header {
-  max-width: 1156px;
+  max-width: 1188px;
   margin: 0 auto;
   text-align: left;
   padding: 0px 16px;
@@ -37,7 +39,7 @@
 }
 
 .content {
-  max-width: 1156px;
+  max-width: 1188px;
   margin: 0 auto;
   text-align: left;
   padding: 0px 16px;
@@ -132,54 +134,29 @@
 .accordionContent {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.35s ease-in-out;
   margin-bottom: 32px;
-  padding: 0px 44px;
+  /* padding: 0px 44px; */
   position: relative;
 }
 
 .accordionContent.open {
-  max-height: 200vh;
+  max-height: 400vh;
   opacity: 1;
+  transition: all 0.75s ease-in-out;
 }
 
 .accordionContent p:first-child {
   margin-top: 0;
 }
 
-.accordionImageBodyWrapper {
-  display: flex;
-  justify-content: space-between;
+.boxouts {
   position: relative;
-}
-
-.accordionImageBodyWrapper.withBoxout + div {
-  margin-top: 240px;
-}
-
-.accordionImage {
-  max-width: 45%;
-  position: relative;
-  height: 353px;
+  margin-bottom: 32px;
 }
 
 .accordionBody {
   position: relative;
-}
-
-.accordionBody.withBoxout {
-  width: 35%;
-  justify-self: flex-end;
-}
-
-.accordionBody.withBoxout:before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 0;
-  height: 100%;
-  background: #00a8de;
-  width: 2px;
 }
 
 .accordionBody > *:last-child {
@@ -227,31 +204,6 @@
   text-decoration: none;
 }
 
-.quotesAndGraphic {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  margin-top: 32px;
-}
-
-.quotes {
-  font-size: var(--font-quote);
-  font-weight: 800;
-  line-height: 1.2;
-  /* margin-left: 60px; */
-}
-
-.quote {
-  /* width: 50%; */
-}
-
-.graphic {
-  margin-left: 70px;
-  width: 301px;
-  flex-shrink: 0;
-}
-
 @media screen and (max-width: 1023px) {
   .accordionHeadingWrapper {
     padding: 0px;
@@ -272,16 +224,5 @@
   .accordionContent {
     padding-left: 0;
     padding-right: 0;
-  }
-  .accordionImageBodyWrapper {
-    display: block !important;
-    width: 100% !important;
-  }
-  .accordionBody {
-    width: 100% !important;
-    margin-top: 32px;
-  }
-  .accordionImageBodyWrapper + div {
-    margin-top: 32px !important;
   }
 }

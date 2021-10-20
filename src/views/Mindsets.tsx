@@ -11,13 +11,15 @@ import { ReactComponent as HowIcon } from "assets/how.svg";
 import { ReactComponent as WhyIcon } from "assets/why.svg";
 import { ReactComponent as WhereIcon } from "assets/where.svg";
 import { ReactComponent as ChevronIcon } from "assets/chevron.svg";
-import { ReactComponent as ProgressGraphic } from "assets/progress.svg";
 import { Mindset } from "generated";
+import Continuum from "components/Continuum/Continuum";
+import BoxoutComponent from "components/Boxout/Boxout";
 import Footer from "components/Footer/Footer";
 import Layout from "layouts";
 
 import styles from "./Mindsets.module.css";
-import BoxoutComponent from "components/Boxout/Boxout";
+import Quote from "components/Quote/Quote";
+import ByTheNumber from "components/ByTheNumber/ByTheNumber";
 
 const Mindsets = () => {
   const [accordionItemOpen, setAccordionItemOpen] = React.useState("");
@@ -29,7 +31,6 @@ const Mindsets = () => {
     <Layout>
       {(data) => {
         const mindset = data.mindset as Mindset;
-        console.log(mindset);
         return (
           <div className={styles.appendix}>
             <header className={styles.header}>
@@ -44,13 +45,16 @@ const Mindsets = () => {
                 <div className={styles.subhead}>At a glance:</div>
                 <div className={styles.intro}>{mindset.intro}</div>
               </div>
-              <LazyHero
-                imageSrc={mindset.heroImage?.url}
-                minHeight={"817px"}
-                opacity={0.1}
-                isCentered={false}
-              />
-
+              <div style={{ height: "817px", overflow: "hidden" }}>
+                <LazyHero
+                  imageSrc={mindset.heroImage?.url}
+                  minHeight={"1117px"}
+                  opacity={0.1}
+                  isCentered={false}
+                  parallaxOffset={50}
+                  transitionDuration={250}
+                />
+              </div>
               <div className={styles.content}>
                 <div className={styles.accordion}>
                   {mindset.whoWhatWhereWhyHows.map((item) => (
@@ -139,51 +143,29 @@ export const AccordionItem = ({
           accordionItemOpen === item.theType ? styles.open : styles.closed
         }`}
       >
-        <div
-          className={`${styles.accordionImageBodyWrapper} ${
-            item?.boxout ? styles.withBoxout : styles.noBoxout
-          }`}
-        >
-          {item.boxout && <BoxoutComponent boxout={item.boxout} />}
-          <div
-            className={`${styles.accordionBody} ${
-              item?.boxout ? styles.withBoxout : styles.noBoxout
-            }`}
-            dangerouslySetInnerHTML={{ __html: item.body?.html }}
-          />
+        <div className={`${styles.boxouts}`}>
+          {item.boxouts.map((x) => (
+            <BoxoutComponent boxout={x} />
+          ))}
         </div>
 
-        {(item.quotes?.length > 0 || item.continuum) && (
-          <div className={styles.quotesAndGraphic}>
-            {item.quotes.length > 0 && (
-              <div className={styles.quotes}>
-                {item.quotes.map((x, i) => (
-                  <div
-                    className={styles.quote}
-                    key={`${item.theType}-${i}-quote`}
-                  >
-                    {x}
-                  </div>
-                ))}
-              </div>
-            )}
-            {item.continuum && (
-              <div className={styles.continuum}>
-                <div className={styles.continuumTitle}>
-                  {item.continuum?.title}
-                </div>
-                <div className={styles.continuumContent}>
-                  <span> {item.continuum?.leftText}</span>
-                  <div className={styles.continuumGraphic}>
-                    <i style={{ left: item.continuum.perentageLeft + "%" }} />
-                    <ProgressGraphic />
-                  </div>
-                  <span> {item.continuum?.rightText}</span>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+        <div
+          className={`${styles.accordionBody}`}
+          dangerouslySetInnerHTML={{ __html: item.body?.html }}
+        />
+
+        {item.quotes.map((x, i) => (
+          <Quote
+            text={x.text}
+            continuumPercentageLeft={x.continuumPercentageLeft}
+            continuumLeftText={x.continuumLeftText}
+            continuumRightText={x.continuumRightText}
+            continuumTitle={x.continuumTitle}
+            key={`${item.theType}-${i}-quote`}
+          />
+        ))}
+
+        {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
       </div>
       <div
         className={`${styles.accordionLink} ${

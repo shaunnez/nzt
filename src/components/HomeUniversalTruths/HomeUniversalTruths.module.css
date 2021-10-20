@@ -1,5 +1,5 @@
 .universalTruths {
-  max-width: 1156px;
+  max-width: 1188px;
   /* max-width: 942px; */
   margin: 0 auto;
   padding: 24px 16px;
@@ -31,7 +31,7 @@
   /* line-height: 30px; */
   font-weight: 800;
   position: relative;
-  max-width: 1156px;
+  max-width: 1188px;
   padding: 0px 16px;
 }
 
@@ -42,12 +42,13 @@
   font-weight: 400;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 
 .content.open {
-  max-height: 200vh;
+  max-height: 300vh;
   opacity: 1;
+  transition: all 0.75s ease-in-out;
 }
 
 h4 {

@@ -1,0 +1,50 @@
+.quote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-top: 90px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.quote + .quote {
+  margin-top: 30px;
+}
+
+.quoteWithContinuum {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+}
+
+.quoteWithContinuum .quoteText {
+  width: calc(50% - 16px);
+  margin-right: 16px;
+}
+.quoteText {
+  font-size: var(--font-quote);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 1023px) {
+  .quoteWithContinuum {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .quoteWithContinuum .quoteText + div {
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+  .quoteWithContinuum .quoteText {
+    width: 100%;
+    margin-right: 0px;
+    text-align: center;
+  }
+}

@@ -1,5 +1,5 @@
 .homeMindsets {
-  max-width: 1156px;
+  max-width: 1188px;
   margin: 0 auto;
   text-align: left;
   min-height: 400px;
@@ -16,112 +16,6 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-
-.customSelect {
-  position: relative;
-  display: flex;
-  align-items: center;
-  transition: all 0.25s ease-in-out;
-  z-index: 2;
-}
-
-.customSelect.open a {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.customSelect > a {
-  color: black;
-  transition: all 0.25s ease-in-out;
-  padding: 16px 24px;
-  text-decoration: none;
-  min-width: 240px;
-  border: 1px solid #000;
-  border-radius: 9px;
-  font-size: var(--font-larger);
-  display: flex;
-  align-items: center;
-}
-
-.customSelect > a path {
-  transition: 0.25s ease-in-out;
-}
-
-.customSelect > a:hover,
-.customSelect > a:focus {
-  /* color: white; */
-  /* background: black; */
-  /* border: blue; */
-  border-color: #00a8de;
-  color: #00a8de;
-}
-
-.customSelect > a:hover path,
-.customSelect > a:focus path {
-  fill: #00a8de;
-}
-
-.customSelect ul li a:hover,
-.customSelect ul li a:focus {
-  color: white;
-  background: black;
-}
-
-.customSelect a svg {
-  margin-left: 16px;
-  height: 13px;
-}
-
-.customSelect ul {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.25s ease-in-out;
-  position: absolute;
-  left: 0px;
-  top: 100%;
-  list-style: none;
-  border: 1px solid black;
-  border-top: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  margin: 0;
-}
-
-.customSelect.open ul {
-  max-height: 400px;
-  opacity: 1;
-  overflow: auto;
-}
-
-.customSelect ul li {
-  padding: 0;
-  margin: 0;
-}
-
-.customSelect ul li a {
-  display: block;
-  padding: 8px 24px;
-  transition: all 0.25s ease-in-out;
-  font-size: var(--font-larger);
-  color: black;
-  border-bottom: 1px solid black;
-  background: white;
-  font-size: 16px;
-}
-
-.customSelect ul li a:hover,
-.customSelect ul li a:focus,
-.customSelect ul li a:active {
-  background: #000;
-  color: white;
-  cursor: pointer;
-}
-
-.customSelect ul li:last-child a {
-  border-bottom: none;
 }
 
 .mindsets {
