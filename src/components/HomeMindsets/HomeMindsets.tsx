@@ -59,7 +59,6 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
             setActivity(newValue?.value);
           }}
           defaultValue={activity ? { value: activity, label: activity } : null}
-          defaultMenuIsOpen
         />
       </div>
 
