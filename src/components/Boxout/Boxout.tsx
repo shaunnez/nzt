@@ -18,7 +18,9 @@ const BoxoutComponent = ({ boxout }: BoxoutProps) => {
           style={{
             backgroundImage: `url(${
               boxout.backgroundImage?.url ||
-              "http://via.placeholder.com/1024x439"
+              `http://via.placeholder.com/${
+                boxout.body?.html ? "554x439" : "1024x439"
+              }`
             })`,
           }}
         />
