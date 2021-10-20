@@ -31,15 +31,15 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
     return filtered;
   };
 
-  useEffect(() => {
-    if (activity) {
-      setTimeout(() => {
-        document
-          .getElementById("homeMindsets")
-          .scrollIntoView({ behavior: "smooth" });
-      }, 500);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (activity) {
+  //     setTimeout(() => {
+  //       document
+  //         .getElementById("homeMindsets")
+  //         .scrollIntoView({ behavior: "smooth" });
+  //     }, 500);
+  //   }
+  // }, []);
 
   return (
     <div id="homeMindsets" className={styles.homeMindsets}>
