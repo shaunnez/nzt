@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   const { id } = useParams();
   const { data, isFetching, isRefetching } = useGetDataQuery();
   if (isFetching && !isRefetching) {
-    return <div>LOADING</div>;
+    return <div></div>;
   }
   let mindset = null;
   // @ts-ignore
