@@ -1,33 +1,33 @@
 {
   "files": {
-    "main.css": "/nzt/static/css/main.5eff8f95.chunk.css",
-    "main.js": "/nzt/static/js/main.f63b1299.chunk.js",
-    "runtime-main.js": "/nzt/static/js/runtime-main.5d4b8dc1.js",
-    "static/js/2.0900c782.chunk.js": "/nzt/static/js/2.0900c782.chunk.js",
-    "static/js/3.8e819e44.chunk.js": "/nzt/static/js/3.8e819e44.chunk.js",
+    "main.css": "/nzt/static/css/main.f9e7a7b7.chunk.css",
+    "main.js": "/nzt/static/js/main.471b25f3.chunk.js",
+    "runtime-main.js": "/nzt/static/js/runtime-main.1e6a143a.js",
+    "static/js/2.9bb50053.chunk.js": "/nzt/static/js/2.9bb50053.chunk.js",
+    "static/js/3.a8e2fbbd.chunk.js": "/nzt/static/js/3.a8e2fbbd.chunk.js",
     "index.html": "/nzt/index.html",
-    "static/js/2.0900c782.chunk.js.LICENSE.txt": "/nzt/static/js/2.0900c782.chunk.js.LICENSE.txt",
+    "static/js/2.9bb50053.chunk.js.LICENSE.txt": "/nzt/static/js/2.9bb50053.chunk.js.LICENSE.txt",
     "static/media/Dom Graph 1.cfa7bb1a.jpg": "/nzt/static/media/Dom Graph 1.cfa7bb1a.jpg",
     "static/media/Dom Graph 2.bd8cdf75.jpg": "/nzt/static/media/Dom Graph 2.bd8cdf75.jpg",
     "static/media/Dom Graph 3.bdf26681.jpg": "/nzt/static/media/Dom Graph 3.bdf26681.jpg",
     "static/media/Intl Graph 1.03a3a3c3.jpg": "/nzt/static/media/Intl Graph 1.03a3a3c3.jpg",
     "static/media/Intl Graph 2.8a2ff610.jpg": "/nzt/static/media/Intl Graph 2.8a2ff610.jpg",
     "static/media/Intl Graph 3.d5832330.jpg": "/nzt/static/media/Intl Graph 3.d5832330.jpg",
+    "static/media/font.css": "/nzt/static/media/PurePakati-Regular.d2c46229.woff",
     "static/media/chevron.085a67ad.svg": "/nzt/static/media/chevron.085a67ad.svg",
     "static/media/domestic.ae83ec44.svg": "/nzt/static/media/domestic.ae83ec44.svg",
     "static/media/how.446d2f9c.svg": "/nzt/static/media/how.446d2f9c.svg",
     "static/media/international.e9b174db.svg": "/nzt/static/media/international.e9b174db.svg",
     "static/media/progress.e5aa0f32.svg": "/nzt/static/media/progress.e5aa0f32.svg",
-    "static/media/select_arrow.a3c0499b.svg": "/nzt/static/media/select_arrow.a3c0499b.svg",
     "static/media/what.78f30954.svg": "/nzt/static/media/what.78f30954.svg",
     "static/media/where.50b7718b.svg": "/nzt/static/media/where.50b7718b.svg",
     "static/media/who.f8dea066.svg": "/nzt/static/media/who.f8dea066.svg",
     "static/media/why.4da0a700.svg": "/nzt/static/media/why.4da0a700.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5d4b8dc1.js",
-    "static/js/2.0900c782.chunk.js",
-    "static/css/main.5eff8f95.chunk.css",
-    "static/js/main.f63b1299.chunk.js"
+    "static/js/runtime-main.1e6a143a.js",
+    "static/js/2.9bb50053.chunk.js",
+    "static/css/main.f9e7a7b7.chunk.css",
+    "static/js/main.471b25f3.chunk.js"
   ]
 }
