@@ -37,7 +37,7 @@ const Mindsets = () => {
               <Link to={`/`} className={styles.overviewLink}>
                 <span className="gg-arrow-left" /> Overview
               </Link>
-              <h1 className="title page-title">Mindsets - {friendly}</h1>
+              <h1 className="title page-title">{friendly}</h1>
             </header>
 
             <main>
@@ -167,25 +167,22 @@ export const AccordionItem = ({
 
         {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
       </div>
-      <div
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          if (accordionItemOpen === item.theType) {
+            setAccordionItemOpen("");
+          } else {
+            setAccordionItemOpen(item.theType);
+          }
+        }}
         className={`${styles.accordionLink} ${
           accordionItemOpen === item.theType ? styles.open : styles.closed
         }`}
       >
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            if (accordionItemOpen === item.theType) {
-              setAccordionItemOpen("");
-            } else {
-              setAccordionItemOpen(item.theType);
-            }
-          }}
-        >
-          <ChevronIcon />
-        </a>
-      </div>
+        <ChevronIcon />
+      </a>
     </div>
   );
 };

@@ -9,7 +9,6 @@
   position: relative;
 }
 
-.universalTruths:before,
 .universalTruths:after {
   content: "";
   position: absolute;
@@ -37,12 +36,17 @@
 
 .content {
   max-width: 836px;
+  padding-left: 20px;
   margin: 0 auto;
   position: relative;
   font-weight: 400;
   max-height: 0;
   overflow: hidden;
   transition: all 0.35s ease-in-out;
+}
+
+.content > div {
+  margin-top: 70px;
 }
 
 .content.open {
@@ -55,24 +59,32 @@ h4 {
   font-size: var(--font-larger);
   line-height: 30px;
   font-weight: 800;
-  margin-top: 70px;
+  margin-top: 0;
 }
 
 .content:before {
   content: "";
   border-left: 2.625px solid #00a8de;
   position: absolute;
-  top: 0;
+  top: 70px;
   bottom: 0;
-  left: -20px;
+  left: 0;
 }
 
+.content > div h4 + p + p,
+.content > div h4 + p + p + p {
+  margin-top: 20px;
+}
 .content p {
-  /* font-size: 19px; */
-  /* line-height: 22px; */
-  font-size: var(--font-small);
+  font-size: var(--font-small) !important;
+  line-height: 1.2 !important;
+  margin: 0px;
 }
 
+.content p strong {
+  display: block;
+  margin-top: 20px;
+}
 .content .paragraphHeader + p {
   margin: 0;
 }
@@ -84,21 +96,25 @@ h4 {
 }
 
 .universalTruthsArrow {
-  transition: 0.25s ease-in-out;
+  display: block;
+  text-align: center;
   margin-top: 60px;
+}
+.universalTruthsArrow svg {
+  transition: 0.25s ease-in-out;
   text-align: center;
   transform: rotate(180deg);
 }
 
-.universalTruthsArrow.open {
+.universalTruthsArrow.open svg {
   transform: rotate(0deg);
 }
 
-.universalTruths a path {
+.universalTruths path {
   transition: 0.25s ease-in-out;
 }
-.universalTruths a:hover path,
-.universalTruths a:focus path,
-.universalTruths a:active path {
+.universalTruths:hover path,
+.universalTruths:focus path,
+.universalTruths:active path {
   stroke: #00a8de;
 }

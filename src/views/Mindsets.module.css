@@ -110,24 +110,25 @@
   width: 100%;
   height: 50px;
   border-bottom: 2px solid black;
+  display: block;
 }
 
-.accordionLink a {
+.accordionLink svg {
   transition: 0.25s ease-in-out;
   transform: rotate(180deg);
   display: inline-block;
 }
 
-.accordionLink.open a {
+.accordionLink.open svg {
   transform: rotate(0deg);
 }
 
-.accordionLink a path {
+.accordionLink path {
   transition: 0.25s ease-in-out;
 }
-.accordionLink a:hover path,
-.accordionLink a:focus path,
-.accordionLink a:active path {
+.accordionLink:hover path,
+.accordionLink:focus path,
+.accordionLink:active path {
   stroke: #00a8de;
 }
 

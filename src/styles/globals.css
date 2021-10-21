@@ -1,7 +1,7 @@
 :root {
   --font-hero: 180px;
   --font-boxout-large-text: 80px;
-  --font-page-heading: 50px;
+  --font-page-heading: 86px;
   --font-page-subheading: 30px;
   --font-accordion-heading: 50px;
   --font-accordion-heading-small: 36px;
@@ -24,7 +24,7 @@
   :root {
     --font-hero: 80px;
     --font-boxout-large-text: 50px;
-    --font-page-heading: 30px;
+    --font-page-heading: 66px;
     --font-page-subheading: 20px;
     --font-accordion-heading: 30px;
     --font-accordion-heading-small: 20px;
@@ -59,11 +59,12 @@
 
 #root h1 {
   font-size: var(--font-page-heading);
-  font-size: 3rem;
+  /* font-size: 3rem; */
   font-family: "Pakati", Impact, "Gill Sans", "Arial Black", Verdana, Tahoma,
     sans-serif;
   text-transform: uppercase;
   font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
+  line-height: 1;
 }
 
 #root p,
