@@ -1,18 +1,136 @@
 import { Link } from "react-router-dom";
+import Highcharts from "highcharts/highcharts";
+import HighchartsReact from "highcharts-react-official";
+
 import Footer from "components/Footer/Footer";
 import Layout from "layouts";
 
 import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
 import { ReactComponent as InternationalIcon } from "assets/international.svg";
-import DomGraph1 from "assets/Dom Graph 1.jpg";
-import DomGraph2 from "assets/Dom Graph 2.jpg";
-import DomGraph3 from "assets/Dom Graph 3.jpg";
-import IntlGraph1 from "assets/Intl Graph 1.jpg";
-import IntlGraph2 from "assets/Intl Graph 2.jpg";
-import IntlGraph3 from "assets/Intl Graph 3.jpg";
-// import data from "utilities/data";
+
+import getDataByTypeAndIndex from "utilities/appendixData";
 import styles from "./Appendix.module.css";
 import { useState } from "react";
+
+const chartOptions = {
+  title: {
+    text: "",
+  },
+  credits: {
+    enabled: false,
+  },
+  chart: {
+    type: "column",
+    showAxis: true,
+    zoomType: "x",
+    height: 500,
+    // margin: [0, 0, 0, 0],
+    // spacingTop: 0,
+    // marginTop: 0,
+    style: {
+      fontFamily:
+        '"National", "Trebuchet MS", Helvetica, Arial, Verdana, Tahoma, sans-serif;',
+      color: "#000",
+    },
+  },
+  colors: [],
+  plotOptions: {
+    column: {
+      stacking: "percentage",
+      borderWidth: 0,
+      borderColor: "#000",
+      dataLabels: {
+        enabled: true,
+        format: "{y}%",
+        style: {
+          color: "black",
+          textOutline: "none",
+          fontSize: "13px",
+        },
+      },
+    },
+  },
+  caption: {
+    text: ``,
+    useHTML: true,
+    align: "center",
+    style: {
+      color: "#000",
+    },
+  },
+  xAxis: [
+    {
+      lineColor: "#aaa",
+      lineWidth: 2,
+      categories: [],
+      labels: {
+        style: {
+          fontWeight: 400,
+          fontSize: "13px",
+          color: "#000",
+        },
+      },
+    },
+    {
+      visible: false,
+      lineWidth: 0,
+      linkedTo: 0,
+      offset: 35,
+      categories: [],
+      labels: {
+        style: {
+          fontWeight: 400,
+          fontSize: "13px",
+          color: "#000",
+        },
+      },
+    },
+    {
+      visible: false,
+      lineWidth: 0,
+      linkedTo: 0,
+      offset: 50,
+      categories: [],
+      labels: {
+        style: {
+          fontWeight: 400,
+          fontSize: "13px",
+          color: "#000",
+        },
+      },
+    },
+  ],
+  yAxis: {
+    visible: false,
+  },
+  tooltip: {
+    headerFormat: "",
+    pointFormat:
+      '<span style="color:black">{series.name}</span>: <b>{point.y}%</b><br/>',
+    shared: true,
+    style: {
+      fontSize: "14px",
+      color: "black",
+    },
+  },
+  legend: {
+    align: "left",
+    verticalAlign: "middle",
+    layout: "vertical",
+    itemMarginBottom: 33,
+    alignColumns: true,
+    useHTML: true,
+    width: 180,
+    itemStyle: {
+      color: "#000",
+      fontSize: "15px",
+      fontWeight: 400,
+      textOverflow: null,
+    },
+    // reversed: true,
+  },
+  series: [],
+};
 
 const Appendix = () => {
   return (
@@ -24,7 +142,6 @@ const Appendix = () => {
               <Link to={`/`} className={styles.overviewLink}>
                 <span className="gg-arrow-left" /> Overview
               </Link>
-              <h1 className="title page-title">Appendix</h1>
             </header>
 
             <main className={styles.main}>
@@ -56,35 +173,27 @@ export const DomesticInternationalWidget = () => {
   const [selectedInternationalFilter, setSelectedInternationalFilter] =
     useState(0);
 
-  const domesticGraphic =
-    selectedDomesticFilter === 0
-      ? DomGraph1
-      : selectedDomesticFilter === 1
-      ? DomGraph2
-      : DomGraph3;
-  const internationalGraphic =
-    selectedInternationalFilter === 0
-      ? IntlGraph1
-      : selectedInternationalFilter === 1
-      ? IntlGraph2
-      : IntlGraph3;
+  const actualChartOptions = {
+    ...chartOptions,
+  };
 
-  const domesticExtraContent =
-    selectedDomesticFilter === 0
-      ? "China tends to have the most unique distribution compared to other markets. Mindset 1 is also largely represented in Japan."
-      : selectedDomesticFilter === 1
-      ? `SINKS: Under age 60, Single, Divorced, or Widowed, No Children in Household<br/>
-      DINKS: Under age 60, Engaged, Married, or Living with Partner, 2+ people in Household, No Children in Household<br/>
-      Households With Children: Under age 60, Children in Household<br/>
-      Empty Nesters: Ages 55+, No Children in Household`
-      : "";
-  const internationalExtraContent =
-    selectedInternationalFilter === 0
-      ? `SINKS: Under age 60, Single, Divorced, or Widowed, No Children in Household<br/>
-  DINKS: Under age 60, Engaged, Married, or Living with Partner, 2+ people in Household, No Children in Household<br/>
-  Households With Children: Under age 60, Children in Household<br/>
-  Empty Nesters: Ages 55+, No Children in Household`
-      : "";
+  const additionalChartData = getDataByTypeAndIndex(
+    selectedTab,
+    selectedTab === 0 ? selectedInternationalFilter : selectedDomesticFilter
+  );
+  actualChartOptions.series = additionalChartData.series;
+  actualChartOptions.xAxis[0].categories = additionalChartData.categories;
+  if (additionalChartData.categories2?.length > 0) {
+    actualChartOptions.xAxis[1].visible = true;
+    actualChartOptions.xAxis[1].categories = additionalChartData.categories2;
+  }
+  if (additionalChartData.categories3?.length > 0) {
+    actualChartOptions.xAxis[2].visible = true;
+    actualChartOptions.xAxis[2].categories = additionalChartData.categories3;
+  }
+  actualChartOptions.caption.text = additionalChartData.caption;
+  actualChartOptions.colors = additionalChartData.colors;
+
   return (
     <div className={styles.domesticInternational}>
       <div className={styles.domesticInternationalHeader}>
@@ -124,21 +233,11 @@ export const DomesticInternationalWidget = () => {
             </button>
           </div>
           <div className={styles.domesticInternationalImages}>
-            <img
-              key={selectedDomesticFilter}
-              src={domesticGraphic}
-              alt="domestic mindset"
-              className="fade-in"
+            <HighchartsReact
+              immutable={true}
+              highcharts={Highcharts}
+              options={actualChartOptions}
             />
-            <div
-              className={`${styles.domesticInternationalExtraContent} fade-in`}
-            >
-              <p>
-                <small
-                  dangerouslySetInnerHTML={{ __html: domesticExtraContent }}
-                />
-              </p>
-            </div>
           </div>
         </div>
       ) : (
@@ -170,23 +269,11 @@ export const DomesticInternationalWidget = () => {
             </button>
           </div>
           <div className={styles.domesticInternationalImages}>
-            <img
-              key={selectedInternationalFilter}
-              src={internationalGraphic}
-              alt="international mindset"
-              className="fade-in"
+            <HighchartsReact
+              immutable={true}
+              highcharts={Highcharts}
+              options={actualChartOptions}
             />
-            <div
-              className={`${styles.domesticInternationalExtraContent} fade-in`}
-            >
-              <p>
-                <small
-                  dangerouslySetInnerHTML={{
-                    __html: internationalExtraContent,
-                  }}
-                />
-              </p>
-            </div>
           </div>
         </div>
       )}

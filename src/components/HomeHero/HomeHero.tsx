@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import pureNzImg from "assets/100-pure-new-zealand.png";
 import LazyHero from "react-lazy-hero";
-
 import styles from "./HomeHero.module.css";
-import data from "utilities/data";
 
 const HomeHero = ({ home }: any) => {
   return (

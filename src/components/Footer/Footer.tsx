@@ -38,14 +38,14 @@ const MindsetBadges = ({ mindsets, type }) => {
     <div className={styles.mindsetBadges}>
       {mindsets
         .filter((item: any) => item.theType === type)
-        .map((item: any) => {
+        .map((item: any, i: number) => {
           const link = `/mindsets/${item.head
             .replace(/ /g, "-")
             .toLowerCase()}`;
           return (
             <Link
               to={link}
-              key={link}
+              key={`${link}-${i}`}
               className={`${styles.mindsetBadge} ${
                 window.location.pathname.indexOf(link) > -1
                   ? styles.active

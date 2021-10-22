@@ -55,6 +55,7 @@
 .intro {
   font-size: var(--font-page-subheading);
   font-weight: 600;
+  line-height: 1.14;
 }
 
 .accordion {
@@ -73,6 +74,7 @@
   padding-right: 44px;
   align-items: flex-start;
   flex-wrap: wrap;
+  justify-content: space-between;
   /* border-bottom: 2px solid black; */
 }
 
@@ -90,7 +92,8 @@
 .accordionHeading {
   width: calc(50% - 40px);
   font-size: var(--font-accordion-heading-small);
-  line-height: var(--font-accordion-heading-small);
+  /* line-height: var(--font-accordion-heading-small); */
+  line-height: 1;
   font-weight: 400;
 }
 
@@ -101,7 +104,7 @@
 .accordionHeadingContent {
   width: 40%;
   font-size: var(--font-base);
-  line-height: var(--font-large);
+  line-height: 1.14;
   font-weight: 800;
 }
 
@@ -109,6 +112,8 @@
   text-align: center;
   width: 100%;
   height: 50px;
+  border: none;
+  background: white;
   border-bottom: 2px solid black;
   display: block;
 }

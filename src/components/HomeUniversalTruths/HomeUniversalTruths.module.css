@@ -32,6 +32,7 @@
   position: relative;
   max-width: 1188px;
   padding: 0px 16px;
+  line-height: 1.14;
 }
 
 .content {
@@ -99,6 +100,9 @@ h4 {
   display: block;
   text-align: center;
   margin-top: 60px;
+  border: none;
+  background: white;
+  width: 100%;
 }
 .universalTruthsArrow svg {
   transition: 0.25s ease-in-out;

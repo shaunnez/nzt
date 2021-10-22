@@ -11,15 +11,16 @@ import { ReactComponent as HowIcon } from "assets/how.svg";
 import { ReactComponent as WhyIcon } from "assets/why.svg";
 import { ReactComponent as WhereIcon } from "assets/where.svg";
 import { ReactComponent as ChevronIcon } from "assets/chevron.svg";
+
 import { Mindset } from "generated";
-import Continuum from "components/Continuum/Continuum";
+
 import BoxoutComponent from "components/Boxout/Boxout";
 import Footer from "components/Footer/Footer";
+import Quote from "components/Quote/Quote";
+import ByTheNumber from "components/ByTheNumber/ByTheNumber";
 import Layout from "layouts";
 
 import styles from "./Mindsets.module.css";
-import Quote from "components/Quote/Quote";
-import ByTheNumber from "components/ByTheNumber/ByTheNumber";
 
 const Mindsets = () => {
   const [accordionItemOpen, setAccordionItemOpen] = React.useState("");
@@ -57,11 +58,11 @@ const Mindsets = () => {
               </div>
               <div className={styles.content}>
                 <div className={styles.accordion}>
-                  {mindset.whoWhatWhereWhyHows.map((item) => (
+                  {mindset.whoWhatWhereWhyHows.map((item, i) => (
                     <AccordionItem
                       mindset={mindset}
                       item={item}
-                      key={item.id}
+                      key={`accordion-${i}`}
                       accordionItemOpen={accordionItemOpen}
                       setAccordionItemOpen={setAccordionItemOpen}
                     />
@@ -75,7 +76,7 @@ const Mindsets = () => {
                     </div>
                     <div className={styles.activities}>
                       {mindset.activities.map((x) => (
-                        <div className={styles.activity}>
+                        <div className={styles.activity} key={x.title}>
                           <Link to={`/?activity=${x.title}#homeMindsets`}>
                             {x.title}
                           </Link>
@@ -144,8 +145,8 @@ export const AccordionItem = ({
         }`}
       >
         <div className={`${styles.boxouts}`}>
-          {item.boxouts.map((x) => (
-            <BoxoutComponent boxout={x} />
+          {item.boxouts.map((x, i) => (
+            <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
           ))}
         </div>
 
@@ -167,8 +168,8 @@ export const AccordionItem = ({
 
         {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
       </div>
-      <a
-        href="#"
+      <button
+        type="button"
         onClick={(e) => {
           e.preventDefault();
           if (accordionItemOpen === item.theType) {
@@ -182,7 +183,7 @@ export const AccordionItem = ({
         }`}
       >
         <ChevronIcon />
-      </a>
+      </button>
     </div>
   );
 };

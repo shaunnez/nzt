@@ -19,10 +19,9 @@ const HomeUniversalTruths = ({ home }: any) => {
           dangerouslySetInnerHTML={{ __html: home.universalTruthsCopy.html }}
         />
       </div>
-      <a
-        href="#"
+      <button
+        type="button"
         onClick={(e) => {
-          e.preventDefault();
           setAccordionOpen(!accordionOpen);
         }}
         className={`${styles.universalTruthsArrow} ${
@@ -30,7 +29,7 @@ const HomeUniversalTruths = ({ home }: any) => {
         } `}
       >
         <ChevronIcon />
-      </a>
+      </button>
     </div>
   );
 };

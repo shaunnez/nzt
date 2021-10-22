@@ -1,13 +1,15 @@
-import { useGetDataQuery } from "generated";
+// import { useGetDataQuery } from "generated";
 import { useParams } from "react-router";
+
+import data from "utilities/data";
 
 const Layout = ({ children }) => {
   // @ts-ignore
   const { id } = useParams();
-  const { data, isFetching, isRefetching } = useGetDataQuery();
-  if (isFetching && !isRefetching) {
-    return <div></div>;
-  }
+  // const { data, isFetching, isRefetching } = useGetDataQuery();
+  // if (isFetching && !isRefetching) {
+  //   return <div></div>;
+  // }
   let mindset = null;
   // @ts-ignore
   mindset = data.mindsets.find((mindset: any) => {

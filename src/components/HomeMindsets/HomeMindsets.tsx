@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Activity, Mindset } from "generated";
 import Select from "react-select";
 
-import { ReactComponent as SelectArrow } from "assets/select_arrow.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
 import { ReactComponent as InternationalIcon } from "assets/international.svg";
 
@@ -14,7 +15,6 @@ interface HomeMindsetsInterface {
   mindsets: Mindset[];
 }
 const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
-  const [openSelect, setOpenSelect] = useState(false);
   const [activity, setActivity] = useState(
     window.decodeURIComponent(window.location.search.replace("?activity=", ""))
   );
@@ -39,6 +39,7 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
           .scrollIntoView({ behavior: "smooth" });
       }, 500);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -70,9 +71,14 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
               Domestic
             </div>
             <div className={styles.mindsetsColumns}>
-              {filteredMindsets("domestic", activity).map((mindset: any) => (
-                <MindsetItem mindset={mindset} />
-              ))}
+              {filteredMindsets("domestic", activity).map(
+                (mindset: any, i: number) => (
+                  <MindsetItem
+                    mindset={mindset}
+                    key={`${mindset.head}-${i}-domestic`}
+                  />
+                )
+              )}
             </div>
           </div>
         )}
@@ -84,8 +90,11 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
             </div>
             <div className={styles.mindsetsColumns}>
               {filteredMindsets("international", activity).map(
-                (mindset: any) => (
-                  <MindsetItem mindset={mindset} />
+                (mindset: any, i: number) => (
+                  <MindsetItem
+                    mindset={mindset}
+                    key={`${mindset.head}-${i}-international`}
+                  />
                 )
               )}
             </div>
@@ -113,7 +122,7 @@ const MindsetItem = ({ mindset }: any) => {
         }}
       />
       <div className={styles.mindsetImage}>
-        <img src={mindset.smallImage.url} />
+        <LazyLoadImage src={mindset.smallImage.url} />
       </div>
       <div className={styles.mindsetContent}>
         <div className={styles.mindsetIcon}>
