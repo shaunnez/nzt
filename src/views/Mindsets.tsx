@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 // @ts-ignore
 import LazyHero from "react-lazy-hero";
 
+import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
+import { ReactComponent as InternationalIcon } from "assets/international.svg";
 import { ReactComponent as WhoIcon } from "assets/who.svg";
 import { ReactComponent as WhatIcon } from "assets/what.svg";
 import { ReactComponent as HowIcon } from "assets/how.svg";
@@ -33,12 +35,20 @@ const Mindsets = () => {
       {(data) => {
         const mindset = data.mindset as Mindset;
         return (
-          <div className={styles.appendix}>
+          <div className={styles.mindsets}>
             <header className={styles.header}>
               <Link to={`/`} className={styles.overviewLink}>
                 <span className="gg-arrow-left" /> Overview
               </Link>
               <h1 className="title page-title">{friendly}</h1>
+
+              <div className={styles.headerIcon}>
+                {mindset.theType === "domestic" ? (
+                  <DomesticIcon />
+                ) : (
+                  <InternationalIcon />
+                )}
+              </div>
             </header>
 
             <main>
