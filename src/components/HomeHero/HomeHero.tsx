@@ -9,10 +9,13 @@ const HomeHero = ({ home }: any) => {
       <div style={{ height: "817px", overflow: "hidden" }}>
         <LazyHero
           imageSrc={home.heroImage.url}
-          minHeight={"917px"}
+          // imageSrc={
+          //   require(`../../assets/mindset-images${home.heroImage?.url}`).default
+          // }
+          minHeight={"817px"}
           opacity={0.1}
           isCentered={false}
-          parallaxOffset={20}
+          parallaxOffset={100}
           transitionDuration={250}
         >
           <div className={styles.heroContent}>

@@ -123,6 +123,12 @@ const MindsetItem = ({ mindset }: any) => {
       />
       <div className={styles.mindsetImage}>
         <LazyLoadImage src={mindset.smallImage.url} />
+        {/* <LazyLoadImage
+          src={
+            require(`../../assets/mindset-images${mindset.smallImage.url}`)
+              .default
+          }
+        /> */}
       </div>
       <div className={styles.mindsetContent}>
         <div className={styles.mindsetIcon}>

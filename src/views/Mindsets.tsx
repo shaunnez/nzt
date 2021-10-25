@@ -59,10 +59,14 @@ const Mindsets = () => {
               <div style={{ height: "817px", overflow: "hidden" }}>
                 <LazyHero
                   imageSrc={mindset.heroImage?.url}
-                  minHeight={"1117px"}
+                  // imageSrc={
+                  //   require(`../assets/mindset-images${mindset.heroImage?.url}`)
+                  //     .default
+                  // }
+                  minHeight={"817px"}
                   opacity={0.1}
                   isCentered={false}
-                  parallaxOffset={50}
+                  // parallaxOffset={1000}
                   transitionDuration={250}
                 />
               </div>
