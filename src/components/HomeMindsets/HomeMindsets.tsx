@@ -16,7 +16,11 @@ interface HomeMindsetsInterface {
 }
 const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
   const [activity, setActivity] = useState(
-    window.decodeURIComponent(window.location.search.replace("?activity=", ""))
+    window.decodeURIComponent(
+      window.location.search
+        .replace("?activity=", "")
+        .replace("?stage=Stage", "")
+    )
   );
 
   const theActivities = activities.map((x) => x.title);

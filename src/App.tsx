@@ -14,9 +14,13 @@ import "./styles/globals.css";
 const queryClient = new QueryClient();
 
 function App() {
+  let basename = "https://insights.tourismnewzealand.com/int/mindsets-/";
+  if (window.location.href.indexOf("shaunnez") > -1) {
+    basename = process.env.PUBLIC_URL;
+  }
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={basename}>
         {window.location.href.indexOf("#") === -1 ? <ScrollToTop /> : null}
         <Switch>
           <Route exact path={`/mindsets/:id`} component={MindsetsView} />
