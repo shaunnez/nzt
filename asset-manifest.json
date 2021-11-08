@@ -1,12 +1,11 @@
 {
   "files": {
-    "main.css": "/nzt/static/css/main.5df748c7.chunk.css",
-    "main.js": "/nzt/static/js/main.4f8236bf.chunk.js",
-    "runtime-main.js": "/nzt/static/js/runtime-main.07d7e031.js",
-    "static/js/2.17e4a3b8.chunk.js": "/nzt/static/js/2.17e4a3b8.chunk.js",
-    "static/js/3.e93fb02c.chunk.js": "/nzt/static/js/3.e93fb02c.chunk.js",
+    "main.css": "/nzt/static/css/main.8acb0db3.chunk.css",
+    "main.js": "/nzt/static/js/main.chunk.js",
+    "runtime-main.js": "/nzt/static/js/runtime-main.js",
+    "static/js/2.chunk.js": "/nzt/static/js/2.chunk.js",
     "index.html": "/nzt/index.html",
-    "static/js/2.17e4a3b8.chunk.js.LICENSE.txt": "/nzt/static/js/2.17e4a3b8.chunk.js.LICENSE.txt",
+    "static/js/2.chunk.js.LICENSE.txt": "/nzt/static/js/2.chunk.js.LICENSE.txt",
     "static/media/font.css": "/nzt/static/media/PurePakati-Regular.d2c46229.woff",
     "static/media/chevron.085a67ad.svg": "/nzt/static/media/chevron.085a67ad.svg",
     "static/media/domestic.ae83ec44.svg": "/nzt/static/media/domestic.ae83ec44.svg",
@@ -19,9 +18,9 @@
     "static/media/why.4da0a700.svg": "/nzt/static/media/why.4da0a700.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.07d7e031.js",
-    "static/js/2.17e4a3b8.chunk.js",
-    "static/css/main.5df748c7.chunk.css",
-    "static/js/main.4f8236bf.chunk.js"
+    "static/js/runtime-main.js",
+    "static/js/2.chunk.js",
+    "static/css/main.8acb0db3.chunk.css",
+    "static/js/main.chunk.js"
   ]
 }
