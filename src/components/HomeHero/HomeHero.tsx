@@ -12,11 +12,11 @@ const HomeHero = ({ home }: any) => {
           // imageSrc={
           //   require(`../../assets/mindset-images${home.heroImage?.url}`).default
           // }
-          minHeight={"817px"}
+          // minHeight={"817px"}
           opacity={0.1}
           isCentered={false}
-          parallaxOffset={100}
-          transitionDuration={250}
+          // parallaxOffset={100}
+          // transitionDuration={250}
         >
           <div className={styles.heroContent}>
             <div className={styles.purenz}>
