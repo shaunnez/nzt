@@ -20,31 +20,5 @@
 .continuumGraphic {
   width: 100%;
   margin-top: 20px;
-}
-
-.continuumGraphicBubbleWrapper {
-  position: absolute;
-  bottom: 10px;
-  left: 30px;
-  right: 30px;
-}
-.continuumGraphicBubbleWrapper i {
-  background: #1d1d1b;
-  height: 20px;
-  width: 20px;
-  border-radius: 100%;
-  position: relative;
-  z-index: 1;
-  display: block;
-  transition: all 0.25s ease-in-out;
-}
-
-.continuumText {
-  font-size: var(--font-large);
-  font-weight: 800;
-  margin-top: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
+  height: 100%;
 }

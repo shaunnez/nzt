@@ -32,7 +32,7 @@ const HomeHero = ({ home }: any) => {
               <p>{home.heroCopy}</p>
               <br />
               <p>
-                <Link to={`/appendix`}>Learn more</Link>
+                <Link to={`/appendix`}>Learn more about our mindsets</Link>
               </p>
             </div>
           </div>

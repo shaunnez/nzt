@@ -67,6 +67,9 @@ query GetData {
         continuumRightText
         continuumLeftPercentage
       }
+      fullImage {
+        url
+      }
     }
   }
 }

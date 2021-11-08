@@ -14,9 +14,9 @@ import "./styles/globals.css";
 const queryClient = new QueryClient();
 
 function App() {
-  let basename = "https://insights.tourismnewzealand.com/int/mindsets-/";
-  if (window.location.href.indexOf("shaunnez") > -1) {
-    basename = process.env.PUBLIC_URL;
+  let basename = process.env.PUBLIC_URL;
+  if (window.location.href.indexOf("insights") > -1) {
+    basename = "https://insights.tourismnewzealand.com/int/mindsets-/";
   }
   return (
     <QueryClientProvider client={queryClient}>

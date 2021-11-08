@@ -115,6 +115,7 @@ export const AccordionItem = ({
   accordionItemOpen,
   setAccordionItemOpen,
 }: any) => {
+  console.log(mindset, item);
   let theTitle = "";
   if (item.theType === "who") {
     theTitle = "WHO they are";
@@ -168,6 +169,17 @@ export const AccordionItem = ({
           className={`${styles.accordionBody}`}
           dangerouslySetInnerHTML={{ __html: item.body?.html }}
         />
+
+        {item.fullImage && (
+          <div
+            className={styles.fullImage}
+            style={{
+              backgroundImage: `url(${
+                item.fullImage?.url || "http://via.placeholder.com/1156x771"
+              })`,
+            }}
+          />
+        )}
 
         {item.quotes.map((x, i) => (
           <Quote
