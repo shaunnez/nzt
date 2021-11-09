@@ -29,6 +29,9 @@ import styles from "./Mindsets.module.css";
 const Mindsets = () => {
   const [accordionItemOpen, setAccordionItemOpen] = React.useState("");
   const [generatingPdf, setGeneratingPdf] = React.useState(false);
+  const [pdfUrl, setPdfUrl] = React.useState(
+    "https://pdfshift.s3.amazonaws.com/d/2/2021-11/b1c5c3607eab4c68ad05f227768bc904/Tourism%20New%20Zealand%20Mindsets%20PDF.pdf"
+  );
   // @ts-ignore
   const { id } = useParams();
   // @ts-ignore
@@ -45,6 +48,31 @@ const Mindsets = () => {
         const mindset = data.mindset as Mindset;
         return (
           <div className={styles.mindsets} key={id}>
+            <div
+              className={styles.modal}
+              style={{ display: pdfUrl ? "flex" : "none" }}
+            >
+              <div>
+                Great! <br /> Click&nbsp;
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(pdfUrl);
+                    setPdfUrl("");
+                  }}
+                >
+                  here
+                </a>
+                &nbsp;to download your pdf
+              </div>
+              <button
+                className={styles.closeButton}
+                onClick={(e) => setPdfUrl("")}
+              >
+                X
+              </button>
+            </div>
             <header className={styles.header}>
               {isPdf ? null : (
                 <Link to={`/`} className={styles.overviewLink}>
@@ -76,14 +104,13 @@ const Mindsets = () => {
                     });
                     setGeneratingPdf(false);
                     // @ts-ignore
-                    console.log(result.data.url);
-                    if (
-                      window.confirm(
-                        "Thats all done, click okay to open the pdf"
-                      )
-                    ) {
+                    if (result?.data?.url) {
                       // @ts-ignore
-                      window.open(result.data.url);
+                      setPdfUrl(result.data.url);
+                    } else {
+                      alert(
+                        "There was a problem generating your pdf, please try again later"
+                      );
                     }
                   }}
                 >

@@ -22,7 +22,7 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
           .slice(idx, window.location.href.length)
           .replace("selectActivity=", "")
       : "";
-  const [activity, setActivity] = useState(str);
+  const [activity, setActivity] = useState(decodeURIComponent(str));
 
   const theActivities = activities.map((x) => x.title);
   theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
