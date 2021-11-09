@@ -5,6 +5,10 @@ import { ReactComponent as InternationalIcon } from "assets/international.svg";
 import styles from "./Footer.module.css";
 
 const Footer = ({ mindsets }: any) => {
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+  if (isPdf) {
+    return null;
+  }
   return (
     <div className={styles.footer}>
       <div className={styles.content}>

@@ -2,6 +2,22 @@
   position: relative;
 }
 
+.pdfBtn {
+  position: absolute;
+  top: 150px;
+  right: 15px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 40px;
+  padding: 8px 12px;
+  color: black;
+  text-decoration: none;
+  font-size: var(--font-footer-badge);
+  font-weight: 800;
+  transition: all 0.25s ease-in-out;
+  display: inline-block;
+}
+
 .overviewLink {
   font-size: var(--font-accordion-heading-small);
   font-weight: 800;
@@ -70,6 +86,7 @@
   font-size: var(--font-page-subheading);
   font-weight: 600;
   line-height: 1.14;
+  max-width: 90%;
 }
 
 .accordion {

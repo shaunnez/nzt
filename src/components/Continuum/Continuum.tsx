@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import TrackVisibility from "react-on-screen";
 import styles from "./Continuum.module.css";
 
 let timer = null as any;
@@ -12,8 +11,14 @@ const Continuum = ({
   leftPercentage,
   isVisible,
 }: any) => {
-  const [actualPercentage, setActualPercentage] = useState(0);
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+  const [actualPercentage, setActualPercentage] = useState(
+    isPdf ? leftPercentage : 0
+  );
   useEffect(() => {
+    if (isPdf) {
+      return;
+    }
     clearTimeout(timer);
     if (!isVisible) {
       setActualPercentage(0);
@@ -23,6 +28,7 @@ const Continuum = ({
         setActualPercentage(leftPercentage);
       }
     }, 250);
+    // eslint-disable-next-line
   }, [isVisible]);
   return (
     <div className={styles.continuum}>

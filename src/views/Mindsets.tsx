@@ -22,15 +22,18 @@ import Quote from "components/Quote/Quote";
 import ByTheNumber from "components/ByTheNumber/ByTheNumber";
 import Layout from "layouts";
 
+import pdf from "../utilities/pdf";
+
 import styles from "./Mindsets.module.css";
 
 const Mindsets = () => {
   const [accordionItemOpen, setAccordionItemOpen] = React.useState("");
+  const [generatingPdf, setGeneratingPdf] = React.useState(false);
   // @ts-ignore
   const { id } = useParams();
   // @ts-ignore
   const friendly = (id || "").replace(/-/g, " ");
-
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
   React.useEffect(() => {
     return () => {
       setAccordionItemOpen("");
@@ -43,9 +46,11 @@ const Mindsets = () => {
         return (
           <div className={styles.mindsets} key={id}>
             <header className={styles.header}>
-              <Link to={`/`} className={styles.overviewLink}>
-                <span className="gg-arrow-left" /> Overview
-              </Link>
+              {isPdf ? null : (
+                <Link to={`/`} className={styles.overviewLink}>
+                  <span className="gg-arrow-left" /> Overview
+                </Link>
+              )}
               <h1 className="title page-title">{friendly}</h1>
 
               <div className={styles.headerIcon}>
@@ -55,6 +60,36 @@ const Mindsets = () => {
                   <InternationalIcon />
                 )}
               </div>
+
+              {isPdf ? null : (
+                <button
+                  className={`${styles.pdfBtn} ${
+                    generatingPdf ? styles.loading : null
+                  }`}
+                  onClick={async () => {
+                    if (generatingPdf) {
+                      return;
+                    }
+                    setGeneratingPdf(true);
+                    const result = await pdf({
+                      source: window.location.href + "?pdfme=true",
+                    });
+                    setGeneratingPdf(false);
+                    // @ts-ignore
+                    console.log(result.data.url);
+                    if (
+                      window.confirm(
+                        "Thats all done, click okay to open the pdf"
+                      )
+                    ) {
+                      // @ts-ignore
+                      window.open(result.data.url);
+                    }
+                  }}
+                >
+                  {generatingPdf ? "Please wait..." : "Download Pdf"}
+                </button>
+              )}
             </header>
 
             <main>
@@ -94,7 +129,10 @@ const Mindsets = () => {
                     <div className={styles.activitiesHeader}>
                       Activities this mindset is likely to be interested in
                     </div>
-                    <div className={styles.activities}>
+                    <div
+                      className={styles.activities}
+                      style={{ marginBottom: isPdf ? "0px" : "204px" }}
+                    >
                       {mindset.activities.map((x) => (
                         <div className={styles.activity} key={x.title}>
                           <Link to={`/selectActivity=${x.title}`}>
@@ -121,6 +159,7 @@ export const AccordionItem = ({
   accordionItemOpen,
   setAccordionItemOpen,
 }: any) => {
+  const forceOpen = window.location.href.indexOf("pdfme=true") > -1;
   let theTitle = "";
   if (item.theType === "who") {
     theTitle = "WHO they are";
@@ -161,7 +200,9 @@ export const AccordionItem = ({
       </div>
       <div
         className={`${styles.accordionContent} ${
-          accordionItemOpen === item.theType ? styles.open : styles.closed
+          accordionItemOpen === item.theType || forceOpen
+            ? styles.open
+            : styles.closed
         }`}
       >
         {item.boxouts.length === 3 ? null : (
@@ -228,7 +269,9 @@ export const AccordionItem = ({
           }
         }}
         className={`${styles.accordionLink} ${
-          accordionItemOpen === item.theType ? styles.open : styles.closed
+          accordionItemOpen === item.theType || forceOpen
+            ? styles.open
+            : styles.closed
         }`}
       >
         <ChevronIcon />
