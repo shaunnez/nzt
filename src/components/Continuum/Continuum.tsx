@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import { ReactComponent as ProgressGraphic } from "assets/progress.svg";
+import TrackVisibility from "react-on-screen";
 import styles from "./Continuum.module.css";
 
-const Continuum = ({ title, leftText, rightText, leftPercentage }: any) => {
+let timer = null as any;
+
+const Continuum = ({
+  title,
+  leftText,
+  rightText,
+  leftPercentage,
+  isVisible,
+}: any) => {
+  const [actualPercentage, setActualPercentage] = useState(0);
+  useEffect(() => {
+    clearTimeout(timer);
+    if (!isVisible) {
+      setActualPercentage(0);
+    }
+    timer = setTimeout(() => {
+      if (isVisible) {
+        setActualPercentage(leftPercentage);
+      }
+    }, 250);
+  }, [isVisible]);
   return (
     <div className={styles.continuum}>
       <div className={styles.continuumTitle}>{title}</div>
 
       <ReactSpeedometer
-        value={leftPercentage}
+        value={actualPercentage}
         minValue={0}
         maxValue={100}
         height={150}
@@ -17,31 +38,22 @@ const Continuum = ({ title, leftText, rightText, leftPercentage }: any) => {
             text: leftText,
             // @ts-ignore
             position: "OUTSIDE",
-            color: "#555",
+            color: "#000",
           },
           {
             text: "",
-            // @ts-ignore
-            position: "OUTSIDE",
-            color: "#555",
           },
           {
             text: "",
-            // @ts-ignore
-            position: "OUTSIDE",
-            color: "#555",
           },
           {
             text: "",
-            // @ts-ignore
-            position: "OUTSIDE",
-            color: "#555",
           },
           {
             text: rightText,
             // @ts-ignore
             position: "OUTSIDE",
-            color: "#555",
+            color: "#000",
           },
         ]}
         startColor={"#00A8DE"}

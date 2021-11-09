@@ -47,9 +47,7 @@ const MindsetBadges = ({ mindsets, type }) => {
               to={link}
               key={`${link}-${i}`}
               className={`${styles.mindsetBadge} ${
-                window.location.pathname.indexOf(link) > -1
-                  ? styles.active
-                  : null
+                window.location.href.indexOf(link) > -1 ? styles.active : null
               } ${item.enabled ? styles.enabled : styles.disabled} `}
               onClick={(e) => {
                 if (!item.enabled) {

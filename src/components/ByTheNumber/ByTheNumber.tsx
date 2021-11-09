@@ -1,30 +1,44 @@
 import Continuum from "components/Continuum/Continuum";
+import TrackVisibility from "react-on-screen";
 import styles from "./ByTheNumber.module.css";
 
 const ByTheNumber = ({ byTheNumber }) => {
   return (
-    <div className={styles.byTheNumber}>
+    <div
+      className={`${styles.byTheNumber} ${
+        byTheNumber.continuumTitle ? styles.withContinuum : null
+      }`}
+    >
       {byTheNumber.continuumTitle && (
-        <Continuum
-          leftPercentage={byTheNumber.continuumLeftPercentage}
-          leftText={byTheNumber.continuumLeftText}
-          rightText={byTheNumber.continuumRightText}
-          title={byTheNumber.continuumTitle}
-        />
+        <TrackVisibility>
+          <Continuum
+            leftPercentage={byTheNumber.continuumLeftPercentage}
+            leftText={byTheNumber.continuumLeftText}
+            rightText={byTheNumber.continuumRightText}
+            title={byTheNumber.continuumTitle}
+          />
+        </TrackVisibility>
       )}
 
       <div
-        className={styles.byTheNumberImage}
+        className={`${styles.byTheNumberImage} ${
+          byTheNumber.continuumTitle ? styles.withContinuum : null
+        }`}
         style={{
           backgroundImage: `url(${
-            byTheNumber?.image?.url
-              ? byTheNumber?.image?.url
-              : "http://via.placeholder.com/575x400"
+            byTheNumber.image?.url ||
+            `http://via.placeholder.com/${
+              byTheNumber.continuumTitle?.html ? "575x400" : "1024x439"
+            }`
           })`,
         }}
       />
 
-      <div className={styles.byTheNumberContent}>
+      <div
+        className={`${styles.byTheNumberContent} ${
+          byTheNumber.titleAndBody?.length === 2 ? styles.twoItems : null
+        } ${byTheNumber.continuumTitle ? styles.withContinuum : null}`}
+      >
         {byTheNumber.titleAndBody?.map((item, i) => {
           const theContent = item.split("\n");
           return (

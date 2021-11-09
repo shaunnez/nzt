@@ -28,7 +28,10 @@ const BoxoutComponent = ({ boxout }: BoxoutProps) => {
           <div className={styles.boxoutCircleContent}>
             <div className={styles.boxoutTitle}>{boxout.title}</div>
             <div className={styles.boxoutLargeText}>{boxout.largeText}</div>
-            <div className={styles.boxoutContent}>{boxout.content}</div>
+            <div
+              className={styles.boxoutContent}
+              dangerouslySetInnerHTML={{ __html: boxout.content }}
+            />
           </div>
         </div>
       </div>

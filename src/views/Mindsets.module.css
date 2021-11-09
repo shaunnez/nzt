@@ -154,7 +154,7 @@
 .accordionContent {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.35s ease-in-out;
+  transition: all 0s ease-in-out;
   margin-bottom: 32px;
   /* padding: 0px 44px; */
   position: relative;

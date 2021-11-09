@@ -30,12 +30,18 @@ const Mindsets = () => {
   const { id } = useParams();
   // @ts-ignore
   const friendly = (id || "").replace(/-/g, " ");
+
+  React.useEffect(() => {
+    return () => {
+      setAccordionItemOpen("");
+    };
+  }, [id]);
   return (
     <Layout>
       {(data) => {
         const mindset = data.mindset as Mindset;
         return (
-          <div className={styles.mindsets}>
+          <div className={styles.mindsets} key={id}>
             <header className={styles.header}>
               <Link to={`/`} className={styles.overviewLink}>
                 <span className="gg-arrow-left" /> Overview
@@ -115,7 +121,6 @@ export const AccordionItem = ({
   accordionItemOpen,
   setAccordionItemOpen,
 }: any) => {
-  console.log(mindset, item);
   let theTitle = "";
   if (item.theType === "who") {
     theTitle = "WHO they are";
@@ -129,7 +134,7 @@ export const AccordionItem = ({
     theTitle = "WHERE you'll find them";
   }
   return (
-    <div className={styles.accordionItem}>
+    <div id={item.theType} className={styles.accordionItem}>
       <div className={styles.accordionHeadingWrapper}>
         <div className={styles.accordionIcon}>
           {item.theType === "who" ? (
@@ -154,59 +159,61 @@ export const AccordionItem = ({
         </div>
         <div className={styles.accordionHeadingContent}>{item.intro}</div>
       </div>
-      <div
-        className={`${styles.accordionContent} ${
-          accordionItemOpen === item.theType ? styles.open : styles.closed
-        }`}
-      >
-        {item.boxouts.length === 3 ? null : (
-          <div className={`${styles.boxouts}`}>
-            {item.boxouts.map((x, i) => (
-              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
-            ))}
-          </div>
-        )}
-
+      {accordionItemOpen === item.theType ? (
         <div
-          className={`${styles.accordionBody}`}
-          dangerouslySetInnerHTML={{ __html: item.body?.html }}
-        />
+          className={`${styles.accordionContent} ${
+            accordionItemOpen === item.theType ? styles.open : styles.closed
+          }`}
+        >
+          {item.boxouts.length === 3 ? null : (
+            <div className={`${styles.boxouts}`}>
+              {item.boxouts.map((x, i) => (
+                <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+              ))}
+            </div>
+          )}
 
-        {item.fullImage && (
           <div
-            className={styles.fullImage}
-            style={{
-              backgroundImage: `url(${
-                item.fullImage?.url || "http://via.placeholder.com/1156x771"
-              })`,
-            }}
+            className={`${styles.accordionBody}`}
+            dangerouslySetInnerHTML={{ __html: item.body?.html }}
           />
-        )}
 
-        {item.quotes.map((x, i) => (
-          <Quote
-            text={x.text}
-            continuumPercentageLeft={x.continuumPercentageLeft}
-            continuumLeftText={x.continuumLeftText}
-            continuumRightText={x.continuumRightText}
-            continuumTitle={x.continuumTitle}
-            key={`${item.theType}-${i}-quote`}
-          />
-        ))}
+          {item.fullImage && (
+            <div
+              className={styles.fullImage}
+              style={{
+                backgroundImage: `url(${
+                  item.fullImage?.url || "http://via.placeholder.com/1156x771"
+                })`,
+              }}
+            />
+          )}
 
-        {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
+          {item.quotes.map((x, i) => (
+            <Quote
+              text={x.text}
+              continuumPercentageLeft={x.continuumPercentageLeft}
+              continuumLeftText={x.continuumLeftText}
+              continuumRightText={x.continuumRightText}
+              continuumTitle={x.continuumTitle}
+              key={`${item.theType}-${i}-quote`}
+            />
+          ))}
 
-        {item.boxouts.length === 3 ? (
-          <div
-            className={`${styles.boxouts} ${styles.tripleBoxout}`}
-            style={{ marginTop: "45px" }}
-          >
-            {item.boxouts.map((x, i) => (
-              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
-            ))}
-          </div>
-        ) : null}
-      </div>
+          {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
+
+          {item.boxouts.length === 3 ? (
+            <div
+              className={`${styles.boxouts} ${styles.tripleBoxout}`}
+              style={{ marginTop: "45px" }}
+            >
+              {item.boxouts.map((x, i) => (
+                <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       <button
         type="button"
         onClick={(e) => {
@@ -215,6 +222,11 @@ export const AccordionItem = ({
             setAccordionItemOpen("");
           } else {
             setAccordionItemOpen(item.theType);
+            setTimeout(() => {
+              document
+                .querySelector("#" + item.theType)
+                .scrollIntoView({ block: "start", behavior: "auto" });
+            }, 0);
           }
         }}
         className={`${styles.accordionLink} ${

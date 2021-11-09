@@ -1,4 +1,5 @@
 import Continuum from "components/Continuum/Continuum";
+import TrackVisibility from "react-on-screen";
 
 import styles from "./Quote.module.css";
 
@@ -17,12 +18,14 @@ const Quote = ({
     >
       <div className={styles.quoteText}>{text}</div>
       {continuumTitle && (
-        <Continuum
-          leftPercentage={continuumPercentageLeft}
-          leftText={continuumLeftText}
-          rightText={continuumRightText}
-          title={continuumTitle}
-        />
+        <TrackVisibility>
+          <Continuum
+            leftPercentage={continuumPercentageLeft}
+            leftText={continuumLeftText}
+            rightText={continuumRightText}
+            title={continuumTitle}
+          />
+        </TrackVisibility>
       )}
     </div>
   );

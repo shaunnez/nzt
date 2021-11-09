@@ -7,7 +7,7 @@ import MindsetsView from "views/Mindsets";
 import Appendiex from "views/Appendix";
 
 // import "./styles/base.css";
-import "./styles/reset.css";
+// import "./styles/reset.css";
 import "./styles/font.css";
 import "./styles/globals.css";
 
