@@ -29,9 +29,7 @@ import styles from "./Mindsets.module.css";
 const Mindsets = () => {
   const [accordionItemOpen, setAccordionItemOpen] = React.useState("");
   const [generatingPdf, setGeneratingPdf] = React.useState(false);
-  const [pdfUrl, setPdfUrl] = React.useState(
-    "https://pdfshift.s3.amazonaws.com/d/2/2021-11/b1c5c3607eab4c68ad05f227768bc904/Tourism%20New%20Zealand%20Mindsets%20PDF.pdf"
-  );
+  const [pdfUrl, setPdfUrl] = React.useState("");
   // @ts-ignore
   const { id } = useParams();
   // @ts-ignore
