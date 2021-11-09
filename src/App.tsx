@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 function App() {
   let basename = process.env.PUBLIC_URL;
   if (window.location.href.indexOf("insights") > -1) {
-    basename = "https://insights.tourismnewzealand.com/int/mindsets-/";
+    basename = "/int/mindsets-/";
   }
   return (
     <QueryClientProvider client={queryClient}>

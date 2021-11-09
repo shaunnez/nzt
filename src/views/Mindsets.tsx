@@ -159,11 +159,13 @@ export const AccordionItem = ({
           accordionItemOpen === item.theType ? styles.open : styles.closed
         }`}
       >
-        <div className={`${styles.boxouts}`}>
-          {item.boxouts.map((x, i) => (
-            <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
-          ))}
-        </div>
+        {item.boxouts.length === 3 ? null : (
+          <div className={`${styles.boxouts}`}>
+            {item.boxouts.map((x, i) => (
+              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+            ))}
+          </div>
+        )}
 
         <div
           className={`${styles.accordionBody}`}
@@ -193,6 +195,17 @@ export const AccordionItem = ({
         ))}
 
         {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
+
+        {item.boxouts.length === 3 ? (
+          <div
+            className={`${styles.boxouts} ${styles.tripleBoxout}`}
+            style={{ marginTop: "45px" }}
+          >
+            {item.boxouts.map((x, i) => (
+              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+            ))}
+          </div>
+        ) : null}
       </div>
       <button
         type="button"

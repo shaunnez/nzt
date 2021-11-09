@@ -224,6 +224,33 @@
   text-decoration: none;
 }
 
+.fullImage {
+  height: 717px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 1024px) {
+  .tripleBoxout {
+    display: flex;
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+
+  .tripleBoxout > div {
+    width: calc(33.33% - 8px);
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 0 !important;
+  }
+
+  .tripleBoxout > div > div > div + div {
+    right: 2.5%;
+    width: 95%;
+    min-height: 335px;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .accordionHeadingWrapper {
     padding: 0px;
@@ -245,10 +272,4 @@
     padding-left: 0;
     padding-right: 0;
   }
-}
-
-.fullImage {
-  height: 717px;
-  width: 100%;
-  margin-top: 32px;
 }

@@ -66,6 +66,9 @@ query GetData {
         continuumLeftText
         continuumRightText
         continuumLeftPercentage
+        image {
+          url
+        }
       }
       fullImage {
         url

@@ -861,6 +861,7 @@ export type Asset = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
+  imageByTheNumber: Array<ByTheNumber>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
@@ -968,6 +969,19 @@ export type AssetHistoryArgs = {
 
 
 /** Asset system model */
+export type AssetImageByTheNumberArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Maybe<Array<Locale>>;
+  orderBy?: Maybe<ByTheNumberOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<ByTheNumberWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean'];
   locales?: Array<Locale>;
@@ -1042,6 +1056,7 @@ export type AssetCreateInput = {
   height?: Maybe<Scalars['Float']>;
   heroImageHome?: Maybe<HomeCreateManyInlineInput>;
   heroImageMindset?: Maybe<MindsetCreateManyInlineInput>;
+  imageByTheNumber?: Maybe<ByTheNumberCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<AssetCreateLocalizationsInput>;
   mimeType?: Maybe<Scalars['String']>;
@@ -1153,6 +1168,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
+  imageByTheNumber_every?: Maybe<ByTheNumberWhereInput>;
+  imageByTheNumber_none?: Maybe<ByTheNumberWhereInput>;
+  imageByTheNumber_some?: Maybe<ByTheNumberWhereInput>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -1229,6 +1247,7 @@ export type AssetUpdateInput = {
   height?: Maybe<Scalars['Float']>;
   heroImageHome?: Maybe<HomeUpdateManyInlineInput>;
   heroImageMindset?: Maybe<MindsetUpdateManyInlineInput>;
+  imageByTheNumber?: Maybe<ByTheNumberUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: Maybe<AssetUpdateLocalizationsInput>;
   mimeType?: Maybe<Scalars['String']>;
@@ -1465,6 +1484,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
+  imageByTheNumber_every?: Maybe<ByTheNumberWhereInput>;
+  imageByTheNumber_none?: Maybe<ByTheNumberWhereInput>;
+  imageByTheNumber_some?: Maybe<ByTheNumberWhereInput>;
   mimeType?: Maybe<Scalars['String']>;
   /** All values containing the given string. */
   mimeType_contains?: Maybe<Scalars['String']>;
@@ -2064,6 +2086,7 @@ export type ByTheNumber = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
+  image?: Maybe<Asset>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -2101,6 +2124,11 @@ export type ByTheNumberHistoryArgs = {
 };
 
 
+export type ByTheNumberImageArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
 export type ByTheNumberPublishedByArgs = {
   locales?: Maybe<Array<Locale>>;
 };
@@ -2134,6 +2162,7 @@ export type ByTheNumberCreateInput = {
   continuumRightText?: Maybe<Scalars['String']>;
   continuumTitle?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
+  image?: Maybe<AssetCreateOneInlineInput>;
   titleAndBody?: Maybe<Array<Scalars['String']>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -2278,6 +2307,7 @@ export type ByTheNumberManyWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
+  image?: Maybe<AssetWhereInput>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -2349,6 +2379,7 @@ export type ByTheNumberUpdateInput = {
   continuumLeftText?: Maybe<Scalars['String']>;
   continuumRightText?: Maybe<Scalars['String']>;
   continuumTitle?: Maybe<Scalars['String']>;
+  image?: Maybe<AssetUpdateOneInlineInput>;
   titleAndBody?: Maybe<Array<Scalars['String']>>;
 };
 
@@ -2537,6 +2568,7 @@ export type ByTheNumberWhereInput = {
   id_not_starts_with?: Maybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: Maybe<Scalars['ID']>;
+  image?: Maybe<AssetWhereInput>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -7074,7 +7106,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDataQuery = { __typename?: 'Query', activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, appendices: Array<{ __typename?: 'Appendix', smallText?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, homes: Array<{ __typename?: 'Home', heroSmallCopy?: string | null | undefined, heroCopy?: string | null | undefined, universalTruthsTitle?: string | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, universalTruthsCopy?: { __typename?: 'RichText', html: string } | null | undefined }>, mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined, boxouts: Array<{ __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, quotes: Array<{ __typename?: 'Quote', text?: string | null | undefined, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumPercentageLeft?: number | null | undefined }>, byTheNumber?: { __typename?: 'ByTheNumber', titleAndBody: Array<string>, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumLeftPercentage?: number | null | undefined } | null | undefined, fullImage?: { __typename?: 'Asset', url: string } | null | undefined }> }> };
+export type GetDataQuery = { __typename?: 'Query', activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, appendices: Array<{ __typename?: 'Appendix', smallText?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, homes: Array<{ __typename?: 'Home', heroSmallCopy?: string | null | undefined, heroCopy?: string | null | undefined, universalTruthsTitle?: string | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, universalTruthsCopy?: { __typename?: 'RichText', html: string } | null | undefined }>, mindsets: Array<{ __typename?: 'Mindset', id: string, enabled?: boolean | null | undefined, head?: string | null | undefined, intro?: string | null | undefined, theType?: TheType | null | undefined, activities: Array<{ __typename?: 'Activity', id: string, title?: string | null | undefined }>, smallImage?: { __typename?: 'Asset', url: string } | null | undefined, heroImage?: { __typename?: 'Asset', url: string } | null | undefined, whoWhatWhereWhyHows: Array<{ __typename?: 'WhoWhatWhereWhyHow', theType?: WhoWhatWhereWhyHowType | null | undefined, intro?: string | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined, boxouts: Array<{ __typename?: 'Boxout', title?: string | null | undefined, largeText?: string | null | undefined, content?: string | null | undefined, backgroundImage?: { __typename?: 'Asset', url: string } | null | undefined, body?: { __typename?: 'RichText', html: string } | null | undefined }>, quotes: Array<{ __typename?: 'Quote', text?: string | null | undefined, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumPercentageLeft?: number | null | undefined }>, byTheNumber?: { __typename?: 'ByTheNumber', titleAndBody: Array<string>, continuumTitle?: string | null | undefined, continuumLeftText?: string | null | undefined, continuumRightText?: string | null | undefined, continuumLeftPercentage?: number | null | undefined, image?: { __typename?: 'Asset', url: string } | null | undefined } | null | undefined, fullImage?: { __typename?: 'Asset', url: string } | null | undefined }> }> };
 
 
 export const GetDataDocument = `
@@ -7146,6 +7178,9 @@ export const GetDataDocument = `
         continuumLeftText
         continuumRightText
         continuumLeftPercentage
+        image {
+          url
+        }
       }
       fullImage {
         url
