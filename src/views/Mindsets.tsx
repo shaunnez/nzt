@@ -91,7 +91,7 @@ const Mindsets = () => {
                     <div className={styles.activities}>
                       {mindset.activities.map((x) => (
                         <div className={styles.activity} key={x.title}>
-                          <Link to={`/?activity=${x.title}#homeMindsets`}>
+                          <Link to={`/selectActivity=${x.title}`}>
                             {x.title}
                           </Link>
                         </div>

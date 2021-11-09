@@ -1,4 +1,4 @@
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, HashRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import ScrollToTop from "utilities/scrollTop";
@@ -14,20 +14,16 @@ import "./styles/globals.css";
 const queryClient = new QueryClient();
 
 function App() {
-  let basename = process.env.PUBLIC_URL;
-  if (window.location.href.indexOf("insights") > -1) {
-    basename = "/int/mindsets-/";
-  }
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename={basename}>
-        {window.location.href.indexOf("#") === -1 ? <ScrollToTop /> : null}
+      <HashRouter>
+        <ScrollToTop />
         <Switch>
           <Route exact path={`/mindsets/:id`} component={MindsetsView} />
           <Route exact path={`/appendix`} component={Appendiex} />
           <Route component={HomeView} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   );
 }

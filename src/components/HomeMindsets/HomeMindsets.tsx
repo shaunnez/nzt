@@ -15,13 +15,14 @@ interface HomeMindsetsInterface {
   mindsets: Mindset[];
 }
 const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
-  const [activity, setActivity] = useState(
-    window.decodeURIComponent(
-      window.location.search
-        .replace("?activity=", "")
-        .replace("?stage=Stage", "")
-    )
-  );
+  const idx = window.location.href.indexOf("selectActivity");
+  const str =
+    idx > -1
+      ? window.location.href
+          .slice(idx, window.location.href.length)
+          .replace("selectActivity=", "")
+      : "";
+  const [activity, setActivity] = useState(str);
 
   const theActivities = activities.map((x) => x.title);
   theActivities.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
