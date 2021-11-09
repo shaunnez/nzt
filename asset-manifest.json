@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/nzt/static/css/main.8acb0db3.chunk.css",
+    "main.css": "/nzt/static/css/main.ae1d16ea.chunk.css",
     "main.js": "/nzt/static/js/main.chunk.js",
     "runtime-main.js": "/nzt/static/js/runtime-main.js",
     "static/js/2.chunk.js": "/nzt/static/js/2.chunk.js",
@@ -11,7 +11,6 @@
     "static/media/domestic.ae83ec44.svg": "/nzt/static/media/domestic.ae83ec44.svg",
     "static/media/how.446d2f9c.svg": "/nzt/static/media/how.446d2f9c.svg",
     "static/media/international.e9b174db.svg": "/nzt/static/media/international.e9b174db.svg",
-    "static/media/progress.e5aa0f32.svg": "/nzt/static/media/progress.e5aa0f32.svg",
     "static/media/what.78f30954.svg": "/nzt/static/media/what.78f30954.svg",
     "static/media/where.50b7718b.svg": "/nzt/static/media/where.50b7718b.svg",
     "static/media/who.f8dea066.svg": "/nzt/static/media/who.f8dea066.svg",
@@ -20,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.js",
     "static/js/2.chunk.js",
-    "static/css/main.8acb0db3.chunk.css",
+    "static/css/main.ae1d16ea.chunk.css",
     "static/js/main.chunk.js"
   ]
 }
