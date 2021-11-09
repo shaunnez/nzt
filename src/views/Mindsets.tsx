@@ -159,61 +159,59 @@ export const AccordionItem = ({
         </div>
         <div className={styles.accordionHeadingContent}>{item.intro}</div>
       </div>
-      {accordionItemOpen === item.theType ? (
+      <div
+        className={`${styles.accordionContent} ${
+          accordionItemOpen === item.theType ? styles.open : styles.closed
+        }`}
+      >
+        {item.boxouts.length === 3 ? null : (
+          <div className={`${styles.boxouts}`}>
+            {item.boxouts.map((x, i) => (
+              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+            ))}
+          </div>
+        )}
+
         <div
-          className={`${styles.accordionContent} ${
-            accordionItemOpen === item.theType ? styles.open : styles.closed
-          }`}
-        >
-          {item.boxouts.length === 3 ? null : (
-            <div className={`${styles.boxouts}`}>
-              {item.boxouts.map((x, i) => (
-                <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
-              ))}
-            </div>
-          )}
+          className={`${styles.accordionBody}`}
+          dangerouslySetInnerHTML={{ __html: item.body?.html }}
+        />
 
+        {item.fullImage && (
           <div
-            className={`${styles.accordionBody}`}
-            dangerouslySetInnerHTML={{ __html: item.body?.html }}
+            className={styles.fullImage}
+            style={{
+              backgroundImage: `url(${
+                item.fullImage?.url || "http://via.placeholder.com/1156x771"
+              })`,
+            }}
           />
+        )}
 
-          {item.fullImage && (
-            <div
-              className={styles.fullImage}
-              style={{
-                backgroundImage: `url(${
-                  item.fullImage?.url || "http://via.placeholder.com/1156x771"
-                })`,
-              }}
-            />
-          )}
+        {item.quotes.map((x, i) => (
+          <Quote
+            text={x.text}
+            continuumPercentageLeft={x.continuumPercentageLeft}
+            continuumLeftText={x.continuumLeftText}
+            continuumRightText={x.continuumRightText}
+            continuumTitle={x.continuumTitle}
+            key={`${item.theType}-${i}-quote`}
+          />
+        ))}
 
-          {item.quotes.map((x, i) => (
-            <Quote
-              text={x.text}
-              continuumPercentageLeft={x.continuumPercentageLeft}
-              continuumLeftText={x.continuumLeftText}
-              continuumRightText={x.continuumRightText}
-              continuumTitle={x.continuumTitle}
-              key={`${item.theType}-${i}-quote`}
-            />
-          ))}
+        {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
 
-          {item.byTheNumber && <ByTheNumber byTheNumber={item.byTheNumber} />}
-
-          {item.boxouts.length === 3 ? (
-            <div
-              className={`${styles.boxouts} ${styles.tripleBoxout}`}
-              style={{ marginTop: "45px" }}
-            >
-              {item.boxouts.map((x, i) => (
-                <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
-              ))}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+        {item.boxouts.length === 3 ? (
+          <div
+            className={`${styles.boxouts} ${styles.tripleBoxout}`}
+            style={{ marginTop: "45px" }}
+          >
+            {item.boxouts.map((x, i) => (
+              <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
+            ))}
+          </div>
+        ) : null}
+      </div>
       <button
         type="button"
         onClick={(e) => {
