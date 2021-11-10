@@ -87,7 +87,7 @@ const Mindsets = () => {
                 )}
               </div>
 
-              {isPdf ? null : (
+              {/* {isPdf ? null : (
                 <button
                   className={`${styles.pdfBtn} ${
                     generatingPdf ? styles.loading : null
@@ -119,7 +119,7 @@ const Mindsets = () => {
                 >
                   {generatingPdf ? "Please wait..." : "Download Pdf"}
                 </button>
-              )}
+              )} */}
             </header>
 
             <main>
