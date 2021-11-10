@@ -338,7 +338,7 @@
   }
 }
 
-.pagebreak {
+.pageBreak {
   page-break-before: always;
   clear: both;
   display: block;

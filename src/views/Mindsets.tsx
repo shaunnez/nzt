@@ -278,30 +278,35 @@ export const AccordionItem = ({
           </div>
         ) : null}
       </div>
-      <button
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          if (accordionItemOpen === item.theType) {
-            setAccordionItemOpen("");
-          } else {
-            setAccordionItemOpen(item.theType);
-            setTimeout(() => {
-              document
-                .querySelector("#" + item.theType)
-                .scrollIntoView({ block: "start", behavior: "auto" });
-            }, 0);
-          }
-        }}
-        className={`${styles.accordionLink} ${
-          accordionItemOpen === item.theType || forceOpen
-            ? styles.open
-            : styles.closed
-        }`}
-      >
-        <ChevronIcon />
-      </button>
-      {forceOpen && <div className={styles.pageBreak} />}
+      {forceOpen ? null : (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            if (accordionItemOpen === item.theType) {
+              setAccordionItemOpen("");
+            } else {
+              setAccordionItemOpen(item.theType);
+              setTimeout(() => {
+                document
+                  .querySelector("#" + item.theType)
+                  .scrollIntoView({ block: "start", behavior: "auto" });
+              }, 0);
+            }
+          }}
+          className={`${styles.accordionLink} ${
+            accordionItemOpen === item.theType || forceOpen
+              ? styles.open
+              : styles.closed
+          }`}
+        >
+          <ChevronIcon />
+        </button>
+      )}
+
+      {forceOpen && item.theType !== "what" && (
+        <div className={styles.pageBreak} />
+      )}
     </div>
   );
 };
