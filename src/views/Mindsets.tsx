@@ -97,8 +97,13 @@ const Mindsets = () => {
                       return;
                     }
                     setGeneratingPdf(true);
+                    let url = window.location.href + "?pdfme=true";
+                    url = url.replace(
+                      "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
+                      "https://shaunnez.github.io/nzt/#/"
+                    );
                     const result = await pdf({
-                      source: window.location.href + "?pdfme=true",
+                      source: url,
                     });
                     setGeneratingPdf(false);
                     // @ts-ignore
@@ -304,7 +309,7 @@ export const AccordionItem = ({
         </button>
       )}
 
-      {forceOpen && item.theType !== "what" && (
+      {forceOpen && item.theType !== "where" && (
         <div className={styles.pageBreak} />
       )}
     </div>
