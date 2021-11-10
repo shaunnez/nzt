@@ -301,6 +301,7 @@ export const AccordionItem = ({
       >
         <ChevronIcon />
       </button>
+      {forceOpen && <div className={styles.pageBreak} />}
     </div>
   );
 };
