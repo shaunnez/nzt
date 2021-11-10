@@ -11,7 +11,16 @@ import "./styles/reset.css";
 import "./styles/font.css";
 import "./styles/globals.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 60 * 24 * 7,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 function App() {
   return (
