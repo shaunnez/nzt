@@ -144,6 +144,10 @@
   padding-top: 50px;
 }
 
+.accordionItem:first-child {
+  padding-top: 0px;
+}
+
 .accordionHeadingWrapper {
   display: flex;
   position: relative;
@@ -251,7 +255,6 @@
 
 .activitiesHeader {
   font-size: var(--font-larger);
-  margin-top: 84px;
   margin-bottom: 12px;
 }
 

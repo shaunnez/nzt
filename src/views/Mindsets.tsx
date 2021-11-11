@@ -102,6 +102,10 @@ const Mindsets = () => {
                       "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
                       "https://shaunnez.github.io/nzt/#/"
                     );
+                    url = url.replace(
+                      "http://localhost:3000/nzt#/",
+                      "https://shaunnez.github.io/nzt/#/"
+                    );
                     const result = await pdf({
                       source: url,
                     });
@@ -144,7 +148,10 @@ const Mindsets = () => {
                 </div>
               )}
               <div className={styles.content}>
-                <div className={styles.accordion}>
+                <div
+                  className={styles.accordion}
+                  style={{ marginBottom: isPdf ? "32px" : "84px" }}
+                >
                   {mindset.whoWhatWhereWhyHows.map((item, i) => (
                     <AccordionItem
                       mindset={mindset}
@@ -237,7 +244,7 @@ export const AccordionItem = ({
             : styles.closed
         }`}
       >
-        {item.boxouts.length === 3 ? null : (
+        {item.boxouts.length === 3 || item.boxouts.length === 0 ? null : (
           <div className={`${styles.boxouts}`}>
             {item.boxouts.map((x, i) => (
               <BoxoutComponent boxout={x} key={`${x.title}-${i}`} />
@@ -250,16 +257,18 @@ export const AccordionItem = ({
           dangerouslySetInnerHTML={{ __html: item.body?.html }}
         />
 
-        {item.fullImage && (
-          <div
-            className={styles.fullImage}
-            style={{
-              backgroundImage: `url(${
-                item.fullImage?.url || "http://via.placeholder.com/1156x771"
-              })`,
-            }}
-          />
-        )}
+        {forceOpen
+          ? null
+          : item.fullImage && (
+              <div
+                className={styles.fullImage}
+                style={{
+                  backgroundImage: `url(${
+                    item.fullImage?.url || "http://via.placeholder.com/1156x771"
+                  })`,
+                }}
+              />
+            )}
 
         {item.quotes.map((x, i) => (
           <Quote
@@ -309,10 +318,6 @@ export const AccordionItem = ({
         >
           <ChevronIcon />
         </button>
-      )}
-
-      {forceOpen && item.theType !== "where" && (
-        <div className={styles.pageBreak} />
       )}
 
       <div className={styles.border} />
