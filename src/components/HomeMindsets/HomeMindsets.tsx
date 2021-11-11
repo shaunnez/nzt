@@ -52,20 +52,27 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
       <div className={styles.header}>
         <span>Mindsets Overview</span>
 
-        <Select
-          placeholder="All activities"
-          options={theActivities.map((x) => ({
-            value: x,
-            label: x.length > 30 ? `${x}...` : x,
-          }))}
-          isClearable
-          className={"customSelect"}
-          classNamePrefix="customSelect"
-          onChange={(newValue) => {
-            setActivity(newValue?.value);
-          }}
-          defaultValue={activity ? { value: activity, label: activity } : null}
-        />
+        <div className={styles.selectWrapper}>
+          <Select
+            placeholder="All activities"
+            options={theActivities.map((x) => ({
+              value: x,
+              label: x.length > 30 ? `${x}...` : x,
+            }))}
+            isClearable
+            className={"customSelect"}
+            classNamePrefix="customSelect"
+            onChange={(newValue) => {
+              setActivity(newValue?.value);
+            }}
+            defaultValue={
+              activity ? { value: activity, label: activity } : null
+            }
+          />
+          <label>
+            Select an activity to see which mindsets would be most interested
+          </label>
+        </div>
       </div>
 
       <div className={styles.subHeader}>

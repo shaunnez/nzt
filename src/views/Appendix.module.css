@@ -154,8 +154,15 @@
 .domesticInternationalImages {
   min-height: 450px;
   margin-top: 40px;
+  position: relative;
 }
 
+.customFooterContent {
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  font-size: var(--font-boxout-content);
+}
 @media screen and (max-width: 1023px) {
 }
 

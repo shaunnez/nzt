@@ -24,7 +24,7 @@ const HomeUniversalTruths = ({ home }: any) => {
         onClick={(e) => {
           setAccordionOpen(!accordionOpen);
         }}
-        className={`${styles.universalTruthsArrow} ${
+        className={`bounce ${styles.universalTruthsArrow} ${
           accordionOpen ? styles.open : styles.closed
         } `}
       >

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Highcharts from "highcharts/highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -10,7 +11,6 @@ import { ReactComponent as InternationalIcon } from "assets/international.svg";
 
 import getDataByTypeAndIndex from "utilities/appendixData";
 import styles from "./Appendix.module.css";
-import { useState } from "react";
 
 const chartOptions = {
   title: {
@@ -186,10 +186,16 @@ export const DomesticInternationalWidget = () => {
   if (additionalChartData.categories2?.length > 0) {
     actualChartOptions.xAxis[1].visible = true;
     actualChartOptions.xAxis[1].categories = additionalChartData.categories2;
+  } else {
+    actualChartOptions.xAxis[1].visible = false;
+    actualChartOptions.xAxis[1].categories = [];
   }
   if (additionalChartData.categories3?.length > 0) {
     actualChartOptions.xAxis[2].visible = true;
     actualChartOptions.xAxis[2].categories = additionalChartData.categories3;
+  } else {
+    actualChartOptions.xAxis[2].visible = false;
+    actualChartOptions.xAxis[2].categories = [];
   }
   actualChartOptions.caption.text = additionalChartData.caption;
   actualChartOptions.colors = additionalChartData.colors;
@@ -217,19 +223,19 @@ export const DomesticInternationalWidget = () => {
               onClick={() => setSelectedDomesticFilter(0)}
               className={selectedDomesticFilter === 0 ? styles.active : null}
             >
-              Mindset Distribution by Market
+              Mindset Distribution by Cohort
             </button>
             <button
               onClick={() => setSelectedDomesticFilter(1)}
               className={selectedDomesticFilter === 1 ? styles.active : null}
             >
-              Mindset Distribution by Cohorts
+              Mindset Distribution by Age
             </button>
             <button
               onClick={() => setSelectedDomesticFilter(2)}
               className={selectedDomesticFilter === 2 ? styles.active : null}
             >
-              International Holidays
+              Domestic Holidays
             </button>
           </div>
           <div className={styles.domesticInternationalImages}>
@@ -238,6 +244,13 @@ export const DomesticInternationalWidget = () => {
               highcharts={Highcharts}
               options={actualChartOptions}
             />
+            <div className={styles.customFooterContent}>
+              {selectedDomesticFilter === 2 && (
+                <div>
+                  Average number of <br /> domestic holidays per year
+                </div>
+              )}
+            </div>
           </div>
         </div>
       ) : (
@@ -249,7 +262,7 @@ export const DomesticInternationalWidget = () => {
                 selectedInternationalFilter === 0 ? styles.active : null
               }
             >
-              Mindset Distribution by Cohorts
+              Mindset Distribution by Market
             </button>
             <button
               onClick={() => setSelectedInternationalFilter(1)}
@@ -257,7 +270,7 @@ export const DomesticInternationalWidget = () => {
                 selectedInternationalFilter === 1 ? styles.active : null
               }
             >
-              Age Distribution Mindset Clusters
+              Age Distribution by Mindset
             </button>
             <button
               onClick={() => setSelectedInternationalFilter(2)}
@@ -265,7 +278,7 @@ export const DomesticInternationalWidget = () => {
                 selectedInternationalFilter === 2 ? styles.active : null
               }
             >
-              Domestic Holidays
+              International Holidays
             </button>
           </div>
           <div className={styles.domesticInternationalImages}>

@@ -18,13 +18,25 @@
   flex-wrap: wrap;
 }
 
+.selectWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 400px;
+}
+
+.selectWrapper label {
+  font-size: 14px;
+  margin: 4px auto 0 auto;
+}
 .subHeader {
   font-size: var(--font-base);
   color: #000;
+  margin-top: 16px;
 }
 
 .mindsets {
-  /* margin-top: 48px; */
+  margin-top: -8px;
   position: relative;
   margin-bottom: 48px;
 }
@@ -139,6 +151,13 @@
 }
 
 @media screen and (max-width: 1023px) {
+  .selectWrapper {
+    width: 100%;
+  }
+  .selectWrapper label {
+    margin-left: 0;
+    margin-top: 8px;
+  }
   .customSelect {
     width: 100%;
   }

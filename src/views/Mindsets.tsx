@@ -87,7 +87,7 @@ const Mindsets = () => {
                 )}
               </div>
 
-              {/* {isPdf ? null : (
+              {isPdf ? null : (
                 <button
                   className={`${styles.pdfBtn} ${
                     generatingPdf ? styles.loading : null
@@ -119,7 +119,7 @@ const Mindsets = () => {
                 >
                   {generatingPdf ? "Please wait..." : "Download Pdf"}
                 </button>
-              )} */}
+              )}
             </header>
 
             <main>
@@ -127,20 +127,22 @@ const Mindsets = () => {
                 <div className={styles.subhead}>At a glance:</div>
                 <div className={styles.intro}>{mindset.intro}</div>
               </div>
-              <div style={{ height: "817px", overflow: "hidden" }}>
-                <LazyHero
-                  imageSrc={mindset.heroImage?.url}
-                  // imageSrc={
-                  //   require(`../assets/mindset-images${mindset.heroImage?.url}`)
-                  //     .default
-                  // }
-                  minHeight={"817px"}
-                  opacity={0.1}
-                  isCentered={false}
-                  // parallaxOffset={1000}
-                  transitionDuration={250}
-                />
-              </div>
+              {isPdf ? null : (
+                <div style={{ height: "817px", overflow: "hidden" }}>
+                  <LazyHero
+                    imageSrc={mindset.heroImage?.url}
+                    // imageSrc={
+                    //   require(`../assets/mindset-images${mindset.heroImage?.url}`)
+                    //     .default
+                    // }
+                    minHeight={"817px"}
+                    opacity={0.1}
+                    isCentered={false}
+                    // parallaxOffset={1000}
+                    transitionDuration={250}
+                  />
+                </div>
+              )}
               <div className={styles.content}>
                 <div className={styles.accordion}>
                   {mindset.whoWhatWhereWhyHows.map((item, i) => (
@@ -299,7 +301,7 @@ export const AccordionItem = ({
               }, 0);
             }
           }}
-          className={`${styles.accordionLink} ${
+          className={`bounce ${styles.accordionLink} ${
             accordionItemOpen === item.theType || forceOpen
               ? styles.open
               : styles.closed
@@ -312,6 +314,8 @@ export const AccordionItem = ({
       {forceOpen && item.theType !== "where" && (
         <div className={styles.pageBreak} />
       )}
+
+      <div className={styles.border} />
     </div>
   );
 };
