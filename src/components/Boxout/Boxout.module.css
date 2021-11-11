@@ -83,6 +83,8 @@
   font-size: var(--font-boxout-content);
   line-height: var(--font-small);
   font-weight: 400;
+  margin: 0px 10px;
+  margin-top: -6px;
 }
 
 /* .box */

@@ -68,6 +68,11 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
         />
       </div>
 
+      <div className={styles.subHeader}>
+        The clickable mindsets below are Tourism New Zealand’s target mindsets
+        and the focus of our insights
+      </div>
+
       <div className={styles.mindsets}>
         {filteredMindsets("domestic", activity).length > 0 && (
           <div className={styles.mindsetsWrapper}>

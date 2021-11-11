@@ -18,6 +18,11 @@
   flex-wrap: wrap;
 }
 
+.subHeader {
+  font-size: var(--font-base);
+  color: #000;
+}
+
 .mindsets {
   /* margin-top: 48px; */
   position: relative;
