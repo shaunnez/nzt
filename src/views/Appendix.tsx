@@ -25,7 +25,6 @@ const chartOptions = {
     showAxis: true,
     zoomType: "x",
     height: 500,
-    // margin: [0, 0, 0, 0],
     // spacingTop: 0,
     // marginTop: 0,
     style: {
@@ -138,6 +137,14 @@ const Appendix = () => {
   const [pdfUrl, setPdfUrl] = useState("");
   const isPdf = window.location.href.indexOf("pdfme=true") > -1;
 
+  if (isPdf) {
+    // @ts-ignore
+    chartOptions.chart.width = "1156";
+    // @ts-ignore
+    chartOptions.chart.marginTop = "0";
+    // @ts-ignore
+    chartOptions.chart.spacingTop = "0";
+  }
   return (
     <Layout>
       {(data) => {
@@ -297,21 +304,28 @@ export const DomesticInternationalWidget = ({
   actualChartOptions.colors = additionalChartData.colors;
 
   return (
-    <div className={styles.domesticInternational}>
+    <div
+      className={styles.domesticInternational}
+      style={{ marginTop: isPdf ? "0px" : "48px" }}
+    >
       {isPdf && selectedFilter > 0 ? null : (
         <div className={styles.domesticInternationalHeader}>
-          <button
-            onClick={() => setSelectedTab(0)}
-            className={selectedTab === 0 ? styles.active : null}
-          >
-            <InternationalIcon /> International
-          </button>
-          <button
-            onClick={() => setSelectedTab(1)}
-            className={selectedTab === 1 ? styles.active : null}
-          >
-            <DomesticIcon /> Domestic
-          </button>
+          {!isPdf || (isPdf && selectedTabIdx === 0) ? (
+            <button
+              onClick={() => setSelectedTab(0)}
+              className={selectedTab === 0 ? styles.active : null}
+            >
+              <InternationalIcon /> International
+            </button>
+          ) : null}
+          {!isPdf || (isPdf && selectedTabIdx === 1) ? (
+            <button
+              onClick={() => setSelectedTab(1)}
+              className={selectedTab === 1 ? styles.active : null}
+            >
+              <DomesticIcon /> Domestic
+            </button>
+          ) : null}
         </div>
       )}
       {selectedTab === 1 ? (
@@ -340,7 +354,10 @@ export const DomesticInternationalWidget = ({
               Domestic Holidays
             </button>
           </div>
-          <div className={styles.domesticInternationalImages}>
+          <div
+            className={styles.domesticInternationalImages}
+            style={{ marginTop: isPdf ? "0px" : "40px" }}
+          >
             <HighchartsReact
               immutable={true}
               highcharts={Highcharts}
