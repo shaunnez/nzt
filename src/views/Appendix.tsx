@@ -395,6 +395,7 @@ export const DomesticInternationalWidget = ({
             >
               Age Distribution by Mindset
             </button>
+            {isPdf && <div className={styles.pageBreak} />}
             <button
               onClick={() => setSelectedInternationalFilter(2)}
               className={

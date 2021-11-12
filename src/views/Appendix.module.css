@@ -279,3 +279,9 @@
   margin: 0;
   margin-bottom: -40px;
 }
+
+.pageBreak {
+  page-break-before: always;
+  clear: both;
+  display: block;
+} /* page-break-after works, as well */
