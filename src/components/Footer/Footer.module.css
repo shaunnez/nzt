@@ -9,7 +9,7 @@
 
 .content {
   padding: 36px 16px;
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   position: relative;
   /* adjust on home */

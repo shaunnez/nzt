@@ -1,5 +1,5 @@
 .universalTruths {
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   /* max-width: 942px; */
   margin: 0 auto;
   padding: 24px 16px;
@@ -30,7 +30,7 @@
   /* line-height: 30px; */
   font-weight: 800;
   position: relative;
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   padding: 0px 16px;
   line-height: 1.14;
 }

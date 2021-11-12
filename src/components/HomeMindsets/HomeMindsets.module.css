@@ -1,5 +1,5 @@
 .homeMindsets {
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   text-align: left;
   min-height: 400px;

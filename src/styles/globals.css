@@ -18,6 +18,7 @@
   --font-footer-badge: 14px;
   --font-byTheNumber-title-text: 90px;
   --font-byTheNumber-body-text: 18px;
+  --page-max-width: var(--page-max-width);
 }
 
 @media screen and (max-width: 1023px) {

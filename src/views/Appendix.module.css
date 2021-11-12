@@ -23,7 +23,7 @@
 }
 
 .header {
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   text-align: left;
   padding: 0px 16px;
@@ -37,7 +37,7 @@
 }
 
 .overview {
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   text-align: left;
   padding: 0px 16px;
@@ -52,7 +52,7 @@
 }
 
 .content {
-  max-width: 1188px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   text-align: left;
   padding: 0px 16px;
