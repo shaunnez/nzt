@@ -1,6 +1,15 @@
 import axios from "axios";
 
 const pdfshift = (data) => {
+  const url = data.source
+    .replace(
+      "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
+      "https://shaunnez.github.io/nzt/#/"
+    )
+    .replace(
+      "http://localhost:3000/nzt#/",
+      "https://shaunnez.github.io/nzt/#/"
+    );
   return new Promise((resolve, reject) => {
     axios
       .request({
@@ -8,7 +17,7 @@ const pdfshift = (data) => {
         url: "https://api.pdfshift.io/v3/convert/pdf",
         responseType: "json",
         data: {
-          ...data,
+          source: url,
           zoom: 0.5,
           filename: "Tourism New Zealand Mindsets PDF.pdf",
           sandbox: true,

@@ -6,6 +6,11 @@ interface BoxoutProps {
 }
 
 const BoxoutComponent = ({ boxout }: BoxoutProps) => {
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+  if (isPdf && !boxout?.body?.html) {
+    return;
+  }
+
   return (
     <div
       className={`${styles.boxout} ${

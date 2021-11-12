@@ -10,6 +10,7 @@ import { ReactComponent as DomesticIcon } from "assets/domestic.svg";
 import { ReactComponent as InternationalIcon } from "assets/international.svg";
 
 import getDataByTypeAndIndex from "utilities/appendixData";
+import pdf from "utilities/pdf";
 import styles from "./Appendix.module.css";
 
 const chartOptions = {
@@ -133,15 +134,72 @@ const chartOptions = {
 };
 
 const Appendix = () => {
+  const [generatingPdf, setGeneratingPdf] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState("");
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+
   return (
     <Layout>
       {(data) => {
         return (
           <div className={styles.appendix}>
+            <div
+              className={styles.modal}
+              style={{ display: pdfUrl ? "flex" : "none" }}
+            >
+              <div>
+                Great! <br /> Click&nbsp;
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(pdfUrl);
+                    setPdfUrl("");
+                  }}
+                >
+                  here
+                </a>
+                &nbsp;to download your pdf
+              </div>
+              <button
+                className={styles.closeButton}
+                onClick={(e) => setPdfUrl("")}
+              >
+                X
+              </button>
+            </div>
             <header className={styles.header}>
               <Link to={`/`} className={styles.overviewLink}>
                 <span className="gg-arrow-left" /> Overview
               </Link>
+              {isPdf ? null : (
+                <button
+                  className={`${styles.pdfBtn} ${
+                    generatingPdf ? styles.loading : null
+                  }`}
+                  onClick={async () => {
+                    if (generatingPdf) {
+                      return;
+                    }
+                    setGeneratingPdf(true);
+                    const result = await pdf({
+                      source: window.location.href + "?pdfme=true",
+                    });
+                    setGeneratingPdf(false);
+                    // @ts-ignore
+                    if (result?.data?.url) {
+                      // @ts-ignore
+                      setPdfUrl(result.data.url);
+                    } else {
+                      alert(
+                        "There was a problem generating your pdf, please try again later"
+                      );
+                    }
+                  }}
+                >
+                  {generatingPdf ? "Please wait..." : "Download Pdf"}
+                </button>
+              )}
             </header>
 
             <main className={styles.main}>
@@ -155,7 +213,39 @@ const Appendix = () => {
               </div>
 
               <div className={styles.content}>
-                <DomesticInternationalWidget />
+                {isPdf ? (
+                  <>
+                    <DomesticInternationalWidget
+                      selectedTabIdx={0}
+                      selectedFilter={0}
+                    />
+                    <DomesticInternationalWidget
+                      selectedTabIdx={0}
+                      selectedFilter={1}
+                    />
+                    <DomesticInternationalWidget
+                      selectedTabIdx={0}
+                      selectedFilter={2}
+                    />
+                    <DomesticInternationalWidget
+                      selectedTabIdx={1}
+                      selectedFilter={0}
+                    />
+                    <DomesticInternationalWidget
+                      selectedTabIdx={1}
+                      selectedFilter={1}
+                    />
+                    <DomesticInternationalWidget
+                      selectedTabIdx={1}
+                      selectedFilter={2}
+                    />
+                  </>
+                ) : (
+                  <DomesticInternationalWidget
+                    selectedTabIdx={0}
+                    selectedFilter={0}
+                  />
+                )}
               </div>
             </main>
 
@@ -167,11 +257,17 @@ const Appendix = () => {
   );
 };
 
-export const DomesticInternationalWidget = () => {
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [selectedDomesticFilter, setSelectedDomesticFilter] = useState(0);
+export const DomesticInternationalWidget = ({
+  selectedTabIdx,
+  selectedFilter,
+}) => {
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+
+  const [selectedTab, setSelectedTab] = useState(selectedTabIdx);
+  const [selectedDomesticFilter, setSelectedDomesticFilter] =
+    useState(selectedFilter);
   const [selectedInternationalFilter, setSelectedInternationalFilter] =
-    useState(0);
+    useState(selectedFilter);
 
   const actualChartOptions = {
     ...chartOptions,
@@ -202,23 +298,29 @@ export const DomesticInternationalWidget = () => {
 
   return (
     <div className={styles.domesticInternational}>
-      <div className={styles.domesticInternationalHeader}>
-        <button
-          onClick={() => setSelectedTab(0)}
-          className={selectedTab === 0 ? styles.active : null}
-        >
-          <InternationalIcon /> International
-        </button>
-        <button
-          onClick={() => setSelectedTab(1)}
-          className={selectedTab === 1 ? styles.active : null}
-        >
-          <DomesticIcon /> Domestic
-        </button>
-      </div>
+      {isPdf && selectedFilter > 0 ? null : (
+        <div className={styles.domesticInternationalHeader}>
+          <button
+            onClick={() => setSelectedTab(0)}
+            className={selectedTab === 0 ? styles.active : null}
+          >
+            <InternationalIcon /> International
+          </button>
+          <button
+            onClick={() => setSelectedTab(1)}
+            className={selectedTab === 1 ? styles.active : null}
+          >
+            <DomesticIcon /> Domestic
+          </button>
+        </div>
+      )}
       {selectedTab === 1 ? (
         <div className={styles.domesticInternationalContent}>
-          <div className={styles.domesticInternationalFilters}>
+          <div
+            className={`${styles.domesticInternationalFilters} ${
+              isPdf ? styles.isPdf : null
+            }`}
+          >
             <button
               onClick={() => setSelectedDomesticFilter(0)}
               className={selectedDomesticFilter === 0 ? styles.active : null}
@@ -255,7 +357,11 @@ export const DomesticInternationalWidget = () => {
         </div>
       ) : (
         <div className={styles.domesticInternationalContent}>
-          <div className={styles.domesticInternationalFilters}>
+          <div
+            className={`${styles.domesticInternationalFilters} ${
+              isPdf ? styles.isPdf : null
+            }`}
+          >
             <button
               onClick={() => setSelectedInternationalFilter(0)}
               className={

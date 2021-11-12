@@ -22,7 +22,7 @@ import Quote from "components/Quote/Quote";
 import ByTheNumber from "components/ByTheNumber/ByTheNumber";
 import Layout from "layouts";
 
-import pdf from "../utilities/pdf";
+import pdf from "utilities/pdf";
 
 import styles from "./Mindsets.module.css";
 
@@ -97,17 +97,8 @@ const Mindsets = () => {
                       return;
                     }
                     setGeneratingPdf(true);
-                    let url = window.location.href + "?pdfme=true";
-                    url = url.replace(
-                      "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
-                      "https://shaunnez.github.io/nzt/#/"
-                    );
-                    url = url.replace(
-                      "http://localhost:3000/nzt#/",
-                      "https://shaunnez.github.io/nzt/#/"
-                    );
                     const result = await pdf({
-                      source: url,
+                      source: window.location.href + "?pdfme=true",
                     });
                     setGeneratingPdf(false);
                     // @ts-ignore
@@ -321,6 +312,10 @@ export const AccordionItem = ({
       )}
 
       <div className={styles.border} />
+
+      {item.theType === "why" || item.theType === "what" ? (
+        <div className={styles.pageBreak} />
+      ) : null}
     </div>
   );
 };

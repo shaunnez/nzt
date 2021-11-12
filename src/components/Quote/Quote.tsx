@@ -10,13 +10,20 @@ const Quote = ({
   continuumRightText,
   continuumTitle,
 }) => {
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+
   return (
     <div
       className={`${styles.quote} ${
         continuumTitle ? styles.quoteWithContinuum : null
       }`}
     >
-      <div className={styles.quoteText}>{text}</div>
+      <div
+        className={styles.quoteText}
+        style={{ fontSize: isPdf ? "20px" : "var(--font-quote)" }}
+      >
+        {text}
+      </div>
       {continuumTitle && (
         <TrackVisibility>
           <Continuum
