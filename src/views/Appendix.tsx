@@ -304,117 +304,123 @@ export const DomesticInternationalWidget = ({
   actualChartOptions.colors = additionalChartData.colors;
 
   return (
-    <div
-      className={styles.domesticInternational}
-      style={{ marginTop: isPdf ? "0px" : "48px" }}
-    >
-      {isPdf && selectedFilter > 0 ? null : (
-        <div className={styles.domesticInternationalHeader}>
-          {!isPdf || (isPdf && selectedTabIdx === 0) ? (
-            <button
-              onClick={() => setSelectedTab(0)}
-              className={selectedTab === 0 ? styles.active : null}
-            >
-              <InternationalIcon /> International
-            </button>
-          ) : null}
-          {!isPdf || (isPdf && selectedTabIdx === 1) ? (
-            <button
-              onClick={() => setSelectedTab(1)}
-              className={selectedTab === 1 ? styles.active : null}
-            >
-              <DomesticIcon /> Domestic
-            </button>
-          ) : null}
-        </div>
-      )}
-      {selectedTab === 1 ? (
-        <div className={styles.domesticInternationalContent}>
-          <div
-            className={`${styles.domesticInternationalFilters} ${
-              isPdf ? styles.isPdf : null
-            }`}
-          >
-            <button
-              onClick={() => setSelectedDomesticFilter(0)}
-              className={selectedDomesticFilter === 0 ? styles.active : null}
-            >
-              Mindset Distribution by Cohort
-            </button>
-            <button
-              onClick={() => setSelectedDomesticFilter(1)}
-              className={selectedDomesticFilter === 1 ? styles.active : null}
-            >
-              Mindset Distribution by Age
-            </button>
-            <button
-              onClick={() => setSelectedDomesticFilter(2)}
-              className={selectedDomesticFilter === 2 ? styles.active : null}
-            >
-              Domestic Holidays
-            </button>
+    <>
+      {isPdf && selectedTabIdx === 0 && selectedFilter === 2 ? (
+        <div className={styles.pageBreak} />
+      ) : null}
+      <div
+        className={styles.domesticInternational}
+        style={{ marginTop: isPdf ? "0px" : "48px" }}
+      >
+        {isPdf && selectedFilter > 0 ? null : (
+          <div className={styles.domesticInternationalHeader}>
+            {!isPdf || (isPdf && selectedTabIdx === 0) ? (
+              <button
+                onClick={() => setSelectedTab(0)}
+                className={selectedTab === 0 ? styles.active : null}
+              >
+                <InternationalIcon /> International
+              </button>
+            ) : null}
+            {!isPdf || (isPdf && selectedTabIdx === 1) ? (
+              <button
+                onClick={() => setSelectedTab(1)}
+                className={selectedTab === 1 ? styles.active : null}
+              >
+                <DomesticIcon /> Domestic
+              </button>
+            ) : null}
           </div>
-          <div
-            className={styles.domesticInternationalImages}
-            style={{ marginTop: isPdf ? "0px" : "40px" }}
-          >
-            <HighchartsReact
-              immutable={true}
-              highcharts={Highcharts}
-              options={actualChartOptions}
-            />
-            <div className={styles.customFooterContent}>
-              {selectedDomesticFilter === 2 && (
-                <div>
-                  Average number of <br /> domestic holidays per year
-                </div>
-              )}
+        )}
+
+        {selectedTab === 1 ? (
+          <div className={styles.domesticInternationalContent}>
+            <div
+              className={`${styles.domesticInternationalFilters} ${
+                isPdf ? styles.isPdf : null
+              }`}
+            >
+              <button
+                onClick={() => setSelectedDomesticFilter(0)}
+                className={selectedDomesticFilter === 0 ? styles.active : null}
+              >
+                Mindset Distribution by Cohort
+              </button>
+              <button
+                onClick={() => setSelectedDomesticFilter(1)}
+                className={selectedDomesticFilter === 1 ? styles.active : null}
+              >
+                Mindset Distribution by Age
+              </button>
+              <button
+                onClick={() => setSelectedDomesticFilter(2)}
+                className={selectedDomesticFilter === 2 ? styles.active : null}
+              >
+                Domestic Holidays
+              </button>
+            </div>
+            <div
+              className={styles.domesticInternationalImages}
+              style={{ marginTop: isPdf ? "0px" : "40px" }}
+            >
+              <HighchartsReact
+                immutable={true}
+                highcharts={Highcharts}
+                options={actualChartOptions}
+              />
+              <div className={styles.customFooterContent}>
+                {selectedDomesticFilter === 2 && (
+                  <div>
+                    Average number of <br /> domestic holidays per year
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className={styles.domesticInternationalContent}>
-          <div
-            className={`${styles.domesticInternationalFilters} ${
-              isPdf ? styles.isPdf : null
-            }`}
-          >
-            <button
-              onClick={() => setSelectedInternationalFilter(0)}
-              className={
-                selectedInternationalFilter === 0 ? styles.active : null
-              }
+        ) : (
+          <div className={styles.domesticInternationalContent}>
+            <div
+              className={`${styles.domesticInternationalFilters} ${
+                isPdf ? styles.isPdf : null
+              }`}
             >
-              Mindset Distribution by Market
-            </button>
-            <button
-              onClick={() => setSelectedInternationalFilter(1)}
-              className={
-                selectedInternationalFilter === 1 ? styles.active : null
-              }
-            >
-              Age Distribution by Mindset
-            </button>
-            {isPdf && <div className={styles.pageBreak} />}
-            <button
-              onClick={() => setSelectedInternationalFilter(2)}
-              className={
-                selectedInternationalFilter === 2 ? styles.active : null
-              }
-            >
-              International Holidays
-            </button>
+              <button
+                onClick={() => setSelectedInternationalFilter(0)}
+                className={
+                  selectedInternationalFilter === 0 ? styles.active : null
+                }
+              >
+                Mindset Distribution by Market
+              </button>
+              <button
+                onClick={() => setSelectedInternationalFilter(1)}
+                className={
+                  selectedInternationalFilter === 1 ? styles.active : null
+                }
+              >
+                Age Distribution by Mindset
+              </button>
+
+              <button
+                onClick={() => setSelectedInternationalFilter(2)}
+                className={
+                  selectedInternationalFilter === 2 ? styles.active : null
+                }
+              >
+                International Holidays
+              </button>
+            </div>
+            <div className={styles.domesticInternationalImages}>
+              <HighchartsReact
+                immutable={true}
+                highcharts={Highcharts}
+                options={actualChartOptions}
+              />
+            </div>
           </div>
-          <div className={styles.domesticInternationalImages}>
-            <HighchartsReact
-              immutable={true}
-              highcharts={Highcharts}
-              options={actualChartOptions}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
