@@ -47,7 +47,7 @@
 
 .overview > p,
 .overview > div {
-  max-width: 981px;
+  max-width: var(--overview-max-width);
   margin-left: 20px;
 }
 

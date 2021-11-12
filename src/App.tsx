@@ -26,6 +26,7 @@ function App() {
   const isPdf = window.location.href.indexOf("pdfme=true") > -1;
   if (isPdf) {
     document.documentElement.style.setProperty("--page-max-width", "1920px");
+    document.documentElement.style.setProperty("--overview-max-width", "65%");
   }
 
   return (

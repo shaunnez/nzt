@@ -19,6 +19,7 @@
   --font-byTheNumber-title-text: 90px;
   --font-byTheNumber-body-text: 18px;
   --page-max-width: 1156px;
+  --overview-max-width: 981px;
 }
 
 @media screen and (max-width: 1023px) {
