@@ -313,9 +313,7 @@ export const AccordionItem = ({
 
       <div className={styles.border} />
 
-      {item.theType === "why" || item.theType === "what" ? (
-        <div className={styles.pageBreak} />
-      ) : null}
+      {item.theType === "why" ? <div className={styles.pageBreak} /> : null}
     </div>
   );
 };
