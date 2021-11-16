@@ -7,7 +7,7 @@ const ByTheNumber = ({ byTheNumber }) => {
   // @ts-ignore
   const { id } = useParams();
   const isPdf = window.location.href.indexOf("pdfme=true") > -1;
-  const hideMe = ["organised-joy-seekers"].indexOf("id") > -1 ? true : false;
+  const hideMe = ["organised-joy-seekers"].indexOf(id) > -1 ? true : false;
   return (
     <div
       className={`${styles.byTheNumber} ${

@@ -213,11 +213,11 @@ export const AccordionItem = ({
     addPageBreak = true;
   } else if (id === "experienced-connectors" && item.theType === "how") {
     addPageBreak = true;
-  } else if (id === "vibrant-adventurers" && item.theType === "how") {
+  } else if (id === "vibrant-adventurers" && item.theType === "what") {
     addPageBreak = true;
   } else if (
     id === "organised-joy-seekers" &&
-    (item.theType === "why" || item.theType === "what")
+    (item.theType === "why" || item.theType === "where")
   ) {
     addPageBreak = true;
   } else if (
