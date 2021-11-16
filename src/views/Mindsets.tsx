@@ -211,15 +211,9 @@ export const AccordionItem = ({
     addPageBreak = true;
   } else if (id === "here-and-now'ers" && item.theType === "why") {
     addPageBreak = true;
-  } else if (
-    id === "experienced-connectors" &&
-    (item.theType === "who" || item.theType === "how")
-  ) {
+  } else if (id === "experienced-connectors" && item.theType === "how") {
     addPageBreak = true;
-  } else if (
-    id === "vibrant-adventurers" &&
-    (item.theType === "who" || item.theType === "how")
-  ) {
+  } else if (id === "vibrant-adventurers" && item.theType === "how") {
     addPageBreak = true;
   } else if (
     id === "organised-joy-seekers" &&
@@ -273,6 +267,12 @@ export const AccordionItem = ({
             ))}
           </div>
         )}
+
+        {(id === "vibrant-adventurers" || id === "experienced-connectors") &&
+        item.theType === "who" &&
+        forceOpen ? (
+          <div className={styles.pageBreak} />
+        ) : null}
 
         <div
           className={`${styles.accordionBody}`}

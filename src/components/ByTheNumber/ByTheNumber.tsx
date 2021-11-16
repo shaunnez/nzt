@@ -1,15 +1,22 @@
-import Continuum from "components/Continuum/Continuum";
+import { useParams } from "react-router-dom";
 import TrackVisibility from "react-on-screen";
+import Continuum from "components/Continuum/Continuum";
 import styles from "./ByTheNumber.module.css";
 
 const ByTheNumber = ({ byTheNumber }) => {
+  // @ts-ignore
+  const { id } = useParams();
   const isPdf = window.location.href.indexOf("pdfme=true") > -1;
+  const hideMe = ["organised-joy-seekers"].indexOf("id") > -1 ? true : false;
   return (
     <div
       className={`${styles.byTheNumber} ${
         byTheNumber.continuumTitle ? styles.withContinuum : null
       }`}
-      style={{ marginTop: isPdf ? "40px" : null }}
+      style={{
+        marginTop: isPdf ? "40px" : null,
+        display: isPdf && hideMe ? "none" : null,
+      }}
     >
       {byTheNumber.continuumTitle && (
         <TrackVisibility>

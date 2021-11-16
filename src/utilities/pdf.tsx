@@ -20,10 +20,10 @@ const pdfshift = (data) => {
         responseType: "json",
         data: {
           source: url,
-          zoom: 0.5,
+          zoom: 0.45,
           filename: "Tourism New Zealand Mindsets PDF.pdf",
           sandbox: true,
-          margin: "10px",
+          margin: "62px",
           wait_for: function () {
             let hasFound = null;
             setInterval(() => {
