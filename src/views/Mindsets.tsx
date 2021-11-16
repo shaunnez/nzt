@@ -205,7 +205,7 @@ export const AccordionItem = ({
     theTitle = "WHERE you'll find them";
   }
   let addPageBreak = false;
-  if (id === "lux-adventures" && item.theType === "why") {
+  if (id === "lux-adventurers" && item.theType === "why") {
     addPageBreak = true;
   } else if (id === "considered-rejuvenators" && item.theType === "how") {
     addPageBreak = true;
@@ -232,6 +232,7 @@ export const AccordionItem = ({
   ) {
     addPageBreak = true;
   }
+
   return (
     <div id={item.theType} className={styles.accordionItem}>
       <div className={styles.accordionHeadingWrapper}>
@@ -342,7 +343,7 @@ export const AccordionItem = ({
       )}
 
       <div className={styles.border} />
-      {addPageBreak ? <div className={styles.pageBreak} /> : null}
+      {addPageBreak && forceOpen ? <div className={styles.pageBreak} /> : null}
     </div>
   );
 };
