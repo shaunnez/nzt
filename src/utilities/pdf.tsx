@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const pdfshift = (data) => {
-  console.log(data.source);
   const url = data.source
     .replace(
       "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
@@ -22,7 +21,7 @@ const pdfshift = (data) => {
           source: url,
           zoom: 0.45,
           filename: "Tourism New Zealand Mindsets PDF.pdf",
-          sandbox: true,
+          sandbox: false,
           margin: "62px",
           wait_for: function () {
             let hasFound = null;
@@ -35,7 +34,7 @@ const pdfshift = (data) => {
             return hasFound;
           },
         },
-        auth: { username: "api", password: "96694d0dd73d4782a6e72056ee38b813" },
+        auth: { username: "api", password: "ebe3d5a4279343cab40f10324a25e6c8" },
       })
       .then(resolve)
       .catch((response) => {
