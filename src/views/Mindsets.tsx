@@ -189,6 +189,8 @@ export const AccordionItem = ({
   accordionItemOpen,
   setAccordionItemOpen,
 }: any) => {
+  // @ts-ignore
+  const { id } = useParams();
   const forceOpen = window.location.href.indexOf("pdfme=true") > -1;
   let theTitle = "";
   if (item.theType === "who") {
@@ -201,6 +203,34 @@ export const AccordionItem = ({
     theTitle = "WHAT they do on a holiday";
   } else {
     theTitle = "WHERE you'll find them";
+  }
+  let addPageBreak = false;
+  if (id === "lux-adventures" && item.theType === "why") {
+    addPageBreak = true;
+  } else if (id === "considered-rejuvenators" && item.theType === "how") {
+    addPageBreak = true;
+  } else if (id === "here-and-now'ers" && item.theType === "why") {
+    addPageBreak = true;
+  } else if (
+    id === "experienced-connectors" &&
+    (item.theType === "who" || item.theType === "how")
+  ) {
+    addPageBreak = true;
+  } else if (
+    id === "vibrant-adventurers" &&
+    (item.theType === "who" || item.theType === "how")
+  ) {
+    addPageBreak = true;
+  } else if (
+    id === "organised-joy-seekers" &&
+    (item.theType === "why" || item.theType === "what")
+  ) {
+    addPageBreak = true;
+  } else if (
+    id === "fun-loving-trail-blazers" &&
+    (item.theType === "why" || item.theType === "what")
+  ) {
+    addPageBreak = true;
   }
   return (
     <div id={item.theType} className={styles.accordionItem}>
@@ -312,8 +342,7 @@ export const AccordionItem = ({
       )}
 
       <div className={styles.border} />
-      {/* 
-      {item.theType === "why" ? <div className={styles.pageBreak} /> : null} */}
+      {addPageBreak ? <div className={styles.pageBreak} /> : null}
     </div>
   );
 };

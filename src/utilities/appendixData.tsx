@@ -61,7 +61,7 @@ const allOptions = {
       "38.5",
       "38.5",
     ],
-    categories3: ["42", "47", "55", "40", "45", "36", "36", "37"],
+    categories3: [],
     series: [
       {
         name: "65-74",
@@ -161,56 +161,46 @@ const allOptions = {
     ].reverse(),
   },
   international2: {
-    colors: [
-      "#EBEBEB",
-      "#CACACA",
-      "#C9F1FE",
-      "#8FDFF9",
-      "#66CBEB",
-      "#33B9E5",
-      "#00A8DE",
-    ],
-    caption: `SINKS: Under age 60, Single, Divorced, or Widowed, No Children in Household<br/>
-  DINKS: Under age 60, Engaged, Married, or Living with Partner, 2+ people in Household, No Children in Household<br/>
-  Households With Children: Under age 60, Children in Household<br/>
-  Empty Nesters: Ages 55+, No Children in Household`,
+    colors: ["#8FDFF9", "#66CBEB", "#33B9E5", "#00A8DE"],
+    caption: ``,
     categories: [
-      "Total (n=6,618)",
-      "SINKS Ages 18-59 (n=766)",
-      "DINKS Ages 18-59 (n=1,209)",
-      "Household with Kids Ages 18-59 (n=2,881)",
-      "Empty Nesters Ages 55-74 (n=1,266)",
+      "Total",
+      "Cautious Escapists",
+      "Experienced Connectors",
+      "Vibrant Adventures",
+      "Organised Joy Seekers",
+      "Spontaneous Explorers",
+      "Fun Loving Trail Blazers",
+      "Passive Passengers",
+    ],
+    categories2: [
+      "43.4",
+      "47.2",
+      "52.1",
+      "42.6",
+      "45.2",
+      "38.8",
+      "38.5",
+      "38.5",
     ],
     series: [
       {
-        name: "Passive Passengers",
-        data: [15, 15, 16, 19, 7],
+        name: "18-34",
+        data: [34, 25, 15, 36, 28, 45, 45, 43],
       },
       {
-        name: "Fun Loving Trail Blazers",
-        data: [10, 11, 7, 14, 5],
+        name: "35-49",
+        data: [31, 28, 24, 30, 31, 33, 35, 37],
       },
       {
-        name: "Spontaneous Explorers",
-        data: [16, 15, 17, 20, 16],
+        name: "50-64",
+        data: [25, 29, 38, 25, 32, 18, 16, 16],
       },
       {
-        name: "Organised Joy Seekers",
-        data: [12, 10, 13, 13, 16],
+        name: "65-74",
+        data: [10, 17, 23, 9, 9, 4, 4, 3],
       },
-      {
-        name: "Vibrant Adventures",
-        data: [16, 20, 18, 13, 15],
-      },
-      {
-        name: "Experienced Connectors",
-        data: [15, 11, 14, 10, 27],
-      },
-      {
-        name: "Cautious Escapists",
-        data: [15, 19, 14, 10, 21],
-      },
-    ].reverse(),
+    ],
   },
   international3: {
     colors: ["#C9F1FE", "#66CBEB", "#00A8DE"],

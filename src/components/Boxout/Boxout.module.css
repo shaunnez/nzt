@@ -81,9 +81,9 @@
 
 .boxoutContent {
   font-size: var(--font-boxout-content);
-  line-height: var(--font-small);
+  line-height: var(--font-smallest);
   font-weight: 400;
-  margin: 0px 10px;
+  margin: 0px 15px;
   margin-top: -6px;
 }
 

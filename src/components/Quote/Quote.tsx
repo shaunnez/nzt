@@ -17,10 +17,11 @@ const Quote = ({
       className={`${styles.quote} ${
         continuumTitle ? styles.quoteWithContinuum : null
       }`}
+      style={{ marginTop: isPdf ? "20px" : null }}
     >
       <div
         className={styles.quoteText}
-        style={{ fontSize: isPdf ? "20px" : "var(--font-quote)" }}
+        style={{ fontSize: isPdf ? "24px" : "var(--font-quote)" }}
       >
         {text}
       </div>

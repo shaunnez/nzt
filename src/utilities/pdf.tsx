@@ -7,7 +7,11 @@ const pdfshift = (data) => {
       "https://insights.tourismnewzealand.com/int/mindsets-/?stage=Stage#/",
       "https://shaunnez.github.io/nzt/#/"
     )
-    .replace("http://localhost:3000/#/", "https://shaunnez.github.io/nzt/#/");
+    .replace("http://localhost:3000/#/", "https://shaunnez.github.io/nzt/#/")
+    .replace(
+      "http://localhost:3000/nzt#/",
+      "https://shaunnez.github.io/nzt/#/"
+    );
   return new Promise((resolve, reject) => {
     axios
       .request({
@@ -19,6 +23,7 @@ const pdfshift = (data) => {
           zoom: 0.5,
           filename: "Tourism New Zealand Mindsets PDF.pdf",
           sandbox: true,
+          margin: "10px",
           wait_for: function () {
             let hasFound = null;
             setInterval(() => {

@@ -350,7 +350,7 @@ export const DomesticInternationalWidget = ({
                 onClick={() => setSelectedDomesticFilter(1)}
                 className={selectedDomesticFilter === 1 ? styles.active : null}
               >
-                Mindset Distribution by Age
+                Age Distribution by Mindset
               </button>
               <button
                 onClick={() => setSelectedDomesticFilter(2)}
@@ -369,6 +369,7 @@ export const DomesticInternationalWidget = ({
                 options={actualChartOptions}
               />
               <div className={styles.customFooterContent}>
+                {selectedDomesticFilter === 1 && <div>Average age</div>}
                 {selectedDomesticFilter === 2 && (
                   <div>
                     Average number of <br /> domestic holidays per year
@@ -416,6 +417,9 @@ export const DomesticInternationalWidget = ({
                 highcharts={Highcharts}
                 options={actualChartOptions}
               />
+              <div className={styles.customFooterContent}>
+                {selectedInternationalFilter === 1 && <div>Average age</div>}
+              </div>
             </div>
           </div>
         )}

@@ -3,11 +3,13 @@ import TrackVisibility from "react-on-screen";
 import styles from "./ByTheNumber.module.css";
 
 const ByTheNumber = ({ byTheNumber }) => {
+  const isPdf = window.location.href.indexOf("pdfme=true") > -1;
   return (
     <div
       className={`${styles.byTheNumber} ${
         byTheNumber.continuumTitle ? styles.withContinuum : null
       }`}
+      style={{ marginTop: isPdf ? "40px" : null }}
     >
       {byTheNumber.continuumTitle && (
         <TrackVisibility>
