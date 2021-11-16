@@ -269,7 +269,7 @@ export const AccordionItem = ({
         )}
 
         {(id === "vibrant-adventurers" || id === "experienced-connectors") &&
-        item.theType === "who" &&
+        item.theType === "why" &&
         forceOpen ? (
           <div className={styles.pageBreak} />
         ) : null}
