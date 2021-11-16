@@ -76,8 +76,12 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
       </div>
 
       <div className={styles.subHeader}>
-        The clickable mindsets below are Tourism New Zealand’s target mindsets
-        and the focus of our insights
+        We have prioritised a few mindsets to align our focus towards. These
+        mindsets have a high desire for travel to or within Aotearoa, are
+        resilient to the changing travel landscape and will contribute
+        positively to New Zealand’s natural environment, culture, society and
+        economy. Click on one of the highlighted mindsets below to find out more
+        about them.
       </div>
 
       <div className={styles.mindsets}>

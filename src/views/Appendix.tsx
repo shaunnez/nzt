@@ -139,7 +139,7 @@ const Appendix = () => {
 
   if (isPdf) {
     // @ts-ignore
-    chartOptions.chart.width = "1600";
+    chartOptions.chart.width = "1400";
     // @ts-ignore
     chartOptions.chart.marginTop = "0";
     // @ts-ignore
