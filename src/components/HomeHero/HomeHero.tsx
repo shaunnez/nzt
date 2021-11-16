@@ -19,9 +19,6 @@ const HomeHero = ({ home }: any) => {
           // transitionDuration={250}
         >
           <div className={styles.heroContent}>
-            <div className={styles.purenz}>
-              <img src={pureNzImg} alt="Pure NZ" />
-            </div>
             <div className={styles.mindsets}>
               <h1>MINDSETS</h1>
             </div>
