@@ -64,6 +64,7 @@
 .boxoutTitle {
   font-size: var(--font-base);
   font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .boxoutLargeText {
@@ -77,6 +78,7 @@
     sans-serif;
   text-transform: uppercase;
   font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
+  line-height: 0.95;
 }
 
 .boxoutContent {
@@ -84,7 +86,7 @@
   line-height: var(--font-smallest);
   font-weight: 400;
   margin: 0px 15px;
-  margin-top: -6px;
+  margin-top: 12px;
 }
 
 /* .box */

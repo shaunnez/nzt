@@ -36,6 +36,7 @@ const BoxoutComponent = ({ boxout }: BoxoutProps) => {
             <div
               className={styles.boxoutContent}
               dangerouslySetInnerHTML={{ __html: boxout.content }}
+              style={{ marginTop: boxout.largeText ? null : "16px" }}
             />
           </div>
         </div>
