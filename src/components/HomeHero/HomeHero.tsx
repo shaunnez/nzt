@@ -26,7 +26,11 @@ const HomeHero = ({ home }: any) => {
               <p>
                 <b>{home.heroSmallCopy}</b>
               </p>
-              <p>{home.heroCopy}</p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: home.heroCopy.replace(/\n/g, "<br/>"),
+                }}
+              />
               <br />
               <p>
                 <Link to={`/appendix`}>Learn more about Mindsets</Link>
