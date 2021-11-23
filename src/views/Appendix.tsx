@@ -35,6 +35,20 @@ const chartOptions = {
   },
   colors: [],
   plotOptions: {
+    bar: {
+      stacking: "percentage",
+      borderWidth: 0,
+      borderColor: "#000",
+      dataLabels: {
+        enabled: true,
+        format: "{y}%",
+        style: {
+          color: "black",
+          textOutline: "none",
+          fontSize: "13px",
+        },
+      },
+    },
     column: {
       stacking: "percentage",
       borderWidth: 0,
@@ -130,6 +144,26 @@ const chartOptions = {
     // reversed: true,
   },
   series: [],
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 767,
+        },
+
+        chartOptions: {
+          legend: {
+            align: "center",
+            verticalAlign: "bottom",
+            layout: "horizontal",
+            itemMarginBottom: 5,
+            alignColumns: false,
+            width: "auto",
+          },
+        },
+      },
+    ],
+  },
 };
 
 const Appendix = () => {
@@ -144,6 +178,11 @@ const Appendix = () => {
     chartOptions.chart.marginTop = "0";
     // @ts-ignore
     chartOptions.chart.spacingTop = "0";
+  }
+
+  if (window.innerWidth < 768) {
+    chartOptions.chart.type = "bar";
+    chartOptions.chart.height = 600;
   }
   return (
     <Layout>
@@ -242,10 +281,6 @@ const Appendix = () => {
                       selectedTabIdx={1}
                       selectedFilter={1}
                     />
-                    <DomesticInternationalWidget
-                      selectedTabIdx={1}
-                      selectedFilter={2}
-                    />
                   </>
                 ) : (
                   <DomesticInternationalWidget
@@ -276,9 +311,7 @@ export const DomesticInternationalWidget = ({
   const [selectedInternationalFilter, setSelectedInternationalFilter] =
     useState(selectedFilter);
 
-  const actualChartOptions = {
-    ...chartOptions,
-  };
+  const actualChartOptions = JSON.parse(JSON.stringify(chartOptions));
 
   const additionalChartData = getDataByTypeAndIndex(
     selectedTab,
@@ -299,6 +332,11 @@ export const DomesticInternationalWidget = ({
   } else {
     actualChartOptions.xAxis[2].visible = false;
     actualChartOptions.xAxis[2].categories = [];
+  }
+
+  if (window.innerWidth < 768) {
+    actualChartOptions.xAxis[1].visible = false;
+    actualChartOptions.xAxis[2].visible = false;
   }
   actualChartOptions.caption.text = additionalChartData.caption;
   actualChartOptions.colors = additionalChartData.colors;
@@ -346,15 +384,10 @@ export const DomesticInternationalWidget = ({
               >
                 Mindset Distribution by Cohort
               </button>
+
               <button
                 onClick={() => setSelectedDomesticFilter(1)}
                 className={selectedDomesticFilter === 1 ? styles.active : null}
-              >
-                Age Distribution by Mindset
-              </button>
-              <button
-                onClick={() => setSelectedDomesticFilter(2)}
-                className={selectedDomesticFilter === 2 ? styles.active : null}
               >
                 Domestic Holidays
               </button>
@@ -369,8 +402,7 @@ export const DomesticInternationalWidget = ({
                 options={actualChartOptions}
               />
               <div className={styles.customFooterContent}>
-                {selectedDomesticFilter === 1 && <div>Average age</div>}
-                {selectedDomesticFilter === 2 && (
+                {selectedDomesticFilter === 1 && (
                   <div>
                     Average number of <br /> domestic holidays per year
                   </div>

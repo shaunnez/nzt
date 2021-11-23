@@ -39,49 +39,6 @@ const allOptions = {
     ].reverse(),
   },
   domestic2: {
-    colors: ["#8FDFF9", "#66CBEB", "#33B9E5", "#00A8DE"],
-    caption: ``,
-    categories: [
-      "Total New Zealand Population",
-      "Cautious Escapists",
-      "Experienced Connectors",
-      "Vibrant Adventures",
-      "Organised Joy Seekers",
-      "Spontaneous Explorers",
-      "Fun Loving Trail Blazers",
-      "Passive Passengers",
-    ],
-    categories2: [
-      "43.4",
-      "47.2",
-      "52.1",
-      "42.6",
-      "45.2",
-      "38.8",
-      "38.5",
-      "38.5",
-    ],
-    categories3: [],
-    series: [
-      {
-        name: "65-74",
-        data: [12, 17, 23, 9, 9, 4, 4, 3],
-      },
-      {
-        name: "50-64",
-        data: [20, 29, 38, 25, 32, 18, 16, 16],
-      },
-      {
-        name: "35-49",
-        data: [31, 28, 24, 30, 31, 33, 35, 37],
-      },
-      {
-        name: "18-34",
-        data: [34, 25, 15, 36, 28, 45, 45, 45],
-      },
-    ].reverse(),
-  },
-  domestic3: {
     colors: ["#66CBEB", "#33B9E5", "#00A8DE"],
     caption: ``,
     categories: [

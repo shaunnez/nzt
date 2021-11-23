@@ -201,6 +201,16 @@
     margin-top: 32px;
     min-height: 240px;
   }
+
+  .customFooterContent {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+
+  .customFooterContent br {
+    display: none;
+  }
 }
 
 .modal {
