@@ -21,7 +21,7 @@ const allOptions = {
         data: [12, 11, 11, 9, 16, 9, 9],
       },
       {
-        name: "Here & Now'ers",
+        name: "Here & Now-ers",
         data: [20, 18, 17, 26, 16, 29, 26],
       },
       {
@@ -88,7 +88,7 @@ const allOptions = {
       "Lux Adventurers",
       "Thrifty Planners",
       "Considered Rejuvenators",
-      "Here & Now'ers",
+      "Here & Now-ers",
       "Curious Explorers",
     ],
     categories2: [4.4, 3.4, 3.9, 4.2, 4.5],

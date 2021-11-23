@@ -71,10 +71,17 @@
   .mindsets h1 {
   }
   .content {
-    margin-top: 180px;
+    margin-top: 60px;
+  }
+  .content > p:first-child {
+    margin-bottom: 12px;
   }
   .heroContent {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .homeHero > div > div > div {
+    background-position-x: left !important;
   }
 }

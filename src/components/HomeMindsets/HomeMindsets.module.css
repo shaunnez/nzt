@@ -137,6 +137,7 @@
 
 .mindsetTitle {
   font-size: var(--font-larger);
+  line-height: 1.1;
   /* line-height: 28px; */
   margin-left: 70px;
   font-weight: 800;

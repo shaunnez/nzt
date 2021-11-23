@@ -33,7 +33,7 @@ const Mindsets = () => {
   // @ts-ignore
   const { id } = useParams();
   // @ts-ignore
-  const friendly = (id || "").replace(/-/g, " ");
+  const friendly = (id || "").replace(/-/g, " ").replace("now ers", "now-ers");
   const isPdf = window.location.href.indexOf("pdfme=true") > -1;
   React.useEffect(() => {
     return () => {
@@ -209,7 +209,7 @@ export const AccordionItem = ({
     addPageBreak = true;
   } else if (id === "considered-rejuvenators" && item.theType === "how") {
     addPageBreak = true;
-  } else if (id === "here-and-now'ers" && item.theType === "why") {
+  } else if (id === "here-and-now-ers" && item.theType === "why") {
     addPageBreak = true;
   } else if (id === "experienced-connectors" && item.theType === "how") {
     addPageBreak = true;
