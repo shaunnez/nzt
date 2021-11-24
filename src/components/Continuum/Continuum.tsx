@@ -32,7 +32,7 @@ const Continuum = ({
   }, [isVisible]);
   return (
     <div className={styles.continuum}>
-      <div className={styles.continuumTitle}>{title}</div>
+      <div className={styles.continuumTitle}>{title?.replace(/'/g, "’")}</div>
 
       <ReactSpeedometer
         value={actualPercentage}
@@ -41,7 +41,7 @@ const Continuum = ({
         height={150}
         customSegmentLabels={[
           {
-            text: leftText,
+            text: leftText?.replace(/'/g, "’"),
             // @ts-ignore
             position: "OUTSIDE",
             color: "#000",
@@ -56,7 +56,7 @@ const Continuum = ({
             text: "",
           },
           {
-            text: rightText,
+            text: rightText?.replace(/'/g, "’"),
             // @ts-ignore
             position: "OUTSIDE",
             color: "#000",

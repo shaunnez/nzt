@@ -12,7 +12,7 @@ const allOptions = {
       "Household With Children",
       "Empty Nesters",
       "New Migrants (Within Past 10 Years)",
-      "New Migrants (Within Past 10 Years)",
+      "New Migrants (Within Past 5 Years)",
     ],
     categories2: [],
     series: [

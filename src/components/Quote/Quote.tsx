@@ -23,7 +23,7 @@ const Quote = ({
         className={styles.quoteText}
         style={{ fontSize: isPdf ? "24px" : "var(--font-quote)" }}
       >
-        {text}
+        {text.replace(/'/g, "’")}
       </div>
       {continuumTitle && (
         <TrackVisibility>

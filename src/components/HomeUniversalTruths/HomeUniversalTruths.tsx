@@ -9,14 +9,18 @@ const HomeUniversalTruths = ({ home }: any) => {
 
   return (
     <div className={styles.universalTruths}>
-      <div className={styles.headline}>{home.universalTruthsTitle}</div>
+      <div className={styles.headline}>
+        {home.universalTruthsTitle.replace(/'/g, "’")}
+      </div>
       <div
         className={`${styles.content} ${
           accordionOpen ? styles.open : styles.closed
         }`}
       >
         <div
-          dangerouslySetInnerHTML={{ __html: home.universalTruthsCopy.html }}
+          dangerouslySetInnerHTML={{
+            __html: home.universalTruthsCopy.html.replace(/'/g, "’"),
+          }}
         />
       </div>
       <button

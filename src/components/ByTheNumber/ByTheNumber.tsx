@@ -56,10 +56,10 @@ const ByTheNumber = ({ byTheNumber }) => {
               key={`${byTheNumber.continuumTitle}-${i}`}
             >
               <div className={styles.byTheNumberTitle}>
-                {theContent.length > 0 ? theContent[0] : ""}
+                {theContent.length > 0 ? theContent[0].replace(/'/g, "’") : ""}
               </div>
               <div className={styles.byTheNumberBody}>
-                {theContent.length > 1 ? theContent[1] : ""}
+                {theContent.length > 1 ? theContent[1].replace(/'/g, "’") : ""}
               </div>
             </div>
           );

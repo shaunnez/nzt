@@ -50,14 +50,17 @@ const HomeMindsets = ({ activities, mindsets }: HomeMindsetsInterface) => {
   return (
     <div id="homeMindsets" className={styles.homeMindsets}>
       <div className={styles.header}>
-        <span>Mindsets Overview</span>
+        <span>Mindsets overview</span>
 
         <div className={styles.selectWrapper}>
           <Select
             placeholder="All activities"
             options={theActivities.map((x) => ({
               value: x,
-              label: x.length > 30 ? `${x}...` : x,
+              label:
+                x.length > 30
+                  ? `${x.replace(/'/g, "’")}...`
+                  : x.replace(/'/g, "’"),
             }))}
             isClearable
             className={"customSelect"}
@@ -158,8 +161,12 @@ const MindsetItem = ({ mindset }: any) => {
             <InternationalIcon />
           )}
         </div>
-        <div className={styles.mindsetTitle}>{mindset.head}</div>
-        <div className={styles.mindsetDescription}>{mindset.intro}</div>
+        <div className={styles.mindsetTitle}>
+          {mindset.head.replace(/'/g, "’")}
+        </div>
+        <div className={styles.mindsetDescription}>
+          {mindset.intro.replace(/'/g, "’")}
+        </div>
       </div>
     </div>
   );

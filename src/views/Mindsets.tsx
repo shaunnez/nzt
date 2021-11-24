@@ -202,7 +202,7 @@ export const AccordionItem = ({
   } else if (item.theType === "what") {
     theTitle = "WHAT they do on a holiday";
   } else {
-    theTitle = "WHERE you'll find them";
+    theTitle = "WHERE you’ll find them";
   }
   let addPageBreak = false;
   if (id === "lux-adventurers" && item.theType === "why") {

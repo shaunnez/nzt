@@ -31,11 +31,17 @@ const BoxoutComponent = ({ boxout }: BoxoutProps) => {
         />
         <div className={styles.boxoutCircleWrapper}>
           <div className={styles.boxoutCircleContent}>
-            <div className={styles.boxoutTitle}>{boxout.title}</div>
-            <div className={styles.boxoutLargeText}>{boxout.largeText}</div>
+            <div className={styles.boxoutTitle}>
+              {boxout.title?.replace(/'/g, "’")}
+            </div>
+            <div className={styles.boxoutLargeText}>
+              {boxout.largeText?.replace(/'/g, "’")}
+            </div>
             <div
               className={styles.boxoutContent}
-              dangerouslySetInnerHTML={{ __html: boxout.content }}
+              dangerouslySetInnerHTML={{
+                __html: boxout.content?.replace(/'/g, "’"),
+              }}
               style={{ marginTop: boxout.largeText ? null : "16px" }}
             />
           </div>
@@ -45,7 +51,9 @@ const BoxoutComponent = ({ boxout }: BoxoutProps) => {
       {boxout.body?.html && (
         <div
           className={styles.boxoutBody}
-          dangerouslySetInnerHTML={{ __html: boxout.body?.html }}
+          dangerouslySetInnerHTML={{
+            __html: boxout.body?.html?.replace(/'/g, "’"),
+          }}
         />
       )}
     </div>
